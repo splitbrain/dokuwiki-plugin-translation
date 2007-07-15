@@ -1,0 +1,8 @@
+# General Plugin Info do not edit
+
+author Andreas Gohr
+email  andi@splitbrain.org
+date   2007-06-15
+name   Translation Plugin
+desc   Simple multilanguage plugin
+url    http://wiki.splitbrain.org/plugin:translation

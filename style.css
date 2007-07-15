@@ -1,0 +1,41 @@
+.dokuwiki div.plugin_translation {
+    float: right;
+    font-size: 95%;
+}
+
+.dokuwiki div.plugin_translation ul {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+.dokuwiki div.plugin_translation ul li{
+    float: left;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dokuwiki div.plugin_translation ul li a.wikilink1:link,
+.dokuwiki div.plugin_translation ul li a.wikilink1:hover,
+.dokuwiki div.plugin_translation ul li a.wikilink1:active,
+.dokuwiki div.plugin_translation ul li a.wikilink1:visited {
+    background-color: #000080;
+    color: #fff !important;
+    text-decoration:none;
+    padding: 0 0.2em;
+    margin: 0.1em 0.2em;
+    border: none !important;
+}
+
+.dokuwiki div.plugin_translation ul li a.wikilink2:link,
+.dokuwiki div.plugin_translation ul li a.wikilink2:hover,
+.dokuwiki div.plugin_translation ul li a.wikilink2:active,
+.dokuwiki div.plugin_translation ul li a.wikilink2:visited {
+    background-color: #808080;
+    color: #fff !important;
+    text-decoration:none;
+    padding: 0 0.2em;
+    margin: 0.1em 0.2em;
+    border: none !important;
+}
+
