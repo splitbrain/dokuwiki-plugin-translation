@@ -15,6 +15,7 @@
     margin: 0;
 }
 
+
 .dokuwiki div.plugin_translation ul li a.wikilink1:link,
 .dokuwiki div.plugin_translation ul li a.wikilink1:hover,
 .dokuwiki div.plugin_translation ul li a.wikilink1:active,
@@ -39,3 +40,12 @@
     border: none !important;
 }
 
+.dokuwiki div.plugin_translation option.wikilink1 {
+    color: #000080;
+    text-align: center;
+}
+
+.dokuwiki div.plugin_translation option.wikilink2 {
+    color: #808080;
+    text-align: center;
+}

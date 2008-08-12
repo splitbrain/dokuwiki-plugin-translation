@@ -24,6 +24,7 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
         $this->trans = strtolower(str_replace(',',' ',$this->getConf('translations')));
         $this->trans = array_unique(array_filter(explode(' ',$this->trans)));
         sort($this->trans);
+        array_unshift($this->trans,'');
 
         $this->tns = cleanID($this->getConf('translationns'));
         if($this->tns) $this->tns .= ':';
@@ -91,9 +92,9 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
     }
 
     /**
-     * Returns a link to the wanted translation, empty $lng is default lang
+     * Returns the ID and name to the wanted translation, empty $lng is default lang
      */
-    function _buildTransLink($lng,$idpart){
+    function _buildTransID($lng,$idpart){
         global $conf;
         global $saved_conf;
         if($lng){
@@ -107,7 +108,7 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
               $name = $conf['lang_before_translation'];
             }
         }
-        return html_wikilink($link,$name);
+        return array($link,$name);
     }
 
     /**
@@ -133,13 +134,39 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
             $out .= '<sup>'.html_wikilink($this->getConf('about'),'?').'</sup>';
         }
         $out .= ':</span> ';
-        $out .= '<ul>';
-        $out .= '  <li><div class="li">'.$this->_buildTransLink('',$idpart).'</div></li>';
+
+        /* needs some java script...
+        $out .= '<form action="'.DOKU_SCRIPT.'">';
+        $out .= '<select name="id">';
         foreach($this->trans as $t){
-            $out .= '  <li><div class="li">'.$this->_buildTransLink($t,$idpart).'</div></li>';
+            list($link,$name) = $this->_buildTransID($t,$idpart);
+            $link = cleanID($link);
+            if($ID == $link){
+                $sel = ' selected="selected"';
+            }else{
+                $sel = '';
+            }
+            if(page_exists($link,'',false)){
+                $class = 'wikilink1';
+            }else{
+                $class = 'wikilink2';
+            }
+            $out .= '<option value="'.hsc($link).'"'.$sel.' class="'.$class.'">'.hsc($name).'</option>';
+        }
+        $out .= '</select>';
+        $out .= '<input type="submit" value="&rarr;" />';
+        $out .= '</form>';
+        */
+
+
+        $out .= '<ul>';
+        foreach($this->trans as $t){
+            list($link,$name) = $this->_buildTransID($t,$idpart);
+            $out .= '  <li><div class="li">'.html_wikilink($link,$name).'</div></li>';
         }
         $out .= '</ul>';
         $out .= '</div>';
+
 
         return $out;
     }
