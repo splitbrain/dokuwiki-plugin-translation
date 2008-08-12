@@ -1,10 +1,10 @@
 .dokuwiki div.plugin_translation {
     float: right;
     font-size: 95%;
+    padding-right: 2em;
 }
 
 .dokuwiki div.plugin_translation ul {
-    display: inline;
     padding: 0;
     margin: 0;
 }
