@@ -1,6 +1,6 @@
 <?php
 /**
- * Info Plugin: Simple multilanguage plugin
+ * Translation Plugin: Simple multilanguage plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
@@ -14,6 +14,18 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'action.php');
 
 class action_plugin_translation extends DokuWiki_Action_Plugin {
+
+    /**
+     * for th helper plugin
+     */
+    var $hlp = null;
+
+    /**
+     * Constructor. Load helper plugin
+     */
+    function action_plugin_translation(){
+        $this->hlp =& plugin_load('helper', 'translation');
+    }
 
     /**
      * return some info
@@ -30,6 +42,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         if($this->getConf('translateui')){
             $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
         }
+        $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
     }
 
     /**
@@ -40,11 +53,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         global $lang;
         global $conf;
 
-        // get an instance of the syntax plugin
-        $translation = &plugin_load('syntax','translation');
-
         // check if we are in a foreign language namespace
-        $lc = $translation->_currentLang();
+        $lc = $this->hlp->getLangPart($ID);
         if(!$lc) return;
 
         if(file_exists(DOKU_INC.'inc/lang/'.$lc.'/lang.php')) {
@@ -55,6 +65,28 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         return true;
     }
+
+    /**
+     * Resort page match results so that results are ordered by translation, having the
+     * default language first
+     */
+    function translation_search(&$event, $args) {
+        // sort into translation slots
+        $res = array();
+        foreach($event->result as $r){
+            $tr = $this->hlp->getLangPart($r);
+            if(!is_array($res["x$tr"])) $res["x$tr"] = array();
+            $res["x$tr"][] = $r;
+        }
+        // sort by translations
+        ksort($res);
+        // combine
+        $event->result = array();
+        foreach($res as $r){
+            $event->result = array_merge($event->result,$r);
+        }
+    }
+
 }
 
 //Setup VIM: ex: et ts=4 enc=utf-8 :

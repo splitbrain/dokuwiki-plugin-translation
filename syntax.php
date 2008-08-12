@@ -1,6 +1,6 @@
 <?php
 /**
- * Info Plugin: Simple multilanguage plugin
+ * Translation Plugin: Simple multilanguage plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
@@ -13,21 +13,16 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
 
-    var $trans = array();
-    var $tns   = '';
+    /**
+     * for th helper plugin
+     */
+    var $hlp = null;
 
     /**
-     * Initialize
+     * Constructor. Load helper plugin
      */
     function syntax_plugin_translation(){
-        // load wanted translation into array
-        $this->trans = strtolower(str_replace(',',' ',$this->getConf('translations')));
-        $this->trans = array_unique(array_filter(explode(' ',$this->trans)));
-        sort($this->trans);
-        array_unshift($this->trans,'');
-
-        $this->tns = cleanID($this->getConf('translationns'));
-        if($this->tns) $this->tns .= ':';
+        $this->hlp =& plugin_load('helper', 'translation');
     }
 
     /**
@@ -79,39 +74,6 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
     }
 
     /**
-     * Check if the current ID is a translation and return the language code
-     */
-    function _currentLang(){
-        global $ID;
-
-        $rx = '/^'.$this->tns.'('.join('|',$this->trans).'):/';
-        if(preg_match($rx,$ID,$match)){
-            return $match[1];
-        }
-        return '';
-    }
-
-    /**
-     * Returns the ID and name to the wanted translation, empty $lng is default lang
-     */
-    function _buildTransID($lng,$idpart){
-        global $conf;
-        global $saved_conf;
-        if($lng){
-            $link = ':'.$this->tns.$lng.':'.$idpart;
-            $name = $lng;
-        }else{
-            $link = ':'.$this->tns.$idpart;
-            if(!$conf['lang_before_translation']){
-              $name = $conf['lang'];
-            } else {
-              $name = $conf['lang_before_translation'];
-            }
-        }
-        return array($link,$name);
-    }
-
-    /**
      * Displays the available and configured translations. Needs to be placed in the template.
      */
     function _showTranslations(){
@@ -120,12 +82,12 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
         global $conf;
 
         if($ACT != 'show') return;
-        if($this->tns && strpos($ID,$this->tns) !== 0) return;
+        if($this->hlp->tns && strpos($ID,$this->hlp->tns) !== 0) return;
         if(preg_match('/'.$this->getConf('skiptrans').'/ui',':'.$ID)) return;
         $meta = p_get_metadata($ID);
         if($meta['plugin']['translation']['notrans']) return;
 
-        $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
+        $rx = '/^'.$this->hlp->tns.'(('.join('|',$this->hlp->trans).'):)?/';
         $idpart = preg_replace($rx,'',$ID);
 
         $out  = '<div class="plugin_translation">';
@@ -138,8 +100,8 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
         /* needs some java script...
         $out .= '<form action="'.DOKU_SCRIPT.'">';
         $out .= '<select name="id">';
-        foreach($this->trans as $t){
-            list($link,$name) = $this->_buildTransID($t,$idpart);
+        foreach($this->hlp->trans as $t){
+            list($link,$name) = $this->hlp->buildTransID($t,$idpart);
             $link = cleanID($link);
             if($ID == $link){
                 $sel = ' selected="selected"';
@@ -160,8 +122,8 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
 
 
         $out .= '<ul>';
-        foreach($this->trans as $t){
-            list($link,$name) = $this->_buildTransID($t,$idpart);
+        foreach($this->hlp->trans as $t){
+            list($link,$name) = $this->hlp->buildTransID($t,$idpart);
             $out .= '  <li><div class="li">'.html_wikilink($link,$name).'</div></li>';
         }
         $out .= '</ul>';
