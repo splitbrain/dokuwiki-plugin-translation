@@ -120,6 +120,7 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
 
         if($ACT != 'show') return;
         if($this->tns && strpos($ID,$this->tns) !== 0) return;
+        if(preg_match('/'.$this->getConf('skiptrans').'/ui',':'.$ID)) return;
         $meta = p_get_metadata($ID);
         if($meta['plugin']['translation']['notrans']) return;
 
