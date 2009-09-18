@@ -82,6 +82,72 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         return array($link,$name);
     }
 
+    /**
+     * Displays the available and configured translations. Needs to be placed in the template.
+     */
+    function showTranslations(){
+        global $ACT;
+        global $ID;
+        global $conf;
+        global $INFO;
+
+        if($ACT != 'show') return;
+        if($this->tns && strpos($ID,$this->tns) !== 0) return;
+        $skiptrans = trim($this->getConf('skiptrans'));
+        if($skiptrans &&  preg_match('/'.$skiptrans.'/ui',':'.$ID)) return;
+        $meta = p_get_metadata($ID);
+        if($meta['plugin']['translation']['notrans']) return;
+
+        $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
+        $idpart = preg_replace($rx,'',$ID);
+
+        $out  = '<div class="plugin_translation">';
+        $out .= '<span>'.$this->getLang('translations');
+        if($this->getConf('about')){
+            $out .= '<sup>'.html_wikilink($this->getConf('about'),'?').'</sup>';
+        }
+        $out .= ':</span> ';
+
+        if($this->getConf('dropdown')){ // use dropdown
+            if($INFO['exists']){
+                $class = 'wikilink1';
+            }else{
+                $class = 'wikilink2';
+            }
+            $out .= '<form action="'.wl().'" id="translation__dropdown">';
+            $out .= '<select name="id" class="'.$class.'">';
+            foreach($this->trans as $t){
+                list($link,$name) = $this->buildTransID($t,$idpart);
+                $link = cleanID($link);
+                if($ID == $link){
+                    $sel = ' selected="selected"';
+                }else{
+                    $sel = '';
+                }
+                if(page_exists($link,'',false)){
+                    $class = 'wikilink1';
+                }else{
+                    $class = 'wikilink2';
+                }
+                $out .= '<option value="'.$link.'"'.$sel.' class="'.$class.'">'.hsc($name).'</option>';
+            }
+            $out .= '</select>';
+            $out .= '<input name="go" type="submit" value="&rarr;" />';
+            $out .= '</form>';
+        }else{ // use list
+            $out .= '<ul>';
+            foreach($this->trans as $t){
+                list($link,$name) = $this->buildTransID($t,$idpart);
+                $out .= '  <li><div class="li">'.html_wikilink($link,$name).'</div></li>';
+            }
+            $out .= '</ul>';
+        }
+
+        $out .= '</div>';
+
+
+        return $out;
+    }
 
 
 }

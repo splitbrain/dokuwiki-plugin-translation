@@ -73,65 +73,9 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
         return false;
     }
 
-    /**
-     * Displays the available and configured translations. Needs to be placed in the template.
-     */
+    // for backward compatibility
     function _showTranslations(){
-        global $ACT;
-        global $ID;
-        global $conf;
-
-        if($ACT != 'show') return;
-        if($this->hlp->tns && strpos($ID,$this->hlp->tns) !== 0) return;
-        $skiptrans = trim($this->getConf('skiptrans'));
-        if($skiptrans &&  preg_match('/'.$skiptrans.'/ui',':'.$ID)) return;
-        $meta = p_get_metadata($ID);
-        if($meta['plugin']['translation']['notrans']) return;
-
-        $rx = '/^'.$this->hlp->tns.'(('.join('|',$this->hlp->trans).'):)?/';
-        $idpart = preg_replace($rx,'',$ID);
-
-        $out  = '<div class="plugin_translation">';
-        $out .= '<span>'.$this->getLang('translations');
-        if($this->getConf('about')){
-            $out .= '<sup>'.html_wikilink($this->getConf('about'),'?').'</sup>';
-        }
-        $out .= ':</span> ';
-
-        /* needs some java script...
-        $out .= '<form action="'.DOKU_SCRIPT.'">';
-        $out .= '<select name="id">';
-        foreach($this->hlp->trans as $t){
-            list($link,$name) = $this->hlp->buildTransID($t,$idpart);
-            $link = cleanID($link);
-            if($ID == $link){
-                $sel = ' selected="selected"';
-            }else{
-                $sel = '';
-            }
-            if(page_exists($link,'',false)){
-                $class = 'wikilink1';
-            }else{
-                $class = 'wikilink2';
-            }
-            $out .= '<option value="'.hsc($link).'"'.$sel.' class="'.$class.'">'.hsc($name).'</option>';
-        }
-        $out .= '</select>';
-        $out .= '<input type="submit" value="&rarr;" />';
-        $out .= '</form>';
-        */
-
-
-        $out .= '<ul>';
-        foreach($this->hlp->trans as $t){
-            list($link,$name) = $this->hlp->buildTransID($t,$idpart);
-            $out .= '  <li><div class="li">'.html_wikilink($link,$name).'</div></li>';
-        }
-        $out .= '</ul>';
-        $out .= '</div>';
-
-
-        return $out;
+        return $this->hlp->showTranslations();
     }
 
 }
