@@ -2,7 +2,7 @@
 
 author Andreas Gohr
 email  andi@splitbrain.org
-date   2008-08-12
+date   2009-09-18
 name   Translation Plugin
 desc   Simple multilanguage plugin
-url    http://wiki.splitbrain.org/plugin:translation
+url    http://www.dokuwiki.org/plugin:translation

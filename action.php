@@ -64,9 +64,11 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         // check if we are in a foreign language namespace
         $lc = $this->hlp->getLangPart($ID);
-        if(!$lc){
-            return;
-        }
+
+        // store language in session
+        if($lc) $_SESSION[DOKU_COOKIE]['translationlc'] = $lc;
+        if(!$lc) $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
+        if(!$lc) return;
 
         if(file_exists(DOKU_INC.'inc/lang/'.$lc.'/lang.php')) {
           require(DOKU_INC.'inc/lang/'.$lc.'/lang.php');
