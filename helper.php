@@ -50,6 +50,19 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     }
 
     /**
+     * Returns the browser language if it matches with one of the configured
+     * languages
+     */
+    function getBrowserLang(){
+        $rx = '/(^|,|:|;|-)('.join('|',$this->trans).')($|,|:|;|-)/i';
+        if(preg_match($rx,$_SERVER['HTTP_ACCEPT_LANGUAGE'],$match)){
+            return strtolower($match[2]);
+        }
+        return false;
+    }
+
+
+    /**
      * Returns the ID and name to the wanted translation, empty $lng is default lang
      */
     function buildTransID($lng,$idpart){

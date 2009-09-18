@@ -52,10 +52,21 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         global $ID;
         global $lang;
         global $conf;
+        global $ACT;
+
+        // redirect away from start page?
+        if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show'){
+            $lc = $this->hlp->getBrowserLang();
+            if(!$lc) $lc = $conf['lang'];
+            header('Location: '.wl($lc.':'.$conf['start'],'',true,'&'));
+            exit;
+        }
 
         // check if we are in a foreign language namespace
         $lc = $this->hlp->getLangPart($ID);
-        if(!$lc) return;
+        if(!$lc){
+            return;
+        }
 
         if(file_exists(DOKU_INC.'inc/lang/'.$lc.'/lang.php')) {
           require(DOKU_INC.'inc/lang/'.$lc.'/lang.php');
