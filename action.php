@@ -66,7 +66,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         $lc = $this->hlp->getLangPart($ID);
 
         // store language in session
-        if($lc) $_SESSION[DOKU_COOKIE]['translationlc'] = $lc;
+        if($ACT == 'show') $_SESSION[DOKU_COOKIE]['translationlc'] = $lc;
         if(!$lc) $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
         if(!$lc) return;
 
