@@ -11,13 +11,15 @@ if(!defined('DOKU_INC')) die();
 
 
 class helper_plugin_translation extends DokuWiki_Plugin {
-    var $trans = array();
-    var $tns   = '';
+    var $trans       = array();
+    var $tns         = '';
+    var $defaultlang = '';
 
     /**
      * Initialize
      */
     function helper_plugin_translation(){
+        global $conf;
         require_once(DOKU_INC.'inc/pageutils.php');
         require_once(DOKU_INC.'inc/utf8.php');
 
@@ -25,7 +27,20 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $this->trans = strtolower(str_replace(',',' ',$this->getConf('translations')));
         $this->trans = array_unique(array_filter(explode(' ',$this->trans)));
         sort($this->trans);
-        array_unshift($this->trans,'');
+
+        // get default translation
+        if(!$conf['lang_before_translation']){
+          $dfl = $conf['lang'];
+        } else {
+          $dfl = $conf['lang_before_translation'];
+        }
+        if(in_array($dfl,$this->trans)){
+            $this->defaultlang = $dfl;
+        }else{
+            $this->defaultlang = '';
+            array_unshift($this->trans,'');
+        }
+
 
         $this->tns = cleanID($this->getConf('translationns'));
         if($this->tns) $this->tns .= ':';
@@ -63,7 +78,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
 
     /**
-     * Returns the ID and name to the wanted translation, empty $lng is default lang
+     * Returns the ID and name to the wanted translation, empty
+     * $lng is default lang
      */
     function buildTransID($lng,$idpart){
         global $conf;
