@@ -217,6 +217,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $msg .= sprintf(' '.$this->getLang('diff'),
                     wl($orig,array('do'=>'diff','rev'=>$orev)));
         }
-        msg($msg,2);
+
+        echo '<div class="notify">'.$msg.'</div>';
     }
 }
