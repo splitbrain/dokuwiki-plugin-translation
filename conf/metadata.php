@@ -11,4 +11,5 @@ $meta['skiptrans']     = array('string');
 $meta['dropdown']      = array('onoff');
 $meta['translateui']   = array('onoff');
 $meta['redirectstart'] = array('onoff');
+$meta['checkage']      = array('onoff');
 $meta['about']         = array('string','_pattern' => '/^(|[\w:\-]+)$/');

@@ -9,7 +9,6 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-
 class helper_plugin_translation extends DokuWiki_Plugin {
     var $trans       = array();
     var $tns         = '';
@@ -99,20 +98,33 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     }
 
     /**
+     * Check if current ID should be translated and any GUI
+     * should be shown
+     */
+    function istranslatable($id,$checkact=true){
+        global $ACT;
+
+        if($checkact && $ACT != 'show') return false;
+        if($this->tns && strpos($id,$this->tns) !== 0) return false;
+        $skiptrans = trim($this->getConf('skiptrans'));
+        if($skiptrans &&  preg_match('/'.$skiptrans.'/ui',':'.$id)) return false;
+        $meta = p_get_metadata($id);
+        if($meta['plugin']['translation']['notrans']) return false;
+
+        return true;
+    }
+
+    /**
      * Displays the available and configured translations. Needs to be placed in the template.
      */
     function showTranslations(){
-        global $ACT;
         global $ID;
         global $conf;
         global $INFO;
 
-        if($ACT != 'show') return;
-        if($this->tns && strpos($ID,$this->tns) !== 0) return;
-        $skiptrans = trim($this->getConf('skiptrans'));
-        if($skiptrans &&  preg_match('/'.$skiptrans.'/ui',':'.$ID)) return;
-        $meta = p_get_metadata($ID);
-        if($meta['plugin']['translation']['notrans']) return;
+        if(!$this->istranslatable($ID)) return;
+
+        $this->checkage();
 
         $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
         $idpart = preg_replace($rx,'',$ID);
@@ -161,9 +173,47 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         $out .= '</div>';
 
-
         return $out;
     }
 
+    /**
+     * Checks if the current page is a translation of a page
+     * in the default language. Displays a notice when it is
+     * older than the original page. Tries to lin to a diff
+     * with changes on the original since the translation
+     */
+    function checkage(){
+        global $ID;
+        global $INFO;
+        if(!$this->getConf('checkage')) return;
+        if(!$INFO['exists']) return;
+        $lng = $this->getLangPart($ID);
+        if($lng == $this->defaultlang) return;
 
+        $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
+        $idpart = preg_replace($rx,'',$ID);
+
+        // compare modification times
+        list($orig,$name) = $this->buildTransID($this->defaultlang,$idpart);
+        $origfn = wikiFN($orig);
+        if($INFO['lastmod'] >= @filemtime($origfn) ) return;
+
+        // get revision from before translation
+        $orev = 0;
+        $revs = getRevisions($orig,0,100);
+        foreach($revs as $rev){
+            if($rev < $INFO['lastmod']){
+                $orev = $rev;
+                break;
+            }
+        }
+
+        // build the message and display it
+        $msg = sprintf($this->getLang('outdated'),wl($orig));
+        if($orev){
+            $msg .= sprintf(' '.$this->getLang('diff'),
+                    wl($orig,array('do'=>'diff','rev'=>$orev)));
+        }
+        msg($msg,2);
+    }
 }
