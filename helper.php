@@ -208,6 +208,9 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             }
         }
 
+        // see if the found revision still exists
+        if($orev && !page_exists($orig,$orev)) $orev=0;
+
         // build the message and display it
         $msg = sprintf($this->getLang('outdated'),wl($orig));
         if($orev){
