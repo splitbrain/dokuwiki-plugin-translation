@@ -46,13 +46,6 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     }
 
     /**
-     * return some info
-     */
-    function getInfo(){
-        return confToHash(dirname(__FILE__).'/info.txt');
-    }
-
-    /**
      * Check if the given ID is a translation and return the language code.
      */
     function getLangPart($id){

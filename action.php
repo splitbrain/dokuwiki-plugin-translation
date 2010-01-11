@@ -28,13 +28,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     }
 
     /**
-     * return some info
-     */
-    function getInfo(){
-        return confToHash(dirname(__FILE__).'/info.txt');
-    }
-
-    /**
      * Registe the events
      */
     function register(&$controller) {
