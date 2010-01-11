@@ -1,0 +1,186 @@
+# Native language names
+# extracted from http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+aa	Afaraf
+ab	Аҧсуа
+ae	avesta
+af	Afrikaans
+ak	Akan
+am	አማርኛ
+an	Aragonés
+ar	|العربية
+as	অসমীয়া
+av	авар мацӀ
+ay	aymar aru
+az	azərbaycan dili
+ba	башҡорт теле
+be	Беларуская
+bg	български език
+bh	भोजपुरी
+bi	Bislama
+bm	bamanankan
+bn	বাংলা
+bo	བོད་ཡིག
+br	brezhoneg
+bs	bosanski jezik
+ca	Català
+ce	нохчийн мотт
+ch	Chamoru
+co	corsu
+cr	ᓀᐦᐃᔭᐍᐏᐣ
+cs	česky
+cu	ѩзыкъ словѣньскъ
+cv	чӑваш чӗлхи
+cy	Cymraeg
+da	dansk
+de	Deutsch
+dv	ދިވެހި
+dz	རྫོང་ཁ
+ee	Eʋegbe
+el	Ελληνικά
+en	English
+eo	Esperanto
+es	español
+et	eesti
+eu	euskara
+fa	فارسی
+ff	Fulfulde
+fi	suomi
+fj	vosa Vakaviti
+fo	føroyskt
+fr	français
+fy	Frysk
+ga	Gaeilge
+gd	Gaelic
+gl	Galego
+gn	Avañe'ẽ
+gu	ગુજરાતી
+gv	Gaelg, Gailck
+ha	هَوُسَ
+he	עברית
+hi	हिन्दी, हिंदी
+ho	Hiri Motu
+hr	hrvatski
+ht	Kreyòl ayisyen
+hu	Magyar
+hy	Հայերեն
+hz	Otjiherero
+ia	Interlingua
+id	Bahasa Indonesia
+ie	Interlingue
+ig	Igbo
+ii	ꆇꉙ
+ik	Iñupiaq
+io	Ido
+is	Íslenska
+it	Italiano
+iu	ᐃᓄᒃᑎᑐᑦ
+ja	日本語
+jv	basa Jawa
+ka	ქართული
+kg	KiKongo
+ki	Gĩkũyũ
+kj	Kuanyama
+kk	Қазақ тілі
+kl	kalaallisut
+km	ភាសាខ្មែរ
+kn	ಕನ್ನಡ
+ko	한국어
+kr	Kanuri
+ks	कश्मीरी}}
+ku	Kurdî
+kv	коми кыв
+kw	Kernewek
+ky	кыргыз тили
+la	latine
+lb	Lëtzebuergesch
+lg	Luganda
+li	Limburgs
+ln	Lingála
+lo	ພາສາລາວ
+lt	lietuvių kalba
+lv	latviešu valoda
+mg	Malagasy fiteny
+mh	Kajin M̧ajeļ
+mi	te reo Māori
+mk	македонски јазик
+ml	മലയാളം
+mn	Монгол
+mr	मराठी
+ms	بهاس ملايو
+mt	Malti
+my	ဗမာစာ
+na	Ekakairũ Naoero
+nb	Norsk bokmål
+nd	isiNdebele
+ne	नेपाली
+ng	Owambo
+nl	Nederlands
+nn	Norsk nynorsk
+no	Norsk
+nr	isiNdebele
+nv	Diné bizaad
+ny	chiCheŵa
+oc	Occitan
+oj	ᐊᓂᔑᓈᐯᒧᐎᓐ
+om	Afaan Oromoo
+or	ଓଡ଼ିଆ
+os	Ирон æвзаг
+pa	ਪੰਜਾਬੀ, 
+pi	पाऴि
+pl	polski
+ps	پښتو
+pt	Português
+qu	Runa Simi
+rm	rumantsch grischun
+rn	kiRundi
+ro	română
+ru	Русский
+rw	Ikinyarwanda
+sa	संस्कृतम्
+sc	sardu
+sd	सिन्धी}}
+se	Davvisámegiella
+sg	yângâ tî sängö
+si	සිංහල
+sk	slovenčina
+sl	slovenščina
+sm	gagana fa'a Samoa
+sn	chiShona
+so	Soomaaliga
+sq	Shqip
+sr	српски језик
+ss	SiSwati
+st	Sesotho
+su	Basa Sunda
+sv	svenska
+sw	Kiswahili
+ta	தமிழ்
+te	తెలుగు
+tg	тоҷикӣ
+th	ไทย
+ti	ትግርኛ
+tk	Türkmen
+tl	Wikang Tagalog
+tn	Setswana
+to	faka Tonga
+tr	Türkçe
+ts	Xitsonga
+tt	татарча
+tw	Twi
+ty	Reo Mā`ohi
+ug	Uyƣurqə
+uk	Українська
+ur	اردو
+uz	O'zbek
+ve	Tshivenḓa
+vi	Tiếng Việt
+vo	Volapük
+wa	Walon
+wo	Wollof
+xh	isiXhosa
+yi	ייִדיש
+yo	Yorùbá
+za	Saɯ cueŋƅ
+zh	中文
+zu	isiZulu

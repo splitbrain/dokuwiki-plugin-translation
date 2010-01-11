@@ -119,6 +119,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         $this->checkage();
 
+        $LN = confToHash(dirname(__FILE__).'/lang/langnames.txt');
+
         $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
         $idpart = preg_replace($rx,'',$ID);
 
@@ -150,7 +152,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
                 }else{
                     $class = 'wikilink2';
                 }
-                $out .= '<option value="'.$link.'"'.$sel.' class="'.$class.'">'.hsc($name).'</option>';
+                $out .= '<option value="'.$link.'"'.$sel.' class="'.$class.'" title="'.$LN[$name].'">'.hsc($name).'</option>';
             }
             $out .= '</select>';
             $out .= '<input name="go" type="submit" value="&rarr;" />';
@@ -159,7 +161,12 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= '<ul>';
             foreach($this->trans as $t){
                 list($link,$name) = $this->buildTransID($t,$idpart);
-                $out .= '  <li><div class="li">'.html_wikilink($link,$name).'</div></li>';
+                if(page_exists($link,'',false)){
+                    $class = 'wikilink1';
+                }else{
+                    $class = 'wikilink2';
+                }
+                $out .= '  <li><div class="li"><a href="'.wl($link).'" class="'.$class.'" title="'.$LN[$name].'">'.hsc($name).'</a></div></li>';
             }
             $out .= '</ul>';
         }
