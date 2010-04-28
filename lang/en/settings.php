@@ -13,4 +13,5 @@ $lang['translateui']   = 'Should the language of the user interface be switched 
 $lang['redirectstart'] = 'Should the start page automatically redirect into a language namespace using browser language detection?';
 $lang['about']         = 'Enter a pagename here where the translation feature is explained for your users. It will be linked from the language selector.';
 $lang['checkage']      = 'Warn about possibly outdated translations';
+$lang['redirectlocalized'] = 'Should any page automatically redirect to the translatated one using browser language detection?';
 

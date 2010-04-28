@@ -9,9 +9,9 @@ addInitEvent(function(){
         var id = e.target.options[e.target.selectedIndex].value;
         // this should hopefully detect rewriting good enough:
         if(frm.action.substr(frm.action.length-1) == '/'){
-            var link = frm.action + id;
+            var link = frm.action + id + '?s=translation_true';
         }else{
-            var link = frm.action + '?id=' + id;
+            var link = frm.action + '?id=' + id + '&s=translation_true';
         }
 
         window.location.href= link;

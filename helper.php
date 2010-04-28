@@ -19,6 +19,9 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      */
     function helper_plugin_translation(){
         global $conf;
+        global $ID;
+        global $JSINFO;
+        
         require_once(DOKU_INC.'inc/pageutils.php');
         require_once(DOKU_INC.'inc/utf8.php');
 
@@ -41,8 +44,35 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         }
 
 
-        $this->tns = cleanID($this->getConf('translationns'));
-        if($this->tns) $this->tns .= ':';
+        $this->tns = $this->setupTNS($ID);
+        if ( $this->tns === false ) { return false; }
+        $JSINFO['conf']['lang'] = $dfl;
+    }
+    
+
+	// Inner function for sorting
+	private function lensort($a,$b){
+    	return strlen($b)-strlen($a);
+	}
+    
+	function setupTNS($ID) {
+        
+		if ( !empty( $this->tns) ) { return $this->tns; }
+		if ( empty($ID) ) { $ID = getID(); }
+		
+		$tnsA = explode(' ', $this->getConf('translationns'));
+		if ( empty($tnsA) ) return ''; // there is just this one - and translation is active.
+		
+		usort($tnsA,array($this, 'lensort') );
+		foreach ( $tnsA as $tns ) {
+			$tns = cleanID(trim($tns));
+        	if(substr($tns, -1) != ':') { $tns .= ':'; }
+			if(strpos($ID,$tns) === false) continue;
+			
+			return $tns;
+		}
+
+		return false;
     }
 
     /**
@@ -114,8 +144,10 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         global $ID;
         global $conf;
         global $INFO;
-
+        
+        $this->tns = $this->setupTNS($ID);
         if(!$this->istranslatable($ID)) return;
+        $hasTranslation = false;
 
         $this->checkage();
 
@@ -142,7 +174,11 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             foreach($this->trans as $t){
                 list($link,$name) = $this->buildTransID($t,$idpart);
                 $link = cleanID($link);
-                if($ID == $link){
+            	
+                if ( auth_quickaclcheck($link) < AUTH_READ ) { continue; }
+            	if ( !$hasTranslation && $t != $conf['lang'] && $t != $conf['lang_before_translation'] ) { $hasTranslation = true; }
+            	
+            	if($ID == $link){
                     $sel = ' selected="selected"';
                 }else{
                     $sel = '';
@@ -161,19 +197,26 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= '<ul>';
             foreach($this->trans as $t){
                 list($link,$name) = $this->buildTransID($t,$idpart);
+                
+                $link = cleanID($link);
+                
+                if ( auth_quickaclcheck($link) < AUTH_READ ) { continue; }
+            	if ( !$hasTranslation && !empty($t) ) { $hasTranslation = true; }
+
                 if(page_exists($link,'',false)){
                     $class = 'wikilink1';
                 }else{
                     $class = 'wikilink2';
                 }
-                $out .= '  <li><div class="li"><a href="'.wl($link).'" class="'.$class.'" title="'.$LN[$name].'">'.hsc($name).'</a></div></li>';
+            	
+                $out .= '  <li><div class="li"><a href="'.wl($link, 's=translation_true').'" class="'.$class.'" title="'.$LN[$name].'">'.hsc($name).'</a></div></li>';
             }
             $out .= '</ul>';
         }
 
         $out .= '</div>';
 
-        return $out;
+        return $hasTranslation ? $out : '';
     }
 
     /**

@@ -35,7 +35,112 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         if($this->getConf('translateui')){
             $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
         }
+        if($this->getConf('redirectstart')){
+            $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_redirect_start');
+        }
+        if($this->getConf('redirectlocalized')){
+            $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_redirect_localized');
+        }
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
+    }
+
+    function translation_redirect_start(&$event, $args) {
+        global $ID;
+
+        // redirect away from start page?
+        if( $ID == $conf['start'] && $ACT == 'show' ){
+            $lc = $this->hlp->getBrowserLang();
+            if(!$lc) $lc = $conf['lang'];
+            header('Location: '.wl($lc.':'.$conf['start'],'',true,'&'));
+            exit;
+        }
+    }
+
+    function translation_redirect_localized(&$event, $args) {
+        global $ID;
+        global $conf;
+        global $ACT;
+
+        // redirect to localized page?
+        if( $ACT != 'show' ) { return; }
+
+        $override = (!empty($_REQUEST['s']) && $_REQUEST['s'] == 'translation_true'); // override enabled - comes from the bottom bar.
+        $lang = $conf['lang_before_translation'] ? $conf['lang_before_translation'] : $conf['lang']; // Check for original language
+
+        // get current page language - if empty then default;
+        $currentSessionLanguage = $_SESSION[DOKU_COOKIE]['translationcur'];
+        $pageLang = $this->hlp->getLangPart($ID);
+
+        if ( empty($pageLang) ) {
+            $pageLang = $lang;
+        }
+
+        // If both match, we're fine.
+        if ( $currentSessionLanguage == $pageLang ) {
+            return;
+        }
+
+        // check current translation
+        if ( empty( $currentSessionLanguage ) && !$override ) {
+
+            // If not set - we must just have entered - set the browser language
+            $currentSessionLanguage = $this->hlp->getBrowserLang();
+
+            // if no browser Language set, take entered namespace language - empty for default.
+            if ( !$currentSessionLanguage ) {
+                $currentSessionLanguage = $pageLang;
+            }
+
+            // Set new Language
+            $_SESSION[DOKU_COOKIE]['translationcur'] = $currentSessionLanguage;
+
+            // Write Language back
+            $pageLang = $currentSessionLanguage;
+        }
+
+
+        if ( $override && $pageLang != $currentSessionLanguage ) {
+            // Set new Language
+            $currentSessionLanguage = $pageLang;
+            $_SESSION[DOKU_COOKIE]['translationcur'] = $currentSessionLanguage;
+        } else if ( !$override ) {
+            // Write Language back
+            $pageLang = $currentSessionLanguage;
+        }
+
+        // If this is the default language, make empty
+        if ( $pageLang == $lang ) {
+            $pageLang = '';
+        }
+
+        // Generate new Page ID
+        $rx = '/^'.$this->hlp->tns.'('.join('|',$this->hlp->trans).'):/';
+        $idpart = preg_replace($rx,'',$ID);
+        list($newPage,$name) = $this->hlp->buildTransID($pageLang,$idpart);
+        $newPage = cleanID($newPage);
+
+        // Check if Page exists
+        if ( $newPage != $ID && page_exists($newPage, '', false) ) {
+            // $newPage redirect
+            	
+            if ( auth_quickaclcheck($newPage) < AUTH_READ ) { return; }
+
+            session_write_close();
+            header('Location: '.wl($newPage,'',true,'&'));
+            exit;
+        }
+        else
+        if ( $override ) {
+            // cleanup redirect
+            session_write_close();
+            	
+            if ( auth_quickaclcheck($newPage) < AUTH_READ ) { return; }
+
+            header('Location: '.wl($ID,'',true,'&'), 301);
+            exit;
+        }
+
+        // no redirect;
     }
 
     /**
@@ -46,14 +151,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         global $lang;
         global $conf;
         global $ACT;
-
-        // redirect away from start page?
-        if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show'){
-            $lc = $this->hlp->getBrowserLang();
-            if(!$lc) $lc = $conf['lang'];
-            header('Location: '.wl($lc.':'.$conf['start'],'',true,'&'));
-            exit;
-        }
 
         // check if we are in a foreign language namespace
         $lc = $this->hlp->getLangPart($ID);
