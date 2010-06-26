@@ -174,19 +174,41 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * default language first
      */
     function translation_search(&$event, $args) {
-        // sort into translation slots
-        $res = array();
-        foreach($event->result as $r){
-            $tr = $this->hlp->getLangPart($r);
-            if(!is_array($res["x$tr"])) $res["x$tr"] = array();
-            $res["x$tr"][] = $r;
-        }
-        // sort by translations
-        ksort($res);
-        // combine
-        $event->result = array();
-        foreach($res as $r){
-            $event->result = array_merge($event->result,$r);
+
+        if($event->data['has_titles']){
+            // sort into translation slots
+            $res = array();
+            foreach($event->result as $r => $t){
+                $tr = $this->hlp->getLangPart($r);
+                if(!is_array($res["x$tr"])) $res["x$tr"] = array();
+                $res["x$tr"][] = array($r,$t);
+            }
+            // sort by translations
+            ksort($res);
+            // combine
+            $event->result = array();
+            foreach($res as $r){
+                foreach($r as $l){
+                    $event->result[$l[0]] = $l[1];
+                }
+            }
+        }else{
+            # legacy support for old DokuWiki hooks
+
+            // sort into translation slots
+            $res = array();
+            foreach($event->result as $r){
+                $tr = $this->hlp->getLangPart($r);
+                if(!is_array($res["x$tr"])) $res["x$tr"] = array();
+                $res["x$tr"][] = $r;
+            }
+            // sort by translations
+            ksort($res);
+            // combine
+            $event->result = array();
+            foreach($res as $r){
+                $event->result = array_merge($event->result,$r);
+            }
         }
     }
 
