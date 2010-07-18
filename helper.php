@@ -161,6 +161,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= '<ul>';
             foreach($this->trans as $t){
                 list($link,$name) = $this->buildTransID($t,$idpart);
+		$link = cleanID($link);
                 if(page_exists($link,'',false)){
                     $class = 'wikilink1';
                 }else{
@@ -212,6 +213,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         if($orev && !page_exists($orig,$orev)) $orev=0;
 
         // build the message and display it
+        $orig = cleanID($orig);	
         $msg = sprintf($this->getLang('outdated'),wl($orig));
         if($orev){
             $msg .= sprintf(' '.$this->getLang('diff'),
