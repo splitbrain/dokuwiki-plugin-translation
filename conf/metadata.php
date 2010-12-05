@@ -9,7 +9,14 @@ $meta['translations']  = array('string','_pattern' => '/^(|[a-zA-Z\- ,]+)$/');
 $meta['translationns'] = array('string','_pattern' => '/^(|[\w:\-]+)$/');
 $meta['skiptrans']     = array('string');
 $meta['dropdown']      = array('onoff');
+$meta['dropdown2']     = array('onoff');
+$meta['flags']         = array('onoff');
+$meta['description']   = array('onoff');
+$meta['blankflag']     = array('onoff');
 $meta['translateui']   = array('onoff');
 $meta['redirectstart'] = array('onoff');
 $meta['checkage']      = array('onoff');
 $meta['about']         = array('string','_pattern' => '/^(|[\w:\-]+)$/');
+$meta['showabout']     = array('onoff');
+$meta['localabout']    = array('onoff');
+?>
