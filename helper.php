@@ -13,6 +13,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     var $trans       = array();
     var $tns         = '';
     var $defaultlang = '';
+    var $LN          = array(); // hold native names
 
     /**
      * Initialize
@@ -27,11 +28,14 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $this->trans = array_unique(array_filter(explode(' ',$this->trans)));
         sort($this->trans);
 
+        // load language names
+        $this->LN = confToHash(dirname(__FILE__).'/lang/langnames.txt');
+
         // get default translation
         if(!$conf['lang_before_translation']){
-          $dfl = $conf['lang'];
+            $dfl = $conf['lang'];
         } else {
-          $dfl = $conf['lang_before_translation'];
+            $dfl = $conf['lang_before_translation'];
         }
         if(in_array($dfl,$this->trans)){
             $this->defaultlang = $dfl;
