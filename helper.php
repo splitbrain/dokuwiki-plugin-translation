@@ -155,7 +155,6 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         $this->checkage();
 
-        $LN = confToHash(dirname(__FILE__).'/lang/langnames.txt');
 
         $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
         $idpart = preg_replace($rx,'',$ID);
@@ -165,7 +164,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         //show text
         if ($this->getConf('description')){
             $out .= '<span>'.$this->getLang('translations');
-            if ($this->getConf('showabout')) $out .= $this->showAbout();
+            if ($this->getConf('about')) $out .= $this->showAbout();
             $out .= ':</span> ';
         }
 
@@ -213,7 +212,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= '</form>';
 
             //link to about (right)
-            if (!$this->getConf('description') && $this->getConf('showabout')) {
+            if (!$this->getConf('description') && $this->getConf('about')) {
                 $out .= '&nbsp';
                 $out .= $this->showAbout();
             }
@@ -221,7 +220,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= '<ul>';
 
             // FIXME what's this?
-            if (!$this->getConf('description') && $this->getConf('showabout')) {
+            if (!$this->getConf('description') && $this->getConf('about')) {
                 $out .= '&nbsp';
                 $out .= $this->showAbout();
             }

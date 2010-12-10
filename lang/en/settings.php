@@ -16,7 +16,5 @@ $lang['blankflag']     = 'Display blank image if flag not exist (instead of text
 $lang['translateui']   = 'Should the language of the user interface be switched in foreign language namespaces, too?';
 $lang['redirectstart'] = 'Should the start page automatically redirect into a language namespace using browser language detection?';
 $lang['about']         = 'Enter a pagename here where the translation feature is explained for your users. It will be linked from the language selector.';
-$lang['showabout']     = 'Display link to about page.';
 $lang['localabout']    = 'Use localized versions of about page (instead of one global about page).';
 $lang['checkage']      = 'Warn about possibly outdated translations.';
-?>

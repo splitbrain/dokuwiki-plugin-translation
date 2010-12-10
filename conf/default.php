@@ -17,6 +17,4 @@ $conf['translateui']   = 1;
 $conf['redirectstart'] = 1;
 $conf['checkage']      = 0;
 $conf['about']         = '';
-$conf['showabout']     = 0; // 0 = Do not show link about page.
 $conf['localabout']    = 1;
-?>
