@@ -5,6 +5,8 @@
     margin : 0.0em 0 0.3em 0;
 }
 
+/* List */
+
 .dokuwiki div.plugin_translation ul {
     padding: 0;
     margin: 0;
@@ -15,7 +17,6 @@
     padding: 0;
     margin: 0.2em 0 0 0;
 }
-
 
 .dokuwiki div.plugin_translation ul li a.wikilink1:link,
 .dokuwiki div.plugin_translation ul li a.wikilink1:hover,
@@ -41,21 +42,18 @@
     border: none !important;
 }
 
-.dokuwiki div.plugin_translation ul li a.wikilink3:link,
-.dokuwiki div.plugin_translation ul li a.wikilink3:hover,
-.dokuwiki div.plugin_translation ul li a.wikilink3:active,
-.dokuwiki div.plugin_translation ul li a.wikilink3:visited {
-    color: #fff !important;
-    text-decoration:none;
-    padding: 0 0.2em;
-    margin: 0.1em 0.2em;
-    border: none !important;
-}
+/* Dropdown */
 
 .dokuwiki div.plugin_translation select,
 .dokuwiki div.plugin_translation input {
     border: none;
     background-color: #ccc;
+}
+
+.dokuwiki div.plugin_translation option.flag {
+    padding-left: 18px;
+    background-repeat: no-repeat;
+    background-position: left center;
 }
 
 .dokuwiki div.plugin_translation select.wikilink1,
@@ -70,15 +68,14 @@
     text-align: center;
 }
 
-.dokuwiki div.plugin_translation select.wikilink3,
-.dokuwiki div.plugin_translation option.wikilink3 {
-    text-align: center;
-}
+
 
 /******************************************************************************
  * Flags
  *****************************************************************************/
 
+
+/*
 .dokuwiki div.plugin_translation ul li a img {
     opacity: 0.80;
     border: 1px solid #888888;
@@ -88,24 +85,22 @@
     opacity: 0.25;
     border: 1px solid #666666;
 }
+
 .dokuwiki div.plugin_translation ul li a.wikilink2 img {
-  /* Image links only have class "media", they don't have wikilink 1 and 2 yet */
 }
 .dokuwiki div.plugin_translation span.curid a img {
     opacity: 1.0;
     border: 1px solid #666666;
-    /*height: 13px;*/
 }
 .dokuwiki div.plugin_translation ul li a:hover img {
     opacity: 1.0;
     border: 1px solid #444444;
-    /* height: 12px; */
 }
 
 .dokuwiki div.plugin_translation ul li div.flag_not_exists a:hover img {
     opacity: 0.5;
     border: 1px solid #444444;
 }
-
+*/
 
 

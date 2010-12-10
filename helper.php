@@ -14,6 +14,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     var $tns         = '';
     var $defaultlang = '';
     var $LN          = array(); // hold native names
+    var $opts        = array(); // display options
 
     /**
      * Initialize
@@ -30,6 +31,12 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         // load language names
         $this->LN = confToHash(dirname(__FILE__).'/lang/langnames.txt');
+
+        // display options
+        $this->opts = $this->getConf('display');
+        $this->opts = explode(',',$this->opts);
+        $this->opts = array_map('trim',$this->opts);
+        $this->opts = array_fill_keys($this->opts, true);
 
         // get default translation
         if(!$conf['lang_before_translation']){
@@ -86,19 +93,29 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      */
     function buildTransID($lng,$idpart){
         global $conf;
-        global $saved_conf;
         if($lng){
             $link = ':'.$this->tns.$lng.':'.$idpart;
             $name = $lng;
         }else{
             $link = ':'.$this->tns.$idpart;
-            if(!$conf['lang_before_translation']){
-              $name = $conf['lang'];
-            } else {
-              $name = $conf['lang_before_translation'];
-            }
+            $name = $this->realLC('');
         }
         return array($link,$name);
+    }
+
+    /**
+     * Returns the real language code, even when an empty one is given
+     * (eg. resolves th default language)
+     */
+    function realLC($lc){
+        global $conf;
+        if($lc){
+            return $lc;
+        }elseif(!$conf['lang_before_translation']){
+            return $conf['lang'];
+        } else {
+            return $conf['lang_before_translation'];
+        }
     }
 
     /**
@@ -126,12 +143,10 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         global $conf;
         global $INFO;
 
-        $this->checkage(); //FIXME why is this here?
-
         $about = $this->getConf('about');
         if($this->getConf('localabout')){
             list($lc,$idpart) = $this->getTransParts($about);
-            list($about,$name) = $this->buildTransID($conf['lang'],$idpart);
+            list($about,$name) = $this->buildTransID($conf['lang'],$idpart); #FIXME conf[lang] is wrong
             $about = cleanID($about);
         }
 
@@ -152,83 +167,57 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         global $INFO;
 
         if(!$this->istranslatable($ID)) return;
-
         $this->checkage();
 
+        list($lc,$idpart) = $this->getTransParts($ID);
+        $lang = $this->realLC($lc);
 
-        $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
-        $idpart = preg_replace($rx,'',$ID);
 
         $out  = '<div class="plugin_translation">';
 
-        //show text
+        //show title and about
         if ($this->getConf('description')){
             $out .= '<span>'.$this->getLang('translations');
             if ($this->getConf('about')) $out .= $this->showAbout();
             $out .= ':</span> ';
         }
 
-        if($this->getConf('dropdown')){ // use dropdown fixme move to own functions
+        // open wrapper
+        if($this->getConf('dropdown')){
+            // select needs its own styling
             if($INFO['exists']){
                 $class = 'wikilink1';
             }else{
                 $class = 'wikilink2';
             }
-
-            $out2 = ""; //FIXME ugly name
-            foreach($this->trans as $t){
-                list($link,$name) = $this->buildTransID($t,$idpart);
-                $link = cleanID($link);
-                if($ID == $link){
-                    $sel = ' selected="selected"';
-                    if($this->getConf('dropdown2')) { //FIXME ugly name
-                        $out .= $this->makecountrylink($LN, $idpart, $t, false);
-                        $out .= "&nbsp;";
-                    }
-                }else{
-                    $sel = '';
-                }
-                if(page_exists($link,'',false)){
-                    $class = 'wikilink1';
-                }else{
-                    $class = 'wikilink2';
-                }
-
-                //linktitle
-                $linktitle = '';
-                if (strlen($LN[$name]) > 0){
-                    $linktitle = $LN[$name];
-                } else{
-                    $linktitle = hsc($name);
-                }
-
-                $out2 .= '<option value="'.$link.'"'.$sel.' class="'.$class.'" title="'.$linktitle.'">'.hsc($name).'</option>';
+            if(isset($this->opts['flag'])){
+                $flag   = DOKU_BASE.'lib/plugins/translation/flags/'.hsc($lang).'.gif';
             }
             $out .= '<form action="'.wl().'" id="translation__dropdown">';
+            if($flag) $out .= '<img src="'.$flag.'" alt="'.hsc($lang).'" height="11" class="'.$class.'" /> ';
             $out .= '<select name="id" class="'.$class.'">';
-            $out .= $out2;
+        }else{
+            $out .= '<ul>';
+        }
+
+        // insert items
+        foreach($this->trans as $t){
+            $out .= $this->getTransItem($t, $idpart);
+        }
+
+        // close wrapper
+        if($this->getConf('dropdown')){
             $out .= '</select>';
             $out .= '<input name="go" type="submit" value="&rarr;" />';
             $out .= '</form>';
-
-            //link to about (right)
-            if (!$this->getConf('description') && $this->getConf('about')) {
-                $out .= '&nbsp';
-                $out .= $this->showAbout();
-            }
-        }else{ // use list
-            $out .= '<ul>';
-
-            // FIXME what's this?
-            if (!$this->getConf('description') && $this->getConf('about')) {
-                $out .= '&nbsp';
-                $out .= $this->showAbout();
-            }
-
-            foreach($this->trans as $t){
-                $out .= $this->makecountrylink($LN, $idpart, $t, true);
-            }
+        }else{
             $out .= '</ul>';
+        }
+
+        // show about if not already shown
+        if (!$this->getConf('description') && $this->getConf('about')) {
+            $out .= '&nbsp';
+            $out .= $this->showAbout();
         }
 
         $out .= '</div>';
@@ -239,75 +228,69 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     /**
      * Create the link or option for a single translation
      *
-     * @fixme bad name - translations are not about countries
-     * @param $LN string      The language
+     * @param $lc string      The language code
      * @param $idpart string  The ID of the translated page
-     * @param $t  FIXME
-     * @param $div bool  true for lists, false for dropdown FIXME
-     * @returns FIXME
+     * @returns string        The item
      */
-    function makecountrylink($LN, $idpart, $t, $div) {
+    function getTransItem($lc, $idpart) {
         global $ID;
         global $conf;
-        global $INFO;
 
-        require(DOKU_PLUGIN.'translation/flags/langnames.php');
-
-        list($link,$name) = $this->buildTransID($t,$idpart);
+        list($link,$lang) = $this->buildTransID($lc,$idpart);
         $link = cleanID($link);
+
+
+        // class
         if(page_exists($link,'',false)){
             $class = 'wikilink1';
         }else{
             $class = 'wikilink2';
         }
 
-        //linktitle
-        $linktitle = '';
-        if (strlen($LN[$name]) > 0){
-            $linktitle = $LN[$name];
+        // local language name
+        if ($this->LN[$lang]){
+            $localname = $this->LN[$lang];
         } else{
-            $linktitle = hsc($name);
+            $localname = $lang;
         }
 
-        //if (show flag AND ((flag exist) OR (flag not exist AND show blank flag))
-        if (($langflag[hsc($name)] != NULL && strlen($langflag[hsc($name)]) > 0 && $this->getConf('flags')) || $this->getConf('flags') && $this->getConf('blankflag')) {
+        // current?
+        if($ID == $link){
+            $sel    = ' selected="selected"';
+            $class .= ' cur';
+        }else{
+            $sel    = '';
+        }
 
-            resolve_pageid(getNS($ID),$link,$exists);
-            if ($div) {
-                if ($exists){ //solid box
-                    $out .= '  <li><div class="li">';
-                } else{ //50% transparent box (50% transparent flag)
-                    $out .= '  <li><div class="flag_not_exists">';
-                }
-            }
+        // flag
+        if(isset($this->opts['flag'])){
+            $flag   = DOKU_BASE.'lib/plugins/translation/flags/'.hsc($lang).'.gif';
+            $style  = ' style="background-image: url(\''.$flag.'\')"';
+            $class .= ' flag';
+        }
 
-            //html_wikilink works very slow for images
-            //$flag['title'] = $langname[$name];
-            //$flag['src'] = DOKU_URL.'lib/plugins/translation/flags/'.$langflag[$name];
-            //$out .= html_wikilink($link,$flag);
+        // what to display as name
+        if(isset($this->opts['name'])){
+            $display = hsc($localname);
+            if(isset($this->opts['lc'])) $display .= ' ('.hsc($lang).')';
+        }elseif(isset($this->opts['lc'])){
+            $display = hsc($lang);
+        }else{
+            $display = '&nbsp;';
+        }
 
-            $out .= '<a href="'.wl($link).'"';
-            $out .= 'title="'.$linktitle.'"';
-            //class for image
-            $out .= 'class="wikilink3"'; //FIXME WTF?
-            $out .= '>';
-
-            //show flag
-            if ($langflag[hsc($name)] != NULL && strlen($langflag[hsc($name)]) > 0){
-                $out .= '<img src="'.DOKU_URL.'lib/plugins/translation/flags/'.$langflag[hsc($name)].'" alt='.$linktitle.'" border="0">';
-            } else{ //show blank flag
-                //$out .= '<img src="'.DOKU_BASE.'lib/images/blank.gif'.'" width=15 height=11 alt="'.$linktitle.'" border="0">';
-                $out .= '<img src="'.DOKU_BASE.'lib/plugins/translation/flags/blankflag.gif'.'" width=15 height=11 alt="'.$linktitle.'" border="0">';
-            }
+        // prepare output
+        $out = '';
+        if($this->getConf('dropdown')){
+            $out .= '<option class="'.$class.'" title="'.hsc($localname).'" value="'.$link.'"'.$sel.$style.'>';
+            $out .= $display;
+            $out .= '</option>';
+        }else{
+            $out .= '<li><div class="li">';
+            $out .= '<a href='.wl($link).' class="'.$class.'" title="'.hsc($localname).'">';
+            if($flag) $out .= '<img src="'.$flag.'" alt="'.hsc($lang).'" height="11" />';
+            $out .= $display;
             $out .= '</a>';
-
-        } else{ //show text (also if flag not exist and blankflag=false)
-            if ($div) {
-                $out .= '  <li><div class="li">';
-            }
-            $out .= html_wikilink($link,hsc($name));
-        }
-        if ($div) {
             $out .= '</div></li>';
         }
 

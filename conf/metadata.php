@@ -18,3 +18,7 @@ $meta['redirectstart'] = array('onoff');
 $meta['checkage']      = array('onoff');
 $meta['about']         = array('string','_pattern' => '/^(|[\w:\-]+)$/');
 $meta['localabout']    = array('onoff');
+
+$meta['display'] = array('multicheckbox',
+                         '_choices' => array('lc','name','flag','title'));
+

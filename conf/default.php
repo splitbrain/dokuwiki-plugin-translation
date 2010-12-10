@@ -18,3 +18,4 @@ $conf['redirectstart'] = 1;
 $conf['checkage']      = 0;
 $conf['about']         = '';
 $conf['localabout']    = 1;
+$conf['display']       = 'lc, title';
