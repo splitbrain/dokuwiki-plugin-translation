@@ -53,11 +53,20 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * Check if the given ID is a translation and return the language code.
      */
     function getLangPart($id){
-        $rx = '/^'.$this->tns.'('.join('|',$this->trans).'):/';
+        list($lng) = $this->getTransParts($id);
+        return $lng;
+    }
+
+    /**
+     * Check if the given ID is a translation and return the language code and
+     * the id part.
+     */
+    function getTransParts($id){
+        $rx = '/^'.$this->tns.'('.join('|',$this->trans).'):(.*)/';
         if(preg_match($rx,$id,$match)){
-            return $match[1];
+            return array($match[1],$match[2]);
         }
-        return '';
+        return array('',$id);
     }
 
     /**
