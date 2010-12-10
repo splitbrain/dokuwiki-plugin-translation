@@ -143,10 +143,12 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         global $conf;
         global $INFO;
 
+        $curlc = getLangPart($ID);
+
         $about = $this->getConf('about');
         if($this->getConf('localabout')){
             list($lc,$idpart) = $this->getTransParts($about);
-            list($about,$name) = $this->buildTransID($conf['lang'],$idpart); #FIXME conf[lang] is wrong
+            list($about,$name) = $this->buildTransID($curlc,$idpart);
             $about = cleanID($about);
         }
 
