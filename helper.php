@@ -143,7 +143,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         global $conf;
         global $INFO;
 
-        $curlc = getLangPart($ID);
+        $curlc = $this->getLangPart($ID);
 
         $about = $this->getConf('about');
         if($this->getConf('localabout')){
