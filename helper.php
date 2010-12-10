@@ -176,10 +176,11 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $out  = '<div class="plugin_translation">';
 
         //show title and about
-        if ($this->getConf('description')){
+        if (isset($this->opts['title'])){
             $out .= '<span>'.$this->getLang('translations');
             if ($this->getConf('about')) $out .= $this->showAbout();
             $out .= ':</span> ';
+            if(isset($this->opts['twolines'])) $out .= '<br />';
         }
 
         // open wrapper
@@ -215,7 +216,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         }
 
         // show about if not already shown
-        if (!$this->getConf('description') && $this->getConf('about')) {
+        if (!isset($this->opts['title']) && $this->getConf('about')) {
             $out .= '&nbsp';
             $out .= $this->showAbout();
         }
@@ -272,8 +273,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         // what to display as name
         if(isset($this->opts['name'])){
             $display = hsc($localname);
-            if(isset($this->opts['lc'])) $display .= ' ('.hsc($lang).')';
-        }elseif(isset($this->opts['lc'])){
+            if(isset($this->opts['langcode'])) $display .= ' ('.hsc($lang).')';
+        }elseif(isset($this->opts['langcode'])){
             $display = hsc($lang);
         }else{
             $display = '&nbsp;';

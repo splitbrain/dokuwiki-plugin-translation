@@ -3,6 +3,7 @@
     font-size: 95%;
     padding-right: 0.1em;
     margin : 0.0em 0 0.3em 0;
+    text-align: right;
 }
 
 /* List */
@@ -11,11 +12,14 @@
     padding: 0;
     margin: 0;
 }
-.dokuwiki div.plugin_translation ul li{
+.dokuwiki div.plugin_translation ul li {
     float: left;
     list-style-type: none;
     padding: 0;
     margin: 0.2em 0 0 0;
+}
+.dokuwiki div.plugin_translation ul li img {
+    margin: -0.1em 0.2em;
 }
 
 .dokuwiki div.plugin_translation ul li a.wikilink1:link,
@@ -41,6 +45,7 @@
     margin: 0.1em 0.2em;
     border: none !important;
 }
+
 
 /* Dropdown */
 
@@ -68,39 +73,8 @@
     text-align: center;
 }
 
-
-
-/******************************************************************************
- * Flags
- *****************************************************************************/
-
-
-/*
-.dokuwiki div.plugin_translation ul li a img {
-    opacity: 0.80;
-    border: 1px solid #888888;
-    margin-top: 0em;
-}
-.dokuwiki div.plugin_translation ul li div.flag_not_exists a img {
-    opacity: 0.25;
-    border: 1px solid #666666;
-}
-
-.dokuwiki div.plugin_translation ul li a.wikilink2 img {
-}
-.dokuwiki div.plugin_translation span.curid a img {
-    opacity: 1.0;
-    border: 1px solid #666666;
-}
-.dokuwiki div.plugin_translation ul li a:hover img {
-    opacity: 1.0;
-    border: 1px solid #444444;
-}
-
-.dokuwiki div.plugin_translation ul li div.flag_not_exists a:hover img {
+/* flags for non-existing pages */
+.dokuwiki div.plugin_translation img.wikilink2,
+.dokuwiki div.plugin_translation .wikilink2 img {
     opacity: 0.5;
-    border: 1px solid #444444;
 }
-*/
-
-
