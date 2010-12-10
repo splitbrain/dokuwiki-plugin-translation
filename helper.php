@@ -44,7 +44,6 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             array_unshift($this->trans,'');
         }
 
-
         $this->tns = cleanID($this->getConf('translationns'));
         if($this->tns) $this->tns .= ':';
     }
@@ -80,7 +79,6 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         }
         return false;
     }
-
 
     /**
      * Returns the ID and name to the wanted translation, empty
@@ -122,53 +120,24 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
     /**
      * Return the (localized) about link
-     *
-     * @fixme why is this doing the detection stuff again?
      */
     function showAbout() {
         global $ID;
         global $conf;
         global $INFO;
 
-        $this->checkage();
+        $this->checkage(); //FIXME why is this here?
 
-        $LN = confToHash(dirname(__FILE__).'/lang/langnames.txt');
-
-        $rx = '/^'.$this->tns.'(('.join('|',$this->trans).'):)?/';
-        $idpart = preg_replace($rx,'',$ID);
+        $about = $this->getConf('about');
+        if($this->getConf('localabout')){
+            list($lc,$idpart) = $this->getTransParts($about);
+            list($about,$name) = $this->buildTransID($conf['lang'],$idpart);
+            $about = cleanID($about);
+        }
 
         $out = '';
         $out .= '<sup>';
-        if($this->getConf('localabout')){
-            $lc = '';
-
-            //try main lang namespace
-            foreach($this->trans as $t){
-                list($link,$name) = $this->buildTransID($t,$idpart);
-                $link = cleanID($link);
-                if($ID == $link){
-                    $lc = hsc($name);
-                }
-                if ($lc) break;
-            }
-
-            //try browser language
-            if(!$lc) $lc = $this->getBrowserLang();
-
-            //try wiki language
-            if(!$lc) $lc = $conf['lang'];
-
-            if(!$lc) { //can't find language
-                $localabout = $this->getConf('about'); //http://localhost/dokuwiki/doku.php?id=translation:about
-            } else { //i found language!
-                        $localabout = $lc.':'.$this->getConf('about'); //http://localhost/dokuwiki/doku.php?id=en:translation:about
-            }
-
-            //make link
-            $out .= html_wikilink($localabout,'?');
-            } else {
-            $out .= html_wikilink($this->getConf('about'),'?');
-        }
+        $out .= html_wikilink($about,'?');
         $out .= '</sup>';
 
         return $out;
