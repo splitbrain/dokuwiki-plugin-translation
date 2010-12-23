@@ -183,4 +183,5 @@ yi	ייִדיש
 yo	Yorùbá
 za	Saɯ cueŋƅ
 zh	中文
+zh-tw	繁體中文
 zu	isiZulu
