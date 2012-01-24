@@ -20,6 +20,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      */
     var $hlp = null;
 
+    var $locale;
+
     /**
      * Constructor. Load helper plugin
      */
@@ -33,9 +35,64 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     function register(&$controller) {
         // should the lang be applied to UI?
         if($this->getConf('translateui')){
-            $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
+            $scriptName = basename($_SERVER['PHP_SELF']);
+
+            switch ($scriptName) {
+                case 'js.php':
+                    $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translation_js');
+                    break;
+
+                case 'ajax.php':
+                    $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translate_media_manager');
+                    break;
+
+                case 'mediamanager.php':
+                    $controller->register_hook('MEDIAMANAGER_STARTED', 'BEFORE', $this, 'translation_hook');
+                    $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'setJsCacheKey');
+                    break;
+
+                default:
+                    $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
+                    $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'setJsCacheKey');
+            }
         }
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
+    }
+
+    function setJsCacheKey(&$event, $args) {
+        if (!isset($this->locale)) return false;
+        $count = count($event->data['script']);
+        for ($i = 0; $i<$count; $i++) {
+            if (strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
+                $event->data['script'][$i]['src'] .= "&cacheKey=$this->locale";
+            }
+        }
+
+        return false;
+    }
+
+    function translation_js(&$event, $args) {
+        if (!isset($_GET['cacheKey'])) return false;
+
+        $key = $_GET['cacheKey'];
+        $event->data = $key;
+        $conf['lang'] = $key;
+        return false;
+    }
+
+    function translate_media_manager(&$event, $args) {
+        global $conf;
+        if (isset($_REQUEST['ID'])) {
+            $id = getID();
+            $lc = $this->hlp->getLangPart($id);
+        } elseif (isset($_SESSION[DOKU_COOKIE]['translationlc'])) {
+            $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
+        } else {
+            return false;
+        }
+        $conf['lang'] = $lc;
+        $event->data = $lc;
+        return false;
     }
 
     /**
@@ -46,7 +103,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         global $lang;
         global $conf;
         global $ACT;
-
         // redirect away from start page?
         if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show'){
             $lc = $this->hlp->getBrowserLang();
@@ -68,6 +124,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         }
         $conf['lang_before_translation'] = $conf['lang']; //store for later access in syntax plugin
         $conf['lang'] = $lc;
+        $this->locale = $lc;
 
         return true;
     }
@@ -117,4 +174,4 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
 }
 
-//Setup VIM: ex: et ts=4 enc=utf-8 :
+//Setup VIM: ex: et ts=4 :
