@@ -72,6 +72,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     }
 
     function translation_js(&$event, $args) {
+        global $conf;
         if (!isset($_GET['cacheKey'])) return false;
 
         $key = $_GET['cacheKey'];
