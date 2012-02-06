@@ -242,7 +242,6 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         list($link,$lang) = $this->buildTransID($lc,$idpart);
         $link = cleanID($link);
 
-
         // class
         if(page_exists($link,'',false)){
             $class = 'wikilink1';
@@ -285,6 +284,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         // prepare output
         $out = '';
         if($this->getConf('dropdown')){
+            if($conf['useslash']) $link = str_replace(':', '/', $link);
+
             $out .= '<option class="'.$class.'" title="'.hsc($localname).'" value="'.$link.'"'.$sel.$style.'>';
             $out .= $display;
             $out .= '</option>';
