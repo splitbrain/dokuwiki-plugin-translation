@@ -290,7 +290,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= '</option>';
         }else{
             $out .= '<li><div class="li">';
-            $out .= '<a href='.wl($link).' class="'.$class.'" title="'.hsc($localname).'">';
+            $out .= '<a href="'.wl($link).'" class="'.$class.'" title="'.hsc($localname).'">';
             if($flag) $out .= '<img src="'.$flag.'" alt="'.hsc($lang).'" height="11" />';
             $out .= $display;
             $out .= '</a>';
