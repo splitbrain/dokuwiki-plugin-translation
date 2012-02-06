@@ -1,17 +1,18 @@
 /**
  * Remove go button from translation dropdown
  */
-addInitEvent(function(){
-    var frm = $('translation__dropdown');
-    if(!frm) return;
-    frm.elements['go'].style.display = 'none';
-    addEvent(frm.elements['id'],'change',function(e){
-        var id = e.target.options[e.target.selectedIndex].value;
+jQuery(function(){
+    var $frm = jQuery('#translation__dropdown');
+    if(!$frm.length) return;
+    $frm.find('input[name=go]').hide();
+    $frm.find('select[name=id]').change(function(){
+        var id = jQuery(this).val();
         // this should hopefully detect rewriting good enough:
-        if(frm.action.substr(frm.action.length-1) == '/'){
-            var link = frm.action + id;
+        var action = $frm.attr('action');
+        if(action.substr(action.length-1) == '/'){
+            var link = action + id;
         }else{
-            var link = frm.action + '?id=' + id;
+            var link = action + '?id=' + id;
         }
 
         window.location.href= link;
