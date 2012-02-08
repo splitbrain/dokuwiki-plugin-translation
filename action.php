@@ -40,6 +40,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
             switch ($scriptName) {
                 case 'js.php':
                     $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translation_js');
+                    $controller->register_hook('JS_CACHE_USE', 'BEFORE', $this, 'translation_jscache');
                     break;
 
                 case 'ajax.php':
@@ -64,7 +65,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         $count = count($event->data['script']);
         for ($i = 0; $i<$count; $i++) {
             if (strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
-                $event->data['script'][$i]['src'] .= "&cacheKey=$this->locale";
+                $event->data['script'][$i]['src'] .= '&lang='.hsc($this->locale);
             }
         }
 
@@ -73,12 +74,23 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
     function translation_js(&$event, $args) {
         global $conf;
-        if (!isset($_GET['cacheKey'])) return false;
+        if(!isset($_GET['lang'])) return;
+        if(!in_array($_GET['lang'],$this->hlp->trans)) return;
+        $lang = $_GET['lang'];
+        $event->data = $lang;
+        $conf['lang'] = $lang;
+    }
 
-        $key = $_GET['cacheKey'];
-        $event->data = $key;
-        $conf['lang'] = $key;
-        return false;
+    function translation_jscache(&$event, $args) {
+        if (!isset($_GET['lang'])) return;
+        if(!in_array($_GET['lang'],$this->hlp->trans)) return;
+
+        $lang = $_GET['lang'];
+        // reuse the constructor to reinitialize the cache key
+        $event->data->cache(
+            $event->data->key . $lang,
+            $event->data->ext
+        );
     }
 
     function translate_media_manager(&$event, $args) {
@@ -89,11 +101,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         } elseif (isset($_SESSION[DOKU_COOKIE]['translationlc'])) {
             $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
         } else {
-            return false;
+            return;
         }
         $conf['lang'] = $lc;
         $event->data = $lc;
-        return false;
     }
 
     /**
