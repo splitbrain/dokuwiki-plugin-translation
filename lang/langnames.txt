@@ -131,6 +131,7 @@ pi	पाऴि
 pl	Polski
 ps	پښتو
 pt	Português
+pt-br   Português
 qu	Runa Simi
 rm	Rumantsch Grischun
 rn	KiRundi
