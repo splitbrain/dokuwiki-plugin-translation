@@ -34,9 +34,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      */
     function register(&$controller) {
         // should the lang be applied to UI?
+        $scriptName = basename($_SERVER['PHP_SELF']);
         if($this->getConf('translateui')){
-            $scriptName = basename($_SERVER['PHP_SELF']);
-
             switch ($scriptName) {
                 case 'js.php':
                     $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translation_js');
@@ -48,15 +47,19 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
                     break;
 
                 case 'mediamanager.php':
-                    $controller->register_hook('MEDIAMANAGER_STARTED', 'BEFORE', $this, 'translation_hook');
                     $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'setJsCacheKey');
                     break;
 
                 default:
-                    $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
                     $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'setJsCacheKey');
             }
         }
+
+        if ($scriptName !== 'js.php' && $scriptName !== 'ajax.php') {
+            $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
+            $controller->register_hook('MEDIAMANAGER_STARTED', 'BEFORE', $this, 'translation_hook');
+        }
+
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
     }
 
@@ -132,13 +135,17 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         }
         if(!$lc) $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
         if(!$lc) return;
+        $this->locale = $lc;
+
+        if (!$this->getConf('translateui')) {
+            return true;
+        }
 
         if(file_exists(DOKU_INC.'inc/lang/'.$lc.'/lang.php')) {
           require(DOKU_INC.'inc/lang/'.$lc.'/lang.php');
         }
         $conf['lang_before_translation'] = $conf['lang']; //store for later access in syntax plugin
         $conf['lang'] = $lc;
-        $this->locale = $lc;
 
         return true;
     }
