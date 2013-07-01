@@ -17,6 +17,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
     /**
      * for th helper plugin
+     * @var helper_plugin_translation
      */
     var $hlp = null;
 
@@ -61,6 +62,13 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         }
 
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
+        $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'page_template_replacement');
+    }
+
+    function page_template_replacement(&$event, $args) {
+        global $ID;
+        $event->data['tpl'] = str_replace('@LANG@', $this->hlp->realLC(''), $event->data['tpl']);
+        $event->data['tpl'] = str_replace('@TRANS@', $this->hlp->getLangPart($ID), $event->data['tpl']);
     }
 
     function setJsCacheKey(&$event, $args) {
