@@ -1,6 +1,8 @@
 <?php
 
-$lang['translations'] = 'Translations of this page';
-$lang['outdated']     = 'This translation is older than the <a href="%s" class="wikilink1">original page</a> and might be outdated.';
-$lang['diff']         = 'See what has <a href="%s" class="wikilink1">changed</a>.';
-?>
+/**
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * 
+ * @author Ralph Lauren Outlet Online <iyvkwtghyax@hotmail.com>
+ */
+$lang['translations']          = 'The stock market had some inkling that American Airlines may file for bankruptcy protection. [url=http://jonanddale.com/about.asp]Ralph Lauren Outlet Online[/url]';
