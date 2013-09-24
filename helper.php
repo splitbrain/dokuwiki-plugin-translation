@@ -196,7 +196,13 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             if(isset($this->opts['flag'])){
                 $flag   = DOKU_BASE.'lib/plugins/translation/flags/'.hsc($lang).'.gif';
             }
-            $out .= '<form action="'.wl().'" id="translation__dropdown">';
+            if($conf['userewrite']){
+                $action = wl();
+            }else{
+                $action = script();
+            }
+
+            $out .= '<form action="'.$action.'" id="translation__dropdown">';
             if($flag) $out .= '<img src="'.$flag.'" alt="'.hsc($lang).'" height="11" class="'.$class.'" /> ';
             $out .= '<select name="id" class="'.$class.'">';
         }else{
