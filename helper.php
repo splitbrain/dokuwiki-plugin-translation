@@ -161,6 +161,29 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     }
 
     /**
+     * Returns a list of (lc => link) for all existing translations of a page
+     *
+     * @param $id
+     * @return array
+     */
+    function getAvailableTranslations($id){
+        $result = array();
+
+        list($lc,$idpart) = $this->getTransParts($id);
+        $lang = $this->realLC($lc);
+
+        foreach($this->trans as $t){
+            if($t == $lc) continue; //skip self
+            list($link, $name) = $this->buildTransID($t, $idpart);
+            if(page_exists($link)){
+                $result[$name] = $link;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Displays the available and configured translations. Needs to be placed in the template.
      */
     function showTranslations(){
@@ -235,6 +258,19 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     }
 
     /**
+     * Return the local name
+     *
+     * @param $lang
+     * @return string
+     */
+    function getLocalName($lang){
+        if ($this->LN[$lang]){
+            return $this->LN[$lang];
+        }
+        return $lang;
+    }
+
+    /**
      * Create the link or option for a single translation
      *
      * @param $lc string      The language code
@@ -256,11 +292,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         }
 
         // local language name
-        if ($this->LN[$lang]){
-            $localname = $this->LN[$lang];
-        } else{
-            $localname = $lang;
-        }
+        $localname = $this->getLocalName($lang);
 
         // current?
         if($ID == $link){

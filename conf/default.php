@@ -15,3 +15,4 @@ $conf['checkage']      = 0;
 $conf['about']         = '';
 $conf['localabout']    = 0;
 $conf['display']       = 'langcode,title';
+$conf['copytrans']     = 0;

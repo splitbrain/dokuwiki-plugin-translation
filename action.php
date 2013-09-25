@@ -65,12 +65,81 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'page_template_replacement');
     }
 
+    /**
+     * Hook Callback. Make current language available as page template placeholder and handle
+     * original language copying
+     *
+     * @param $event
+     * @param $args
+     */
     function page_template_replacement(&$event, $args) {
         global $ID;
+
+        // load orginal content as template?
+        if($this->getConf('copytrans') && $this->hlp->istranslatable($ID, false)) {
+            // look for existing translations
+            $translations = $this->hlp->getAvailableTranslations($ID);
+            if($translations) {
+                // find original language (might've been provided via parameter or use first translation)
+                $orig = (string) $_REQUEST['fromlang'];
+                if(!$orig) $orig = array_shift(array_keys($translations));
+
+                // load file
+                $origfile = $translations[$orig];
+                $event->data['tpl'] = io_readFile(wikiFN($origfile));
+
+                // prefix with warning
+                $warn = io_readFile($this->localFN('totranslate'));
+                if($warn) $warn .= "\n\n";
+                $event->data['tpl'] = $warn . $event->data['tpl'];
+
+                // show user a choice of translations if any
+                if(count($translations) > 1){
+                    $links = array();
+                    foreach($translations as $t => $l){
+                        $links[] = '<a href="'.wl($ID,array('do'=>edit,'fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
+                    }
+
+                    msg(sprintf(
+                            $this->getLang('transloaded'),
+                            $this->hlp->getLocalName($orig),
+                            join(', ', $links)
+                        )
+                    );
+                }
+
+
+            }
+        }
+
+        // apply placeholders
         $event->data['tpl'] = str_replace('@LANG@', $this->hlp->realLC(''), $event->data['tpl']);
         $event->data['tpl'] = str_replace('@TRANS@', $this->hlp->getLangPart($ID), $event->data['tpl']);
     }
 
+
+    /**
+     * Hook Callback. Load correct translation when loading JavaScript
+     *
+     * @param $event
+     * @param $args
+     */
+    function translation_js(&$event, $args) {
+        global $conf;
+        if(!isset($_GET['lang'])) return;
+        if(!in_array($_GET['lang'],$this->hlp->trans)) return;
+        $lang = $_GET['lang'];
+        $event->data = $lang;
+        $conf['lang'] = $lang;
+    }
+
+    /**
+     * Hook Callback. Pass language code to JavaScript dispatcher
+     *
+     * @param $event
+     * @param $args
+     * @return bool
+     */
     function setJsCacheKey(&$event, $args) {
         if (!isset($this->locale)) return false;
         $count = count($event->data['script']);
@@ -83,15 +152,12 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         return false;
     }
 
-    function translation_js(&$event, $args) {
-        global $conf;
-        if(!isset($_GET['lang'])) return;
-        if(!in_array($_GET['lang'],$this->hlp->trans)) return;
-        $lang = $_GET['lang'];
-        $event->data = $lang;
-        $conf['lang'] = $lang;
-    }
-
+    /**
+     * Hook Callback. Make sure the JavaScript is translation dependent
+     *
+     * @param $event
+     * @param $args
+     */
     function translation_jscache(&$event, $args) {
         if (!isset($_GET['lang'])) return;
         if(!in_array($_GET['lang'],$this->hlp->trans)) return;
@@ -104,6 +170,12 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         );
     }
 
+    /**
+     * Hook Callback. Translate the AJAX loaded media manager
+     *
+     * @param $event
+     * @param $args
+     */
     function translate_media_manager(&$event, $args) {
         global $conf;
         if (isset($_REQUEST['ID'])) {
@@ -119,7 +191,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     }
 
     /**
-     * Change the UI language in foreign language namespaces
+     * Hook Callback. Change the UI language in foreign language namespaces
      */
     function translation_hook(&$event, $args) {
         global $ID;
@@ -159,7 +231,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     }
 
     /**
-     * Resort page match results so that results are ordered by translation, having the
+     * Hook Callback.  Resort page match results so that results are ordered by translation, having the
      * default language first
      */
     function translation_search(&$event, $args) {
