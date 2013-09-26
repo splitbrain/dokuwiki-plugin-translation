@@ -10,8 +10,8 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'action.php');
+if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
+require_once(DOKU_PLUGIN . 'action.php');
 
 class action_plugin_translation extends DokuWiki_Action_Plugin {
 
@@ -26,7 +26,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     /**
      * Constructor. Load helper plugin
      */
-    function action_plugin_translation(){
+    function action_plugin_translation() {
         $this->hlp =& plugin_load('helper', 'translation');
     }
 
@@ -36,8 +36,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     function register(&$controller) {
         // should the lang be applied to UI?
         $scriptName = basename($_SERVER['PHP_SELF']);
-        if($this->getConf('translateui')){
-            switch ($scriptName) {
+        if($this->getConf('translateui')) {
+            switch($scriptName) {
                 case 'js.php':
                     $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translation_js');
                     $controller->register_hook('JS_CACHE_USE', 'BEFORE', $this, 'translation_jscache');
@@ -56,7 +56,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
             }
         }
 
-        if ($scriptName !== 'js.php' && $scriptName !== 'ajax.php') {
+        if($scriptName !== 'js.php' && $scriptName !== 'ajax.php') {
             $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
             $controller->register_hook('MEDIAMANAGER_STARTED', 'BEFORE', $this, 'translation_hook');
         }
@@ -94,20 +94,20 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
                 $event->data['tpl'] = $warn . $event->data['tpl'];
 
                 // show user a choice of translations if any
-                if(count($translations) > 1){
+                if(count($translations) > 1) {
                     $links = array();
-                    foreach($translations as $t => $l){
-                        $links[] = '<a href="'.wl($ID,array('do'=>'edit','fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
+                    foreach($translations as $t => $l) {
+                        $links[] = '<a href="' . wl($ID, array('do' => 'edit', 'fromlang' => $t)) . '">' . $this->hlp->getLocalName($t) . '</a>';
                     }
 
-                    msg(sprintf(
+                    msg(
+                        sprintf(
                             $this->getLang('transloaded'),
                             $this->hlp->getLocalName($orig),
                             join(', ', $links)
                         )
                     );
                 }
-
 
             }
         }
@@ -116,7 +116,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         $event->data['tpl'] = str_replace('@LANG@', $this->hlp->realLC(''), $event->data['tpl']);
         $event->data['tpl'] = str_replace('@TRANS@', $this->hlp->getLangPart($ID), $event->data['tpl']);
     }
-
 
     /**
      * Hook Callback. Load correct translation when loading JavaScript
@@ -127,7 +126,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     function translation_js(&$event, $args) {
         global $conf;
         if(!isset($_GET['lang'])) return;
-        if(!in_array($_GET['lang'],$this->hlp->trans)) return;
+        if(!in_array($_GET['lang'], $this->hlp->trans)) return;
         $lang = $_GET['lang'];
         $event->data = $lang;
         $conf['lang'] = $lang;
@@ -141,11 +140,11 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * @return bool
      */
     function setJsCacheKey(&$event, $args) {
-        if (!isset($this->locale)) return false;
+        if(!isset($this->locale)) return false;
         $count = count($event->data['script']);
-        for ($i = 0; $i<$count; $i++) {
-            if (strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
-                $event->data['script'][$i]['src'] .= '&lang='.hsc($this->locale);
+        for($i = 0; $i < $count; $i++) {
+            if(strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
+                $event->data['script'][$i]['src'] .= '&lang=' . hsc($this->locale);
             }
         }
 
@@ -159,8 +158,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * @param $args
      */
     function translation_jscache(&$event, $args) {
-        if (!isset($_GET['lang'])) return;
-        if(!in_array($_GET['lang'],$this->hlp->trans)) return;
+        if(!isset($_GET['lang'])) return;
+        if(!in_array($_GET['lang'], $this->hlp->trans)) return;
 
         $lang = $_GET['lang'];
         // reuse the constructor to reinitialize the cache key
@@ -178,10 +177,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      */
     function translate_media_manager(&$event, $args) {
         global $conf;
-        if (isset($_REQUEST['ID'])) {
+        if(isset($_REQUEST['ID'])) {
             $id = getID();
             $lc = $this->hlp->getLangPart($id);
-        } elseif (isset($_SESSION[DOKU_COOKIE]['translationlc'])) {
+        } elseif(isset($_SESSION[DOKU_COOKIE]['translationlc'])) {
             $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
         } else {
             return;
@@ -199,10 +198,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         global $conf;
         global $ACT;
         // redirect away from start page?
-        if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show'){
+        if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show') {
             $lc = $this->hlp->getBrowserLang();
             if(!$lc) $lc = $conf['lang'];
-            header('Location: '.wl($lc.':'.$conf['start'],'',true,'&'));
+            header('Location: ' . wl($lc . ':' . $conf['start'], '', true, '&'));
             exit;
         }
 
@@ -210,19 +209,19 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         $lc = $this->hlp->getLangPart($ID);
 
         // store language in session (for page related views only)
-        if(in_array($ACT,array('show','recent','diff','edit','preview','source','subscribe'))){
+        if(in_array($ACT, array('show', 'recent', 'diff', 'edit', 'preview', 'source', 'subscribe'))) {
             $_SESSION[DOKU_COOKIE]['translationlc'] = $lc;
         }
         if(!$lc) $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
         if(!$lc) return;
         $this->locale = $lc;
 
-        if (!$this->getConf('translateui')) {
+        if(!$this->getConf('translateui')) {
             return true;
         }
 
-        if(file_exists(DOKU_INC.'inc/lang/'.$lc.'/lang.php')) {
-          require(DOKU_INC.'inc/lang/'.$lc.'/lang.php');
+        if(file_exists(DOKU_INC . 'inc/lang/' . $lc . '/lang.php')) {
+            require(DOKU_INC . 'inc/lang/' . $lc . '/lang.php');
         }
         $conf['lang_before_translation'] = $conf['lang']; //store for later access in syntax plugin
         $conf['lang'] = $lc;
@@ -236,29 +235,29 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      */
     function translation_search(&$event, $args) {
 
-        if($event->data['has_titles']){
+        if($event->data['has_titles']) {
             // sort into translation slots
             $res = array();
-            foreach($event->result as $r => $t){
+            foreach($event->result as $r => $t) {
                 $tr = $this->hlp->getLangPart($r);
                 if(!is_array($res["x$tr"])) $res["x$tr"] = array();
-                $res["x$tr"][] = array($r,$t);
+                $res["x$tr"][] = array($r, $t);
             }
             // sort by translations
             ksort($res);
             // combine
             $event->result = array();
-            foreach($res as $r){
-                foreach($r as $l){
+            foreach($res as $r) {
+                foreach($r as $l) {
                     $event->result[$l[0]] = $l[1];
                 }
             }
-        }else{
+        } else {
             # legacy support for old DokuWiki hooks
 
             // sort into translation slots
             $res = array();
-            foreach($event->result as $r){
+            foreach($event->result as $r) {
                 $tr = $this->hlp->getLangPart($r);
                 if(!is_array($res["x$tr"])) $res["x$tr"] = array();
                 $res["x$tr"][] = $r;
@@ -267,8 +266,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
             ksort($res);
             // combine
             $event->result = array();
-            foreach($res as $r){
-                $event->result = array_merge($event->result,$r);
+            foreach($res as $r) {
+                $event->result = array_merge($event->result, $r);
             }
         }
     }
