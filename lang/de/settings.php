@@ -15,3 +15,4 @@ $lang['about']                 = 'Geben Sie hier eine Seite an, welche den Mecha
 $lang['localabout']            = 'Sprachspezifische Versionen der oben angegebenen Seite (anstelle einer globalen) nutzen.';
 $lang['checkage']              = 'Warnungen von möglicherweise veralteten Übersetzungen anzeigen.';
 $lang['display']               = 'Geben Sie an welches/r Symbol/Text im Sprachumschalter angezeigt werden soll. (Die Nutzung von länderspezifischen Flaggen wird aus Gründen der Benutzbarkeit nicht empfohlen.)';
+$lang['copytrans']             = 'Original Sprachversion in den Editor kopieren wenn eine neue Übersetzung begonnen wird?';
