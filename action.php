@@ -85,18 +85,16 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
             if($translations) {
 
                 // show user a choice of translations if any
-                if(count($translations) > 1){
-                    $links = array();
-                    foreach($translations as $t => $l){
-                        $links[] = '<a href="'.wl($ID,array('do'=>'translationcopy', 'fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
-                    }
-
-                    msg(sprintf(
-                            $this->getLang('transcopy'),
-                            join(', ', $links)
-                        )
-                    );
+                $links = array();
+                foreach($translations as $t => $l){
+                    $links[] = '<a href="'.wl($ID,array('do'=>'translationcopy', 'fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
                 }
+
+                msg(sprintf(
+                        $this->getLang('transcopy'),
+                        join(', ', $links)
+                    )
+                );
             }
         } elseif($act == 'translationcopy') {
             $orig = (string) $_REQUEST['fromlang'];
