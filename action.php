@@ -63,7 +63,64 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
         $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'page_template_replacement');
+
+        $controller->register_hook('ACTION_ACT_PREPROCESS','BEFORE', $this, 'translation_copypre');
     }
+
+    /**
+     * Hook Callback. Allows for copying over a translation from another language
+     *
+     * @param $event
+     * @param $args
+     */
+    function translation_copypre(&$event, $args){
+        global $ID;
+
+        if(!$this->getConf('copytrans')) return;
+
+        $act = act_clean($event->data);
+        if($act == 'show' && !page_exists($ID)){
+            // look for existing translations
+            $translations = $this->hlp->getAvailableTranslations($ID);
+            if($translations) {
+
+                // show user a choice of translations if any
+                if(count($translations) > 1){
+                    $links = array();
+                    foreach($translations as $t => $l){
+                        $links[] = '<a href="'.wl($ID,array('do'=>'translationcopy', 'fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
+                    }
+
+                    msg(sprintf(
+                            $this->getLang('transcopy'),
+                            join(', ', $links)
+                        )
+                    );
+                }
+            }
+        } elseif($act == 'translationcopy') {
+            $orig = (string) $_REQUEST['fromlang'];
+
+            // look for existing translations
+            $translations = $this->hlp->getAvailableTranslations($ID);
+            if($orig && $translations && isset($translations[$orig])) {
+                // load file
+                $origfile = $translations[$orig];
+                $txt = io_readFile(wikiFN($origfile));
+
+                // prefix with warning
+                $warn = io_readFile($this->localFN('totranslate'));
+                if($warn) $warn .= "\n\n";
+                $txt = $warn . $txt;
+
+                saveWikiText($ID, $txt, sprintf($this->getLang('copyof'), $this->hlp->getLocalName($orig)), true);
+
+                send_redirect(wl($ID,'',true,'&'));
+            }
+            $event->data = 'show';
+        }
+    }
+
 
     /**
      * Hook Callback. Make current language available as page template placeholder and handle

@@ -5,3 +5,5 @@ $lang['outdated']     = 'This translation is older than the <a href="%s" class="
 $lang['diff']         = 'See what has <a href="%s" class="wikilink1">changed</a>.';
 $lang['transloaded']  = 'The contents of this page\'s translation in %s have been pre-loaded for easy translation.<br />But you can base your translation on the following existing translations: %s.';
 
+$lang['transcopy']  = 'This page does not exist in this language, yet. You can copy over one of the existing languages: %s';
+$lang['copyof']     = 'Copy of translation in %s';
