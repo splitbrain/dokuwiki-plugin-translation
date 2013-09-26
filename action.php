@@ -97,7 +97,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
                 if(count($translations) > 1){
                     $links = array();
                     foreach($translations as $t => $l){
-                        $links[] = '<a href="'.wl($ID,array('do'=>edit,'fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
+                        $links[] = '<a href="'.wl($ID,array('do'=>'edit','fromlang'=>$t)).'">'.$this->hlp->getLocalName($t).'</a>';
                     }
 
                     msg(sprintf(
