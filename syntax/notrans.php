@@ -8,10 +8,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'syntax.php');
-
-class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
 
     /**
      * for th helper plugin
@@ -44,7 +41,7 @@ class syntax_plugin_translation extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('~~NOTRANS~~',$mode,'plugin_translation');
+        $this->Lexer->addSpecialPattern('~~NOTRANS~~',$mode,'plugin_translation_notrans');
     }
 
 

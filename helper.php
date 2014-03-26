@@ -184,17 +184,18 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     }
 
     /**
-     * Displays the available and configured translations. Needs to be placed in the template.
+     * Creates an UI for linking to the available and configured translations
+     *
+     * Can be called from the template or via the ~~TRANS~~ syntax component.
      */
-    function showTranslations() {
-        global $ID;
+    public function showTranslations() {
         global $conf;
         global $INFO;
 
-        if(!$this->istranslatable($ID)) return;
+        if(!$this->istranslatable($INFO['id'])) return '';
         $this->checkage();
 
-        list($lc, $idpart) = $this->getTransParts($ID);
+        list($lc, $idpart) = $this->getTransParts($INFO['id']);
         $lang = $this->realLC($lc);
 
         $out = '<div class="plugin_translation">';
@@ -217,7 +218,10 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             }
             if(isset($this->opts['flag'])) {
                 $flag = DOKU_BASE . 'lib/plugins/translation/flags/' . hsc($lang) . '.gif';
+            }else{
+                $flag = '';
             }
+
             if($conf['userewrite']) {
                 $action = wl();
             } else {
