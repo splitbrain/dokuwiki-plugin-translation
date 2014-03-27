@@ -36,6 +36,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     function register(&$controller) {
         // should the lang be applied to UI?
         $scriptName = basename($_SERVER['PHP_SELF']);
+
         if($this->getConf('translateui')) {
             switch($scriptName) {
                 case 'js.php':
@@ -185,6 +186,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         } else {
             return;
         }
+        if(!$lc) return;
+
         $conf['lang'] = $lc;
         $event->data = $lc;
     }
