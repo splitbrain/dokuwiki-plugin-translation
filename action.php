@@ -204,8 +204,13 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show') {
             $lc = $this->hlp->getBrowserLang();
             if(!$lc) $lc = $conf['lang'];
-            header('Location: ' . wl($lc . ':' . $conf['start'], '', true, '&'));
+            $this->_redirect($lc.':'.$conf['start']);
             exit;
+        }
+
+        // Check if we can redirect
+        if($this->getConf('redirectlocalized')){
+            $this->translation_redirect_localized();
         }
 
         // check if we are in a foreign language namespace
@@ -275,6 +280,111 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         }
     }
 
+    /**
+     * Redirects to the localized version of the page when showing and browser says so and translation was explicitly requested
+     **/
+    function translation_redirect_localized() {
+        global $ID;
+        global $conf;
+        global $ACT;
+
+        // redirect to localized page?
+        if( $ACT != 'show' ) { return; }
+
+        $override = isset($_REQUEST['tns']); // override enabled - comes from the bottom bar.
+        $lang = $conf['lang_before_translation'] ? $conf['lang_before_translation'] : $conf['lang']; // Check for original language
+
+        // get current page language - if empty then default;
+        $currentSessionLanguage = $_SESSION[DOKU_COOKIE]['translationcur'];
+        $pageLang = $this->hlp->getLangPart($ID);
+
+        if ( empty($pageLang) ) {
+            $pageLang = $lang;
+        }
+
+        // If both match, we're fine.
+        if ( $currentSessionLanguage == $pageLang ) {
+            return;
+        }
+
+        // check current translation
+        if ( empty( $currentSessionLanguage ) && !$override ) {
+
+            // If not set - we must just have entered - set the browser language
+            $currentSessionLanguage = $this->hlp->getBrowserLang();
+
+            // if no browser Language set, take entered namespace language - empty for default.
+            if ( !$currentSessionLanguage ) {
+                $currentSessionLanguage = $pageLang;
+            }
+
+            // Set new Language
+            $_SESSION[DOKU_COOKIE]['translationcur'] = $currentSessionLanguage;
+
+            // Write Language back
+            $pageLang = $currentSessionLanguage;
+        }
+
+
+        if ( $override && $pageLang != $currentSessionLanguage ) {
+            // Set new Language
+            $currentSessionLanguage = $pageLang;
+            $_SESSION[DOKU_COOKIE]['translationcur'] = $currentSessionLanguage;
+        } else if ( !$override ) {
+            // Write Language back
+            $pageLang = $currentSessionLanguage;
+        }
+
+        // If this is the default language, make empty
+        if ( $pageLang == $lang ) {
+            $pageLang = '';
+        }
+
+        // Generate new Page ID
+        list($newPage,$name) = $this->hlp->buildTransID($pageLang,$this->hlp->getIDPart($ID));
+        $newPage = cleanID($newPage);
+
+        // Check if Page exists
+        if ( $newPage != $ID && page_exists($newPage, '', false) ) {
+            // $newPage redirect
+             
+            if ( auth_quickaclcheck($newPage) < AUTH_READ ) { return; }
+
+            session_write_close();
+            $this->_redirect($newPage);
+        }
+        else
+        if ( $override ) {
+            // cleanup redirect
+            session_write_close();
+             
+            if ( auth_quickaclcheck($newPage) < AUTH_READ ) { return; }
+
+            $this->_redirect($ID);
+        }
+
+        // no redirect;
+    }
+
+
+    function _redirect($url)
+    {
+        unset($_GET['id']);
+        $more = array();
+
+        if ( !empty($_GET) ) {
+            $params = '';
+            foreach( $_GET as $key => $value ) {
+            	// Possible multiple encodings.
+                $more[$key] = $value;
+            }
+        }
+		
+		if ( wl( $url, $more, true, '&') != DOKU_URL . substr($_SERVER['REQUEST_URI'], 1) ) {
+	        header('Location: ' . wl( $url, $more, true, '&'), 302);
+	        exit;
+		}
+    }
 }
 
 //Setup VIM: ex: et ts=4 :
