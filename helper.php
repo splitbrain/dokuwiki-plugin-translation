@@ -52,7 +52,6 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         }
 
         $this->tns = $this->setupTNS();
-        if($this->tns) $this->tns .= ':';
         $JSINFO['conf']['lang'] = $dfl;
     }
 
