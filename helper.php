@@ -184,6 +184,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     function istranslatable($id, $checkact = true) {
         global $ACT;
 
+        if(auth_isAdmin()) return true;
+
         if($checkact && $ACT != 'show') return false;
         if($this->tns && strpos($id, $this->tns) !== 0) return false;
         $skiptrans = trim($this->getConf('skiptrans'));
