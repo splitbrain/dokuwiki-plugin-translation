@@ -27,13 +27,13 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * Constructor. Load helper plugin
      */
     function action_plugin_translation() {
-        $this->hlp =& plugin_load('helper', 'translation');
+        $this->hlp = plugin_load('helper', 'translation');
     }
 
     /**
      * Registe the events
      */
-    function register(&$controller) {
+    function register(Doku_Event_Handler $controller) {
         // should the lang be applied to UI?
         $scriptName = basename($_SERVER['PHP_SELF']);
 
@@ -144,7 +144,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         if(!isset($this->locale)) return false;
         $count = count($event->data['script']);
         for($i = 0; $i < $count; $i++) {
-            if(strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
+            if(!empty($event->data['script'][$i]['src']) && strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
                 $event->data['script'][$i]['src'] .= '&lang=' . hsc($this->locale);
             }
         }
@@ -292,7 +292,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         if( $ACT != 'show' ) { return; }
 
         $override = isset($_REQUEST['tns']); // override enabled - comes from the bottom bar.
-        $lang = $conf['lang_before_translation'] ? $conf['lang_before_translation'] : $conf['lang']; // Check for original language
+        $lang = !empty($conf['lang_before_translation']) ? $conf['lang_before_translation'] : $conf['lang']; // Check for original language
 
         // get current page language - if empty then default;
         $currentSessionLanguage = $_SESSION[DOKU_COOKIE]['translationcur'];
