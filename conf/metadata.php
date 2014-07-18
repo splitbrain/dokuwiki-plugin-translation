@@ -7,15 +7,16 @@
 
 $meta['translations']           = array('string','_pattern' => '/^(|[a-zA-Z\- ,]+)$/');
 $meta['translationns']          = array('string','_pattern' => '/^(|[\w:\-]+)$/');
+$meta['autodetectnamespace']    = array('onoff');
+
 $meta['skiptrans']              = array('string');
 $meta['dropdown']               = array('onoff');
 $meta['display']                = array('multicheckbox',
                                '_choices' => array('langcode','name','flag','title','twolines'));
 $meta['translateui']            = array('onoff');
 $meta['redirectstart']          = array('onoff');
+$meta['redirectlocalized']      = array('onoff');
 $meta['checkage']               = array('onoff');
 $meta['about']                  = array('string','_pattern' => '/^(|[\w:\-]+)$/');
 $meta['localabout']             = array('onoff');
 $meta['copytrans']              = array('onoff');
-$meta['redirectlocalized']      = array('onoff');
-$meta['autodetectnamespace']    = array('onoff');
