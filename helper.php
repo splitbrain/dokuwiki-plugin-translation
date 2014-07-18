@@ -39,7 +39,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $this->opts = array_fill_keys($this->opts, true);
 
         // get default translation
-        if(!$conf['lang_before_translation']) {
+        if(empty($conf['lang_before_translation'])) {
             $dfl = $conf['lang'];
         } else {
             $dfl = $conf['lang_before_translation'];
@@ -169,7 +169,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         global $conf;
         if($lc) {
             return $lc;
-        } elseif(!$conf['lang_before_translation']) {
+        } elseif(empty($conf['lang_before_translation'])) {
             return $conf['lang'];
         } else {
             return $conf['lang_before_translation'];
@@ -366,6 +366,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         }
 
         // flag
+        $flag = $style = '';
         if(isset($this->opts['flag'])) {
             $flag = DOKU_BASE . 'lib/plugins/translation/flags/' . hsc($lang) . '.gif';
             $style = ' style="background-image: url(\'' . $flag . '\')"';
