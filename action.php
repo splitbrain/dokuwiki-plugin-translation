@@ -375,15 +375,15 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         if ( !empty($_GET) ) {
             $params = '';
             foreach( $_GET as $key => $value ) {
-            	// Possible multiple encodings.
+                // Possible multiple encodings.
                 $more[$key] = $value;
             }
         }
-		
-		if ( wl( $url, $more, true, '&') != DOKU_URL . substr($_SERVER['REQUEST_URI'], 1) ) {
-	        header('Location: ' . wl( $url, $more, true, '&'), 302);
-	        exit;
-		}
+        
+        if ( wl( $url, $more, true, '&') != DOKU_URL . substr($_SERVER['REQUEST_URI'], 1) ) {
+            header('Location: ' . wl( $url, $more, true, '&'), 302);
+            exit;
+        }
     }
 }
 
