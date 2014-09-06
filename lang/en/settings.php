@@ -15,5 +15,5 @@ $lang['about']         = 'Enter a pagename here where the translation feature is
 $lang['localabout']    = 'Use localized versions of about page (instead of one global about page).';
 $lang['checkage']      = 'Warn about possibly outdated translations.';
 $lang['display']       = 'Select what you\'d like to have shown in the language selector. Note that using country flags for language selection is not recommended by usability experts.';
-
 $lang['copytrans']     = 'Copy original language text into the editor when starting a new translation?';
+$lang['showmaintrans'] = 'Display original language if translation not found?';

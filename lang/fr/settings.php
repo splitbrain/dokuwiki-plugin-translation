@@ -18,3 +18,4 @@ $lang['localabout']            = 'Utiliser des versions traduites de la page à 
 $lang['checkage']              = 'Avertir de la possibilité de traductions dépassées.';
 $lang['display']               = 'Sélectionnez ce que vous voudriez afficher dans le sélecteur de langue. Notez qu\'utiliser les drapeaux de pays pour la sélection de langue n\'est pas recommandée par les experts en ergonomie.';
 $lang['copytrans']             = 'Copier le texte en langue souce dans l\'éditeur quand une nouvelle traduction est lancée?';
+$lang['showmaintrans']         = 'Afficher la page dans la langue originale si la traduction n\'est pas trouvée?';
