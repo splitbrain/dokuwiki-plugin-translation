@@ -275,6 +275,32 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         }
     }
 
+    /**
+     * Hook Callback. Display original language if translation not found
+     */
+    function translation_show_main_trans(&$event, $param) {
+        global $ACT;
+        if($ACT != 'show') return false;
+
+        global $ID;
+        if(page_exists($ID)) return false;
+
+        // check if main namespace is a valid translation
+        $mainNamespace = split(":", $ID)[0];
+        if(array_search($mainNamespace, split(" ", $this->getConf('translations'))) !== false) {
+            // get id of not translated page
+            $notransID = ltrim($ID, "$mainNamespace:");
+            // if not translated page exist
+            if(page_exists($notransID)){
+                // display 'totranslate.txt' warning
+                echo p_render('xhtml',p_get_instructions(io_readFile($this->localFN('totranslate'))));
+                // display not translated page
+                $event->data = p_wiki_xhtml($notransID,'',false);
+            }
+        }
+        return true;
+    }
+    
 }
 
 //Setup VIM: ex: et ts=4 :
