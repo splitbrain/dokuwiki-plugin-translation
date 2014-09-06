@@ -64,6 +64,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
         $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'page_template_replacement');
+
+        if($this->getConf('showmaintrans')) {
+            $controller->register_hook('TPL_CONTENT_DISPLAY','BEFORE', $this, 'translation_show_main_trans');
+        }
     }
 
     /**
