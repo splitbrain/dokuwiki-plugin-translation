@@ -94,10 +94,10 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     function buildTransID($lng, $idpart) {
         global $conf;
         if($lng) {
-            $link = ':' . $this->tns . $lng . ':' . $idpart;
+            $link = ':' . $this->tns . $lng . ':' . preg_replace("/^{$this->tns}/", "", $idpart);
             $name = $lng;
         } else {
-            $link = ':' . $this->tns . $idpart;
+            $link = ':' . $this->tns . preg_replace("/^{$this->tns}/", "", $idpart);
             $name = $this->realLC('');
         }
         return array($link, $name);
