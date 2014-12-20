@@ -127,7 +127,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     function translation_js(&$event, $args) {
         global $conf;
         if(!isset($_GET['lang'])) return;
-        if(!in_array($_GET['lang'], $this->helper->trans)) return;
+        if(!in_array($_GET['lang'], $this->helper->translations)) return;
         $lang = $_GET['lang'];
         $event->data = $lang;
         $conf['lang'] = $lang;
@@ -160,7 +160,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      */
     function translation_jscache(&$event, $args) {
         if(!isset($_GET['lang'])) return;
-        if(!in_array($_GET['lang'], $this->helper->trans)) return;
+        if(!in_array($_GET['lang'], $this->helper->translations)) return;
 
         $lang = $_GET['lang'];
         // reuse the constructor to reinitialize the cache key
