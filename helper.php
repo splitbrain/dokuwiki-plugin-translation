@@ -366,7 +366,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         // get revision from before translation
         $orev = 0;
-        $revs = getRevisions($orig, 0, 100);
+        $changelog = new PageChangeLog($orig);
+        $revs = $changelog->getRevisions(0, 100);
         foreach($revs as $rev) {
             if($rev < $INFO['lastmod']) {
                 $orev = $rev;
