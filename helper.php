@@ -22,7 +22,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     /**
      * Initialize
      */
-    function helper_plugin_translation() {
+    function __construct() {
         global $conf;
         require_once(DOKU_INC . 'inc/pageutils.php');
         require_once(DOKU_INC . 'inc/utf8.php');
