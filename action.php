@@ -164,7 +164,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         $lang = $_GET['lang'];
         // reuse the constructor to reinitialize the cache key
-        $event->data->cache(
+        $event->data->__construct (
             $event->data->key . $lang,
             $event->data->ext
         );
