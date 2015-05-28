@@ -2,8 +2,9 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Hideaki SAWADA <chuno@live.jp>
+ * @author Ikuo Obataya <i.obataya@gmail.com>
  */
 $lang['translations']          = '翻訳言語（ISOコード）のスペース区切り一覧';
 $lang['translationns']         = '特定の名前空間以下のみを翻訳したい場合、名前空間を記入する。';
@@ -16,3 +17,8 @@ $lang['localabout']            = '（包括的な概要ページの代わりに�
 $lang['checkage']              = '古い翻訳について警告する。';
 $lang['display']               = '言語セレクタに何を表示するかを選択する。言語選択に国旗を使用することをユーザビリティ専門家は奨励しないので注意してください。';
 $lang['copytrans']             = '新しく翻訳を開始する時、エディタに元の言語の文章をコピーするか？';
+$lang['langcodeat']            = '言語コードの名前空間はどこに置くか？';
+$lang['langcodeat_o_root']
+                               = 'root (translationnsが指定されていたらその後)';
+$lang['langcodeat_o_lastns']
+                               = '最後の名前空間の後 (ページ名の直前)';

@@ -17,3 +17,8 @@ $lang['checkage']      = 'Warn about possibly outdated translations.';
 $lang['display']       = 'Select what you\'d like to have shown in the language selector. Note that using country flags for language selection is not recommended by usability experts.';
 
 $lang['copytrans']     = 'Copy original language text into the editor when starting a new translation?';
+$lang['langcodeat']    = 'Position of namespace for language codes.';
+$lang['langcodeat_o_root']
+                       = 'at root (after translationns, if exists)';
+$lang['langcodeat_o_lastns']
+                       = 'after the last namespace (just before page name)';

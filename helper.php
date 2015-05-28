@@ -4,6 +4,7 @@
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
+ * @author     Ikuo Obataya <i.obataya@gmail.com>
  */
 
 // must be run within Dokuwiki
@@ -68,9 +69,14 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * the id part.
      */
     function getTransParts($id) {
-        $rx = '/^' . $this->translationNs . '(' . join('|', $this->translations) . '):(.*)/';
-        if(preg_match($rx, $id, $match)) {
-            return array($match[1], $match[2]);
+        if($this->getConf('langcodeat')=='root') {
+            $rx = '/^' . $this->translationNs . '(' . join('|', $this->translations) . '):(.*)/';
+            if(preg_match($rx, $id, $match)) {
+                return array($match[1], $match[2]);
+            }
+        }else{
+            list($pageid,$noLangNS,$langCode) = $this->splitIdByLanguage($id);
+            return array($langCode,$id);
         }
         return array('', $id);
     }
@@ -93,14 +99,52 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      */
     function buildTransID($lng, $idpart) {
         global $conf;
-        if($lng) {
-            $link = ':' . $this->translationNs . $lng . ':' . $idpart;
-            $name = $lng;
-        } else {
-            $link = ':' . $this->translationNs . $idpart;
-            $name = $this->realLC('');
+        $baseLink = ':'.$this->translationNs;
+        if($this->getConf('langcodeat')=='root') {
+            // default setting : lang code at baseLink:[langCode]:restOfNS:pagename
+            if($lng) {
+                $link = $baseLink . $lng . ':' . $idpart;
+                $name = $lng;
+            } else {
+                $link = $baseLink . $idpart;
+                $name = $this->realLC('');
+            }
+        }else{
+            // lang code at the last namespace: baseLink:restOfNS:[langCode]:pagename
+            $name = $this->realLC($lng);
+            list($pageid,$noLangNS,$langCode) = $this->splitIdByLanguage($idpart);
+            if($lng) {
+                $link = $baseLink.$noLangNS.':'.$lng.':'.$pageid;
+            } else {
+                $link = $baseLink.$noLangNS.':'.$pageid;
+            }
         }
         return array($link, $name);
+    }
+    
+    /**
+     * Returns pagename and namespace before language code.
+     * This is for the last namespace mode.
+     */
+    function splitIdByLanguage($idpart){
+        global $conf;
+        $rx = '/^'.$this->translationNs.'(|.*:)('.substr(join('|', $this->translations),1) . ')(:[^:]+)?$/';
+        if(preg_match($rx,$idpart,$match)){
+            $noLangNS = $match[1];
+            $langCode = $match[2];
+            if($match[3]){
+                 $pageid = substr($match[3],1);
+            }else{
+                // no pagename, but ends with lang code
+                $pageid = $conf['start'];
+            }
+        }else{
+             // no lang code in idpart, get previous namespace.
+             $langCode = '';
+             $noLangNS = getNS($idpart);
+             $pageid = noNS($idpart);
+        }
+        return array($pageid,$noLangNS,$langCode);
     }
 
     /**
