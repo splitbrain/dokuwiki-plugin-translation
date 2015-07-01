@@ -4,6 +4,7 @@
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
+ * @author     Nikolay Raspopov <raspopov@cherubicsoft.com>
  */
 
 // must be run within Dokuwiki
@@ -237,8 +238,11 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         // insert items
         foreach($this->translations as $t) {
-            $out .= $this->getTransItem($t, $idpart);
-        }
+			list($link, $name) = $this->buildTransID($t, $idpart);
+            if(!$this->getConf('exists') || page_exists($link)) {
+                $out .= $this->getTransItem($t, $idpart);
+            }
+		}
 
         // close wrapper
         if($this->getConf('dropdown')) {

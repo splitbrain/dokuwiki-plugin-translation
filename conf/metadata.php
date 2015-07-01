@@ -3,6 +3,7 @@
  * Options for the translation plugin
  *
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Nikolay Raspopov <raspopov@cherubicsoft.com>
  */
 
 $meta['translations']  = array('string','_pattern' => '/^(|[a-zA-Z\- ,]+)$/');
@@ -17,4 +18,4 @@ $meta['checkage']      = array('onoff');
 $meta['about']         = array('string','_pattern' => '/^(|[\w:\-]+)$/');
 $meta['localabout']    = array('onoff');
 $meta['copytrans']     = array('onoff');
-
+$meta['exists']        = array('onoff');
