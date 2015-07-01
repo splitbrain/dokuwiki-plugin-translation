@@ -238,11 +238,11 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         // insert items
         foreach($this->translations as $t) {
-			list($link, $name) = $this->buildTransID($t, $idpart);
+            list($link, $name) = $this->buildTransID($t, $idpart);
             if(!$this->getConf('exists') || page_exists($link)) {
                 $out .= $this->getTransItem($t, $idpart);
             }
-		}
+        }
 
         // close wrapper
         if($this->getConf('dropdown')) {
