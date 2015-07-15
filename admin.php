@@ -33,50 +33,53 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
 
         $pages = $this->getAllPages();
         foreach ($pages as $page) {
-            if ($helper->getLangPart($page["id"]) === $default_language &&
-                $helper->istranslatable($page["id"], false) &&
-                page_exists($page["id"])
+            if (!$helper->getLangPart($page["id"]) === $default_language ||
+                !$helper->istranslatable($page["id"], false) ||
+                !page_exists($page["id"])
             ) {
-                $showRow = false;
-                $row = "<tr><td>" . $xhtml_renderer->internallink($page['id'],null,null,true) . "</td>";
+                continue;
+            }
+            // We have an existing and translatable page in the default language
+            $showRow = false;
+            $row = "<tr><td>" . $xhtml_renderer->internallink($page['id'],null,null,true) . "</td>";
 
-                list($lc, $idpart) = $helper->getTransParts($page["id"]);
+            list($lc, $idpart) = $helper->getTransParts($page["id"]);
 
-                foreach ($helper->translations as $t) {
-                    if ($t === $default_language) {
-                        continue;
-                    }
+            foreach ($helper->translations as $t) {
+                if ($t === $default_language) {
+                    continue;
+                }
 
-                    list($translID, $name) = $helper->buildTransID($t, $idpart);
+                list($translID, $name) = $helper->buildTransID($t, $idpart);
 
 
-                    $difflink = '';
-                    if(!page_exists($translID)) {
-                        $class = "missing";
-                        $title = $this->getLang("missing");
+                $difflink = '';
+                if(!page_exists($translID)) {
+                    $class = "missing";
+                    $title = $this->getLang("missing");
+                    $showRow = true;
+                } else {
+                    $translfn = wikiFN($translID);
+                    if($page['mtime'] > @filemtime($translfn)) {
+                        $class = "outdated";
+                        $difflink = " <a href='";
+                        $difflink .= $helper->getOldDiffLink($page["id"], $page['mtime']);
+                        $difflink .= "'>(diff)</a>";
+                        $title = $this->getLang("outdated");
                         $showRow = true;
                     } else {
-                        $translfn = wikiFN($translID);
-                        if($page['mtime'] > @filemtime($translfn)) {
-                            $class = "outdated";
-                            $difflink = " <a href='";
-                            $difflink .= $helper->getOldDiffLink($page["id"], $page['mtime']);
-                            $difflink .= "'>(diff)</a>";
-                            $title = $this->getLang("outdated");
-                            $showRow = true;
-                        } else {
-                            $class = "current";
-                            $title = $this->getLang('current');
-                        }
+                        $class = "current";
+                        $title = $this->getLang('current');
                     }
-                    $row .= "<td class='$class'>" . $xhtml_renderer->internallink($translID,$title,null,true) . $difflink . "</td>";
                 }
-                $row .= "</tr>";
-
-                if ($showRow) {
-                    echo $row;
-                }
+                $row .= "<td class='$class'>" . $xhtml_renderer->internallink($translID,$title,null,true) . $difflink . "</td>";
             }
+            $row .= "</tr>";
+
+            if ($showRow) {
+                echo $row;
+            }
+
         }
         echo "</table>";
 
