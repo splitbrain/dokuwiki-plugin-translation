@@ -12,18 +12,16 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
     }
 
     function html() {
-        // 1. find the default language and the approbiate namespace
+
         /** @var helper_plugin_translation $helper */
         $helper = plugin_load('helper', "translation");
         $default_language = $helper->defaultlang;
 
-        echo "<h1>" . $this->getLang("menu") . "</h1>";
-        // 2. search for all pages in the default language that should be translated
-        $pages = $this->getAllPages();
         /** @var Doku_Renderer_xhtml $xhtml_renderer */
         $xhtml_renderer = p_get_renderer('xhtml');
-        echo "<table id='outdated_translations'>";
 
+        echo "<h1>" . $this->getLang("menu") . "</h1>";
+        echo "<table id='outdated_translations'>";
         echo "<tr><th>default: $default_language</th>";
         foreach ($helper->translations as $t) {
             if($t === $default_language) {
@@ -33,13 +31,14 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
         }
         echo "</tr>";
 
+        $pages = $this->getAllPages();
         foreach ($pages as $page) {
             if ($helper->getLangPart($page["id"]) === $default_language &&
                 $helper->istranslatable($page["id"], false) &&
                 page_exists($page["id"])
             ) {
-                $row = "<tr><td>" . $xhtml_renderer->internallink($page['id'],null,null,true) . "</td>";
                 $showRow = false;
+                $row = "<tr><td>" . $xhtml_renderer->internallink($page['id'],null,null,true) . "</td>";
 
                 list($lc, $idpart) = $helper->getTransParts($page["id"]);
 
@@ -48,16 +47,16 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
                         continue;
                     }
 
-                    list($transl, $name) = $helper->buildTransID($t, $idpart);
+                    list($translID, $name) = $helper->buildTransID($t, $idpart);
 
-                    // 3. check if the translated pages exist & their age compared to the original
+
                     $difflink = '';
-                    if(!page_exists($transl)) {
+                    if(!page_exists($translID)) {
                         $class = "missing";
                         $title = $this->getLang("missing");
                         $showRow = true;
                     } else {
-                        $translfn = wikiFN($transl);
+                        $translfn = wikiFN($translID);
                         if($page['mtime'] > @filemtime($translfn)) {
                             $class = "outdated";
                             $difflink = " <a href='";
@@ -70,11 +69,10 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
                             $title = $this->getLang('current');
                         }
                     }
-                    $row .= "<td class='$class'>" . $xhtml_renderer->internallink($transl,$title,null,true) . $difflink . "</td>";
+                    $row .= "<td class='$class'>" . $xhtml_renderer->internallink($translID,$title,null,true) . $difflink . "</td>";
                 }
                 $row .= "</tr>";
 
-                // 4. print a table if the translation may be outdated
                 if ($showRow) {
                     echo $row;
                 }
