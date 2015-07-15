@@ -17,7 +17,7 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
         $helper = plugin_load('helper', "translation");
         $default_language = $helper->defaultlang;
 
-        echo "<h1>" . $this->getLang("outdated translations") . "</h1>";
+        echo "<h1>" . $this->getLang("menu") . "</h1>";
         // 2. search for all pages in the default language that should be translated
         $pages = $this->getAllPages();
         /** @var Doku_Renderer_xhtml $xhtml_renderer */
