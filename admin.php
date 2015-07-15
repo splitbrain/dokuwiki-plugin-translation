@@ -60,7 +60,7 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
                     $showRow = true;
                 } else {
                     $translfn = wikiFN($translID);
-                    if($page['mtime'] > @filemtime($translfn)) {
+                    if($page['mtime'] > filemtime($translfn)) {
                         $class = "outdated";
                         $difflink = " <a href='";
                         $difflink .= $helper->getOldDiffLink($page["id"], $page['mtime']);
