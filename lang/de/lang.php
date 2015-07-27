@@ -13,3 +13,4 @@ $lang['menu'] = "veraltete und fehlende Übersetzungen";
 $lang['missing']               = 'Fehlt!';
 $lang['outdated']              = 'veraltet';
 $lang['current']               = 'aktuell';
+$lang['path']                  = 'Pfad';

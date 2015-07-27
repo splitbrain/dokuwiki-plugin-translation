@@ -8,3 +8,4 @@ $lang['menu'] = "outdated and missing translations";
 $lang['missing']      = 'Missing!';
 $lang['outdated']     = 'outdated';
 $lang['current']      = 'up-to-date';
+$lang['path']         = 'Path';

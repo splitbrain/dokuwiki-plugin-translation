@@ -23,6 +23,9 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
         echo "<h1>" . $this->getLang("menu") . "</h1>";
         echo "<table id='outdated_translations'>";
         echo "<tr><th>default: $default_language</th>";
+        if ($this->getConf('show_path')) {
+            echo "<th>" . $this->getLang('path') . "</th>";
+        }
         foreach ($helper->translations as $t) {
             if($t === $default_language) {
                 continue;
@@ -42,6 +45,9 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
             // We have an existing and translatable page in the default language
             $showRow = false;
             $row = "<tr><td>" . $xhtml_renderer->internallink($page['id'],null,null,true) . "</td>";
+            if ($this->getConf('show_path')) {
+                $row .= "<td>" . $xhtml_renderer->internallink($page['id'],$page['id'],null,true) . "</td>";
+            }
 
             list($lc, $idpart) = $helper->getTransParts($page["id"]);
 
