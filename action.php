@@ -165,10 +165,19 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         $lang = $_GET['lang'];
         // reuse the constructor to reinitialize the cache key
-        $event->data->__construct (
-            $event->data->key . $lang,
-            $event->data->ext
-        );
+        if(method_exists($event->data, '__construct')) {
+            // New PHP 5 style constructor
+            $event->data->__construct(
+                $event->data->key . $lang,
+                $event->data->ext
+            );
+        } else {
+            // Old PHP 4 style constructor - deprecated
+            $event->data->cache(
+                $event->data->key . $lang,
+                $event->data->ext
+            );
+        }
     }
 
     /**
