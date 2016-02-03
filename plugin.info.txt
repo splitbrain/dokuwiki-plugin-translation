@@ -2,7 +2,7 @@
 base   translation
 author Andreas Gohr
 email  andi@splitbrain.org
-date   2015-06-30
+date   2016-02-03
 name   Translation Plugin
 desc   Supports the easy setup of a multi-language wiki.
 url    http://www.dokuwiki.org/plugin:translation
