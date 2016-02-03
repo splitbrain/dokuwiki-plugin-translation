@@ -48,14 +48,14 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
         return array('notrans');
     }
 
     /**
      * Create output
      */
-    function render($format, &$renderer, $data) {
+    function render($format, Doku_Renderer $renderer, $data) {
         // store info in metadata
         if($format == 'metadata'){
             $renderer->meta['plugin']['translation']['notrans'] = true;
