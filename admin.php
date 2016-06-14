@@ -21,7 +21,7 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
         $xhtml_renderer = p_get_renderer('xhtml');
 
         echo "<h1>" . $this->getLang("menu") . "</h1>";
-        echo "<table id='outdated_translations'>";
+        echo "<table id='outdated_translations' class=\"inline\">";
         echo "<tr><th>default: $default_language</th>";
         if ($this->getConf('show_path')) {
             echo "<th>" . $this->getLang('path') . "</th>";
@@ -92,9 +92,8 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
     }
 
     function getAllPages() {
-        global $conf;
         $namespace = $this->getConf("translationns");
-        $dir = $conf['datadir'] . '/' . str_replace(':', '/', $namespace);
+        $dir = dirname(wikiFN("$namespace:foo"));
         $pages = array();
         search($pages, $dir, 'search_allpages',array());
         return $pages;
