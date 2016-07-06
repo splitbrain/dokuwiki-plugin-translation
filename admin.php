@@ -71,7 +71,7 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
                         $difflink = " <a href='";
                         $difflink .= $helper->getOldDiffLink($page["id"], $page['mtime']);
                         $difflink .= "'>(diff)</a>";
-                        $title = $this->getLang("outdated");
+                        $title = $this->getLang('old');
                         $showRow = true;
                     } else {
                         $class = "current";

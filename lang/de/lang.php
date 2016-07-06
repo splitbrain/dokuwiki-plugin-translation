@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Andreas Gohr <andi@splitbrain.org>
  */
 $lang['translations']          = 'Übersetzungen dieser Seite';
@@ -11,6 +11,6 @@ $lang['diff']                  = '<a href="%s" class="wikilink1">Änderungen</a>
 $lang['transloaded']           = 'Der Inhalt dieser Seite auf %s wurde in den Editor geladen um die Übersetzung zu erleichtern.<br />Sie können Ihre Arbeit auch mit einer der folgenden vorhandenen Übersetzungen beginnen: %s.';
 $lang['menu'] = "veraltete und fehlende Übersetzungen";
 $lang['missing']               = 'Fehlt!';
-$lang['outdated']              = 'veraltet';
+$lang['old']                   = 'veraltet';
 $lang['current']               = 'aktuell';
 $lang['path']                  = 'Pfad';
