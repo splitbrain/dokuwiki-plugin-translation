@@ -6,7 +6,7 @@
  * @author Myeongjin <aranet100@gmail.com>
  */
 $lang['translations']          = '번역 언어의 공백으로 구분한 목록 (ISO 코드).';
-$lang['translationns']         = '특정 이름공간에 따라 번역을 원하면 여기에 넣으세요.';
+$lang['translationns']         = '특정 이름공간에 따라 번역을 원하면, 여기에 넣으세요.';
 $lang['skiptrans']             = '문서 이름이 정규 표현식과 일치하면, 번역 메뉴를 보여주지 마세요.';
 $lang['dropdown']              = '번역을 보여줄 드롭다운 목록을 사용합니다. (5개 이상의 언어이면 권장)';
 $lang['translateui']           = '사용자 인터페이스의 언어도 외국어 이름공간으로 전환해야 합니까?';
