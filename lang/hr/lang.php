@@ -11,5 +11,6 @@ $lang['diff']                  = 'Pogledajte što je <a href="%s" class="wikilin
 $lang['transloaded']           = 'Sadržaj ove stranice u jeziku %s je napunjeno radi lakšeg prevođenja.<br />Ali možete bazirati Vaš prijevod i prema slijedećim raspoloživim prijevodima: %s.';
 $lang['menu']                  = 'zastarjeli i nedostajući prijevodi';
 $lang['missing']               = 'Nedostaje!';
+$lang['old']                   = 'zastarjelo';
 $lang['current']               = 'ažuran';
 $lang['path']                  = 'Staza';
