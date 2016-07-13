@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Aleksandr Selivanov <alexgearbox@gmail.com>
  * @author Vasilyy Balyasnyy <v.balyasnyy@gmail.com>
  */
