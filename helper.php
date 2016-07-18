@@ -393,7 +393,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     function getOldDiffLink($id, $lastmod) {
         // get revision from before translation
         $orev = false;
-        $revs = getRevisions($id, 0, 100);
+        $changelog = new PageChangelog($id);
+        $revs = $changelog->getRevisions(0, 100);
         foreach($revs as $rev) {
             if($rev < $lastmod) {
                 $orev = $rev;
