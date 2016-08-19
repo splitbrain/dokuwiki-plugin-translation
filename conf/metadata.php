@@ -17,4 +17,5 @@ $meta['checkage']      = array('onoff');
 $meta['about']         = array('string','_pattern' => '/^(|[\w:\-]+)$/');
 $meta['localabout']    = array('onoff');
 $meta['copytrans']     = array('onoff');
+$meta['show_path']     = array('onoff');
 

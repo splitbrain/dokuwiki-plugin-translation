@@ -16,3 +16,4 @@ $lang['localabout']            = 'Sprachspezifische Versionen der oben angegeben
 $lang['checkage']              = 'Warnungen von möglicherweise veralteten Übersetzungen anzeigen.';
 $lang['display']               = 'Geben Sie an welches/r Symbol/Text im Sprachumschalter angezeigt werden soll. (Die Nutzung von länderspezifischen Flaggen wird aus Gründen der Benutzbarkeit nicht empfohlen.)';
 $lang['copytrans']             = 'Original Sprachversion in den Editor kopieren wenn eine neue Übersetzung begonnen wird?';
+$lang['show_path']             = 'Seitenpfad in der Übersicht der fehlenden Übersetzungen anzeigen?';
