@@ -130,7 +130,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $skiptrans = trim($this->getConf('skiptrans'));
         if($skiptrans && preg_match('/' . $skiptrans . '/ui', ':' . $id)) return false;
         $meta = p_get_metadata($id);
-        if(!empty($meta['plugin']['translation']['notrans']) && $meta['plugin']['translation']['notrans']) return false;
+        if(!empty($meta['plugin']['translation']['notrans'])) return false;
 
         return true;
     }
