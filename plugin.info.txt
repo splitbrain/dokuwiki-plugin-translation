@@ -3,7 +3,7 @@ base   translation-fork
 author Andreas Gohr
 author i-net software
 email  tools@inetsoftware.de
-date   2016-07-18
+date   2016-08-30
 name   Translation Plugin
 desc   Supports the easy setup of a multi-language wiki. Based up on translation by splitbrain
 url    http://www.dokuwiki.org/plugin:translation-fork
