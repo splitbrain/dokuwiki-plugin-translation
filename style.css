@@ -1,4 +1,4 @@
-.dokuwiki div.plugin_translation {
+.dokuwiki div.plugin_autotranslation {
     float: right;
     font-size: 95%;
     padding-right: 0.1em;
@@ -8,24 +8,24 @@
 
 /* List */
 
-.dokuwiki div.plugin_translation ul {
+.dokuwiki div.plugin_autotranslation ul {
     padding: 0;
     margin: 0;
 }
-.dokuwiki div.plugin_translation ul li {
+.dokuwiki div.plugin_autotranslation ul li {
     float: left;
     list-style-type: none;
     padding: 0;
     margin: 0.2em 0 0 0;
 }
-.dokuwiki div.plugin_translation ul li img {
+.dokuwiki div.plugin_autotranslation ul li img {
     margin: -0.1em 0.2em;
 }
 
-.dokuwiki div.plugin_translation ul li a.wikilink1:link,
-.dokuwiki div.plugin_translation ul li a.wikilink1:hover,
-.dokuwiki div.plugin_translation ul li a.wikilink1:active,
-.dokuwiki div.plugin_translation ul li a.wikilink1:visited {
+.dokuwiki div.plugin_autotranslation ul li a.wikilink1:link,
+.dokuwiki div.plugin_autotranslation ul li a.wikilink1:hover,
+.dokuwiki div.plugin_autotranslation ul li a.wikilink1:active,
+.dokuwiki div.plugin_autotranslation ul li a.wikilink1:visited {
     background-color: #000080;
     color: #fff;
     text-decoration:none;
@@ -34,10 +34,10 @@
     border: none !important;
 }
 
-.dokuwiki div.plugin_translation ul li a.wikilink2:link,
-.dokuwiki div.plugin_translation ul li a.wikilink2:hover,
-.dokuwiki div.plugin_translation ul li a.wikilink2:active,
-.dokuwiki div.plugin_translation ul li a.wikilink2:visited {
+.dokuwiki div.plugin_autotranslation ul li a.wikilink2:link,
+.dokuwiki div.plugin_autotranslation ul li a.wikilink2:hover,
+.dokuwiki div.plugin_autotranslation ul li a.wikilink2:active,
+.dokuwiki div.plugin_autotranslation ul li a.wikilink2:visited {
     background-color: #808080;
     color: #fff;
     text-decoration:none;
@@ -49,33 +49,33 @@
 
 /* Dropdown */
 
-.dokuwiki div.plugin_translation select,
-.dokuwiki div.plugin_translation input {
+.dokuwiki div.plugin_autotranslation select,
+.dokuwiki div.plugin_autotranslation input {
     border: none;
     background-color: #ccc;
 }
 
-.dokuwiki div.plugin_translation option.flag {
+.dokuwiki div.plugin_autotranslation option.flag {
     padding-left: 18px;
     background-repeat: no-repeat;
     background-position: left center;
 }
 
-.dokuwiki div.plugin_translation select.wikilink1,
-.dokuwiki div.plugin_translation option.wikilink1 {
+.dokuwiki div.plugin_autotranslation select.wikilink1,
+.dokuwiki div.plugin_autotranslation option.wikilink1 {
     color: #000080;
     text-align: center;
 }
 
-.dokuwiki div.plugin_translation select.wikilink2,
-.dokuwiki div.plugin_translation option.wikilink2 {
+.dokuwiki div.plugin_autotranslation select.wikilink2,
+.dokuwiki div.plugin_autotranslation option.wikilink2 {
     color: #808080;
     text-align: center;
 }
 
 /* flags for non-existing pages */
-.dokuwiki div.plugin_translation img.wikilink2,
-.dokuwiki div.plugin_translation .wikilink2 img {
+.dokuwiki div.plugin_autotranslation img.wikilink2,
+.dokuwiki div.plugin_autotranslation .wikilink2 img {
     opacity: 0.5;
 }
 
