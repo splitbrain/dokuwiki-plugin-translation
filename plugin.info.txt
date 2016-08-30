@@ -1,5 +1,5 @@
 # General Plugin Info do not edit
-base   translation-fork
+base   autotranslation
 author Andreas Gohr
 author i-net software
 email  tools@inetsoftware.de
