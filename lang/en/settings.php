@@ -19,3 +19,4 @@ $lang['display']                = 'Select what you\'d like to have shown in the 
 $lang['copytrans']              = 'Copy original language text into the editor when starting a new translation?';
 $lang['redirectlocalized']      = 'Redirect a page into the language of the user if (1) the page exists and (2) the user has chosen a language';
 $lang['autodetectnamespace']    = 'Detect a translated namespace. This supersedes the translationns setting and does only work for translated namespaces that use the language shortcut.';
+$lang['show_path']              = 'Show path on the missing translation page?';

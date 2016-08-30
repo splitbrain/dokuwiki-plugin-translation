@@ -16,5 +16,6 @@ $conf['about']         = '';
 $conf['localabout']    = 0;
 $conf['display']       = 'langcode,title';
 $conf['copytrans']     = 0;
+$conf['show_path']     = 1;
 $conf['redirectlocalized'] = 0;
 $conf['autodetectnamespace'] = 1;

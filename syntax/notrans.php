@@ -18,7 +18,7 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
     /**
      * Constructor. Load helper plugin
      */
-    function syntax_plugin_translation(){
+    function __construct(){
         $this->hlp =& plugin_load('helper', 'translation');
     }
 
