@@ -19,7 +19,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     /**
      * Initialize
      */
-    function helper_plugin_translation() {
+    function __construct() {
         global $conf;
         require_once(DOKU_INC . 'inc/pageutils.php');
         require_once(DOKU_INC . 'inc/utf8.php');
@@ -190,7 +190,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $skiptrans = trim($this->getConf('skiptrans'));
         if($skiptrans && preg_match('/' . $skiptrans . '/ui', ':' . $id)) return false;
         $meta = p_get_metadata($id);
-        if($meta['plugin']['translation']['notrans']) return false;
+        if(!empty($meta['plugin']['translation']['notrans'])) return false;
 
         return true;
     }
@@ -406,7 +406,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     /**
      * Checks if the current page is a translation of a page
      * in the default language. Displays a notice when it is
-     * older than the original page. Tries to lin to a diff
+     * older than the original page. Tries to link to a diff
      * with changes on the original since the translation
      */
     function checkage() {
@@ -427,7 +427,8 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         // get revision from before translation
         $orev = 0;
-        $revs = getRevisions($orig, 0, 100);
+        $changelog = new PageChangelog($orig);
+        $revs = $changelog->getRevisions(0, 100);
         foreach($revs as $rev) {
             if($rev < $INFO['lastmod']) {
                 $orev = $rev;
@@ -441,14 +442,32 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         // build the message and display it
         $orig = cleanID($orig);
         $msg = sprintf($this->getLang('outdated'), wl($orig));
-        if($orev) {
-            $msg .= sprintf(
-                ' ' . $this->getLang('diff'),
-                wl($orig, array('do' => 'diff', 'rev' => $orev))
-            );
+
+        $difflink = $this->getOldDiffLink($orig, $INFO['lastmod']);
+        if ($difflink) {
+            $msg .= sprintf(' ' . $this->getLang('diff'), $difflink);
         }
 
         echo '<div class="notify">' . $msg . '</div>';
+    }
+
+    function getOldDiffLink($id, $lastmod) {
+        // get revision from before translation
+        $orev = false;
+        $changelog = new PageChangelog($id);
+        $revs = $changelog->getRevisions(0, 100);
+        foreach($revs as $rev) {
+            if($rev < $lastmod) {
+                $orev = $rev;
+                break;
+            }
+        }
+        if($orev && !page_exists($id, $orev)) {
+            return false;
+        }
+        $id = cleanID($id);
+        return wl($id, array('do' => 'diff', 'rev' => $orev));
+
     }
     
     /**
