@@ -9,7 +9,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class helper_plugin_translation extends DokuWiki_Plugin {
+class helper_plugin_autotranslation extends DokuWiki_Plugin {
     var $translations = array();
     var $translationNs = '';
     var $defaultlang = '';
@@ -190,7 +190,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $skiptrans = trim($this->getConf('skiptrans'));
         if($skiptrans && preg_match('/' . $skiptrans . '/ui', ':' . $id)) return false;
         $meta = p_get_metadata($id);
-        if(!empty($meta['plugin']['translation']['notrans'])) return false;
+        if(!empty($meta['plugin']['autotranslation']['notrans'])) return false;
 
         return true;
     }
@@ -258,7 +258,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         list($lc, $idpart) = $this->getTransParts($INFO['id']);
         $lang = $this->realLC($lc);
 
-        $out = '<div class="plugin_translation">';
+        $out = '<div class="plugin_autotranslation">';
 
         //show title and about
         if(isset($this->opts['title'])) {

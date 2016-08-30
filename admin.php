@@ -14,7 +14,7 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
     function html() {
 
         /** @var helper_plugin_translation $helper */
-        $helper = plugin_load('helper', "translation");
+        $helper = plugin_load('helper', "autotranslation");
         $default_language = $helper->defaultlang;
 
         /** @var Doku_Renderer_xhtml $xhtml_renderer */

@@ -13,11 +13,11 @@ if(!defined('DOKU_INC')) die();
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 require_once(DOKU_PLUGIN . 'action.php');
 
-class action_plugin_translation extends DokuWiki_Action_Plugin {
+class action_plugin_autotranslation extends DokuWiki_Action_Plugin {
 
     /**
      * For the helper plugin
-     * @var helper_plugin_translation
+     * @var helper_plugin_autotranslation
      */
     var $helper = null;
 
@@ -27,7 +27,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * Constructor. Load helper plugin
      */
     function __construct() {
-        $this->helper =& plugin_load('helper', 'translation');
+        $this->helper =& plugin_load('helper', 'autotranslation');
     }
 
     /**
