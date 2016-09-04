@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Jaroslav Lichtblau <jlichtblau@seznam.cz>
  */
 $lang['translations']          = 'Seznam přeložených jazyků (ISO kódů) oddělený mezerami. Nezahrnujte defaultní jazyk!';
@@ -16,3 +16,4 @@ $lang['localabout']            = 'Použít přeložené verze stran o aplikaci (
 $lang['checkage']              = 'Upozorňovat na možné zastaralé překlady.';
 $lang['display']               = 'Vybrat co se má zobrazovat v menu pro výběr jazyka. Experti na použitelnost webu nedoporučují zobrazování obrázků vlajek zemí pro výběr jazyka.';
 $lang['copytrans']             = 'Kopírovat výchozí jazykovou verzi do editoru pro nový překlad?';
+$lang['show_path']             = 'Zobrazit cestu na chybějící stránku překladu?';
