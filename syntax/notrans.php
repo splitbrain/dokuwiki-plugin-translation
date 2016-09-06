@@ -8,7 +8,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_autotranslation_notrans extends DokuWiki_Syntax_Plugin {
 
     /**
      * for th helper plugin
@@ -19,7 +19,7 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
      * Constructor. Load helper plugin
      */
     function __construct(){
-        $this->hlp =& plugin_load('helper', 'translation');
+        $this->hlp =& plugin_load('helper', 'autotranslation');
     }
 
     /**
@@ -41,7 +41,7 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('~~NOTRANS~~',$mode,'plugin_translation_notrans');
+        $this->Lexer->addSpecialPattern('~~NOTRANS~~',$mode,'plugin_autotranslation_notrans');
     }
 
 
@@ -58,7 +58,7 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin {
     function render($format, Doku_Renderer $renderer, $data) {
         // store info in metadata
         if($format == 'metadata'){
-            $renderer->meta['plugin']['translation']['notrans'] = true;
+            $renderer->meta['plugin']['autotranslation']['notrans'] = true;
         }
         return false;
     }

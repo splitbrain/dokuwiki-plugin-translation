@@ -8,7 +8,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class syntax_plugin_translation_trans extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_autotranslation_trans extends DokuWiki_Syntax_Plugin {
     /**
      * What kind of syntax are we?
      */
@@ -27,7 +27,7 @@ class syntax_plugin_translation_trans extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('~~TRANS~~', $mode, 'plugin_translation_trans');
+        $this->Lexer->addSpecialPattern('~~TRANS~~', $mode, 'plugin_autotranslation_trans');
     }
 
     /**
@@ -46,8 +46,8 @@ class syntax_plugin_translation_trans extends DokuWiki_Syntax_Plugin {
         // disable caching
         $renderer->nocache();
 
-        /** @var helper_plugin_translation $hlp */
-        $hlp =  plugin_load('helper', 'translation');
+        /** @var helper_plugin_autotranslation $hlp */
+        $hlp =  plugin_load('helper', 'autotranslation');
         $renderer->doc .= $hlp->showTranslations();
         return true;
     }

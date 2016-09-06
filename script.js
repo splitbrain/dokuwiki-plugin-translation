@@ -9,12 +9,11 @@ jQuery(function(){
         var id = jQuery(this).val();
         // this should hopefully detect rewriting good enough:
         var action = $frm.attr('action');
-        if(action.substr(action.length-1) == '/'){
-            var link = action + id;
-        }else{
             var link = action + '?id=' + id;
+        if(action.substr(action.length-1) == '/'){
+            link = action + id;
         }
 
-        window.location.href= link;
+        window.location.href=link;
     });
 });

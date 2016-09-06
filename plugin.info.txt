@@ -1,8 +1,9 @@
 # General Plugin Info do not edit
-base   translation
+base   autotranslation
 author Andreas Gohr
-email  andi@splitbrain.org
-date   2016-07-18
+author i-net software
+email  tools@inetsoftware.de
+date   2016-08-30
 name   Translation Plugin
-desc   Supports the easy setup of a multi-language wiki.
-url    http://www.dokuwiki.org/plugin:translation
+desc   Supports the easy setup of a multi-language wiki. Based up on translation by splitbrain
+url    http://www.dokuwiki.org/plugin:translation-fork
