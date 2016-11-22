@@ -5,14 +5,15 @@
  *
  * @author Paulino Michelazzo <paulino@michelazzo.com.br>
  * @author Felipe Castro <fefcas@gmail.com>
+ * @author Edney Rossi <edneyrossi@gmail.com>
  */
-$lang['translations']          = 'Lista de idiomas (c&oacute;digos ISO) separada por espa&ccedil;os. N&atilde;o inclua o idioma padr&atilde;o.';
-$lang['translationns']         = 'Se voc&ecirc; deseja tradu&ccedil;&otilde;es somente abaixo de um determinado namespace, informe-o aqui.';
+$lang['translations']          = 'Lista de idiomas separados por espaço (códigos ISO).';
+$lang['translationns']         = 'Se você deseja traduções apenas para certo idioma, coloque-o aqui.';
 $lang['skiptrans']             = 'Quando o nome-de-página estiver de acordo com esta expressão regular, não mostre o menu de tradução.';
 $lang['dropdown']              = 'Usar listagem desdobrada para mostrar as traduções (recomendado para mais que 5 línguas).';
-$lang['translateui']           = 'A interface tamb&eacute;m deve ser alterada para o idioma selecionado pelo usu&aacute;rio?';
+$lang['translateui']           = 'A interface do usuário deve ser trocada para o idioma, também?';
 $lang['redirectstart']         = 'A página inicial deve redirecionar automaticamente para o "namespace" da língua usando a detecção de idiomas no navegador?';
-$lang['about']                 = 'Informe uma p&aacute;gina onde a funcionalidade de tradu&ccedil;&atilde;o &eacute; explicada para o usu&aacute;rio. Ela pode ser conectada com o selecionador de idiomas.';
+$lang['about']                 = 'Digite um nome de página aqui onde o recurso de tradução é explicado para seus usuários. Ele será vinculado a partir do seletor de idioma.';
 $lang['localabout']            = 'Usar versões localizadas da página "a respeito de" (em vez de uma página global "a respeito de").';
 $lang['checkage']              = 'Avisar sobre possíveis traduções desatualizadas.';
 $lang['display']               = 'Selecionar o que você gostaria de mostrar no seletor de línguas. Note que usar bandeirinhas de países para selecionar línguas não é recomendado por especialistas em usabilidade.';
