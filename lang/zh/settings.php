@@ -2,9 +2,10 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author ZDYX <zhangduyixiong@gmail.com>
  * @author oott123 <ip.192.168.1.1@qq.com>
+ * @author kuma <kuma000@qq.com>
  */
 $lang['translations']          = '使用空格分隔的翻译语言列表（ISO 码）。请勿填入默认语言。';
 $lang['translationns']         = '如果您只希望本插件作用于某个特定的名称空间，请在这里写上其名称。';
@@ -17,3 +18,4 @@ $lang['localabout']            = '使用本地化的关于页面（而不是一�
 $lang['checkage']              = '警告：可能过时了的翻译。';
 $lang['display']               = '选择你想在选择器中显示什么。注意可用性专家并不推荐使用国旗选择语言。';
 $lang['copytrans']             = '开始新翻译的时候在编辑器中复制原始语言版本？';
+$lang['show_path']             = '缺失的翻译页面上显示路径?';
