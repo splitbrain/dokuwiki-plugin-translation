@@ -149,7 +149,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $skiptrans = trim($this->getConf('skiptrans'));
         if($skiptrans && preg_match('/' . $skiptrans . '/ui', ':' . $id)) return false;
         $meta = p_get_metadata($id);
-        if($meta['plugin']['translation']['notrans']) return false;
+        if(!empty($meta['plugin']['translation']['notrans'])) return false;
 
         return true;
     }
@@ -313,10 +313,12 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         // local language name
         $localname = $this->getLocalName($lang);
 
+        $divClass = 'li';
         // current?
         if($ID == $link) {
             $sel = ' selected="selected"';
             $class .= ' cur';
+            $divClass .= ' cur';
         } else {
             $sel = '';
         }
@@ -349,7 +351,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
             $out .= $display;
             $out .= '</option>';
         } else {
-            $out .= '<li><div class="li">';
+            $out .= "<li><div class='$divClass'>";
             $out .= '<a href="' . wl($link) . '" class="' . $class . '" title="' . hsc($localname) . '">';
             if($flag) $out .= '<img src="' . $flag . '" alt="' . hsc($lang) . '" height="11" />';
             $out .= $display;
