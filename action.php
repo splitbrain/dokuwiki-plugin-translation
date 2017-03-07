@@ -10,9 +10,9 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
-require_once(DOKU_PLUGIN . 'action.php');
-
+/**
+ * Class action_plugin_translation
+ */
 class action_plugin_translation extends DokuWiki_Action_Plugin {
 
     /**
@@ -31,7 +31,9 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     }
 
     /**
-     * Register the events
+     * Registers a callback function for a given event
+     *
+     * @param Doku_Event_Handler $controller
      */
     function register(Doku_Event_Handler $controller) {
         $scriptName = basename($_SERVER['PHP_SELF']);
@@ -70,10 +72,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * Hook Callback. Make current language available as page template placeholder and handle
      * original language copying
      *
-     * @param $event
+     * @param Doku_Event $event
      * @param $args
      */
-    function page_template_replacement(&$event, $args) {
+    function page_template_replacement(Doku_Event $event, $args) {
         global $ID;
 
         // load orginal content as template?
@@ -121,10 +123,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     /**
      * Hook Callback. Load correct translation when loading JavaScript
      *
-     * @param $event
+     * @param Doku_Event $event
      * @param $args
      */
-    function translation_js(&$event, $args) {
+    function translation_js(Doku_Event $event, $args) {
         global $conf;
         if(!isset($_GET['lang'])) return;
         if(!in_array($_GET['lang'], $this->helper->translations)) return;
@@ -136,11 +138,11 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     /**
      * Hook Callback. Pass language code to JavaScript dispatcher
      *
-     * @param $event
+     * @param Doku_Event $event
      * @param $args
      * @return bool
      */
-    function setJsCacheKey(&$event, $args) {
+    function setJsCacheKey(Doku_Event $event, $args) {
         if(!isset($this->locale)) return false;
         $count = count($event->data['script']);
         for($i = 0; $i < $count; $i++) {
@@ -155,10 +157,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     /**
      * Hook Callback. Make sure the JavaScript is translation dependent
      *
-     * @param $event
+     * @param Doku_Event $event
      * @param $args
      */
-    function translation_jscache(&$event, $args) {
+    function translation_jscache(Doku_Event $event, $args) {
         if(!isset($_GET['lang'])) return;
         if(!in_array($_GET['lang'], $this->helper->translations)) return;
 
@@ -182,10 +184,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     /**
      * Hook Callback. Translate the AJAX loaded media manager
      *
-     * @param $event
+     * @param Doku_Event $event
      * @param $args
      */
-    function translate_media_manager(&$event, $args) {
+    function translate_media_manager(Doku_Event $event, $args) {
         global $conf;
         if(isset($_REQUEST['ID'])) {
             $id = getID();
@@ -203,10 +205,13 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
     /**
      * Hook Callback. Change the UI language in foreign language namespaces
+     *
+     * @param Doku_Event $event
+     * @param $args
+     * @return bool|void
      */
-    function translation_hook(&$event, $args) {
+    function translation_hook(Doku_Event $event, $args) {
         global $ID;
-        global $lang;
         global $conf;
         global $ACT;
         // redirect away from start page?
@@ -244,8 +249,11 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     /**
      * Hook Callback.  Resort page match results so that results are ordered by translation, having the
      * default language first
+     *
+     * @param Doku_Event $event
+     * @param $args
      */
-    function translation_search(&$event, $args) {
+    function translation_search(Doku_Event $event, $args) {
 
         if($event->data['has_titles']) {
             // sort into translation slots
