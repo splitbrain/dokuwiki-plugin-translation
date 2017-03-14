@@ -212,6 +212,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      */
     function translation_hook(Doku_Event $event, $args) {
         global $ID;
+        global $lang
         global $conf;
         global $ACT;
         // redirect away from start page?
