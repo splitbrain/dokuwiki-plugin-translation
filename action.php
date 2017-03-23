@@ -208,11 +208,12 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      *
      * @param Doku_Event $event
      * @param $args
-     * @return bool|void
+     * @return bool
      */
     function translation_hook(Doku_Event $event, $args) {
         global $ID;
-        global $lang
+        /** @noinspection PhpUnusedLocalVariableInspection we include the language file later on */
+        global $lang;
         global $conf;
         global $ACT;
         // redirect away from start page?
@@ -231,7 +232,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
             $_SESSION[DOKU_COOKIE]['translationlc'] = $lc;
         }
         if(!$lc) $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
-        if(!$lc) return;
+        if(!$lc) return false;
         $this->locale = $lc;
 
         if(!$this->getConf('translateui')) {
