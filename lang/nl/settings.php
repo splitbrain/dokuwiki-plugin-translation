@@ -2,9 +2,10 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Gerrit <klapinklapin@gmail.com>
  * @author Gerrit Uitslag <klapinklapin@gmail.com>
+ * @author Marcel Bachus <marcel.bachus@ziggo.nl>
  */
 $lang['translations']          = 'Spatiegescheiden lijst van vertalingen (ISO codes).';
 $lang['translationns']         = 'Als je alleen vertalingen in een bepaalde namespace wenst, plaatst die dan hier.';
@@ -17,3 +18,4 @@ $lang['localabout']            = 'Gebruik vertaalde versies van bovengenoemde ve
 $lang['checkage']              = 'Waarschuw voor mogelijk gedateerde vertalingen.';
 $lang['display']               = 'Selecteer wat je wil zien in de talenkiezer. Let op dat het gebruik van landenvlaggen in de talenkiezer niet altijd gebruiksvriendelijkheid is.';
 $lang['copytrans']             = 'De tekst in de oorspronkelijke taal naar het bewerkvenster kopiëren als er een nieuwe vertaling wordt begonnen.';
+$lang['show_path']             = 'Toon het pad naar de missende vertalings pagina?';
