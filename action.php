@@ -19,9 +19,9 @@ class action_plugin_autotranslation extends DokuWiki_Action_Plugin {
      * For the helper plugin
      * @var helper_plugin_autotranslation
      */
-    var $helper = null;
+    private $helper = null;
 
-    var $locale;
+    private $locale;
 
     /**
      * Constructor. Load helper plugin

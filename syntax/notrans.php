@@ -13,7 +13,7 @@ class syntax_plugin_autotranslation_notrans extends DokuWiki_Syntax_Plugin {
     /**
      * for th helper plugin
      */
-    var $hlp = null;
+    private $hlp = null;
 
     /**
      * Constructor. Load helper plugin

@@ -10,11 +10,13 @@
 if(!defined('DOKU_INC')) die();
 
 class helper_plugin_autotranslation extends DokuWiki_Plugin {
-    var $translations = array();
-    var $translationNs = '';
-    var $defaultlang = '';
-    var $LN = array(); // hold native names
-    var $opts = array(); // display options
+
+    public $translations = array();
+    public $translationNs = '';
+    public $defaultlang = '';
+
+    private $opts = array(); // display options
+    private $LN = array(); // hold native names
 
     /**
      * Initialize
@@ -61,10 +63,10 @@ class helper_plugin_autotranslation extends DokuWiki_Plugin {
      **/
     function setupTNS($ID="") {
         global $conf;
-        
+
         if ( !empty( $this->translationsNs) ) { return $this->translationsNs; }
         if ( empty($ID) ) { $ID = getID(); }
-        
+
         // autodetect?
         // this will only work for namespaces other than the root and default language
         if ( $this->getConf('autodetectnamespace') )
@@ -82,18 +84,18 @@ class helper_plugin_autotranslation extends DokuWiki_Plugin {
                 }
             }
         }
-        
+
         // Array of translations can be givven
         $tnsA = explode(' ', $this->getConf('translationns'));
         if ( empty($tnsA) ) return ''; // there is just this one - and translation is active.
-        
+
         usort($tnsA,array($this, 'lensort') );
         foreach ( $tnsA as $tns ) {
             $tns = cleanID(trim($tns));
             if($tns && substr($tns, -1) != ':') { $tns .= ':'; }
             if($tns && strpos($ID,$tns) === false) continue;
             if($tns == ':' ) { $tns = ''; }
-            
+
             return $tns;
         }
 
@@ -469,7 +471,7 @@ class helper_plugin_autotranslation extends DokuWiki_Plugin {
         return wl($id, array('do' => 'diff', 'rev' => $orev));
 
     }
-    
+
     /**
      * Checks if the current ID has a translated page
      */
@@ -484,7 +486,7 @@ class helper_plugin_autotranslation extends DokuWiki_Plugin {
         if ( !$this->istranslatable($id) ) return false;
 
         $idpart = $this->getIDPart($inputID);
-        
+
         foreach($this->translations as $t)
         {
             list($link,$name) = $this->buildTransID($t,$idpart,false);
