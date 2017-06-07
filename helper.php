@@ -89,7 +89,12 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * languages
      */
     function getBrowserLang() {
-        $rx = '/(^|,|:|;|-)(' . join('|', $this->translations) . ')($|,|:|;|-)/i';
+        global $conf;
+        $langs = $this->translations;
+        if (!in_array($conf['lang'], $langs)) {
+            $langs[] = $conf['lang'];
+        }
+        $rx = '/(^|,|:|;|-)(' . join('|', $langs) . ')($|,|:|;|-)/i';
         if(preg_match($rx, $_SERVER['HTTP_ACCEPT_LANGUAGE'], $match)) {
             return strtolower($match[2]);
         }
@@ -105,7 +110,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * @return array
      */
     function buildTransID($lng, $idpart) {
-        if($lng) {
+        if($lng && in_array($lng, $this->translations)) {
             $link = ':' . $this->translationNs . $lng . ':' . $idpart;
             $name = $lng;
         } else {

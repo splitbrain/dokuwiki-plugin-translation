@@ -219,9 +219,12 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         // redirect away from start page?
         if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show') {
             $lc = $this->helper->getBrowserLang();
-            if(!$lc) $lc = $conf['lang'];
-            header('Location: ' . wl($lc . ':' . $conf['start'], '', true, '&'));
-            exit;
+
+            list($translatedStartpage,) = $this->helper->buildTransID($lc, $conf['start']);
+            if (cleanID($translatedStartpage) !== cleanID($ID)) {
+                header('Location: ' . wl($translatedStartpage, '', true, '&'));
+                exit;
+            }
         }
 
         // check if we are in a foreign language namespace
