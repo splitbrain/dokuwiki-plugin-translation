@@ -217,13 +217,12 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
         global $conf;
         global $ACT;
         // redirect away from start page?
-        if($this->conf['redirectstart'] && $ID == $conf['start'] && $ACT == 'show') {
+        if($this->getConf('redirectstart') && $ID == $conf['start'] && $ACT == 'show') {
             $lc = $this->helper->getBrowserLang();
 
             list($translatedStartpage,) = $this->helper->buildTransID($lc, $conf['start']);
             if (cleanID($translatedStartpage) !== cleanID($ID)) {
-                header('Location: ' . wl($translatedStartpage, '', true, '&'));
-                exit;
+                send_redirect(wl($translatedStartpage, '', true));
             }
         }
 
