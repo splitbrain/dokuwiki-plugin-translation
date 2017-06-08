@@ -27,7 +27,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         require_once(DOKU_INC . 'inc/pageutils.php');
         require_once(DOKU_INC . 'inc/utf8.php');
 
-        $this->loadConf();
+        $this->loadTranslationNamespaces();
 
         // load language names
         $this->LN = confToHash(dirname(__FILE__) . '/lang/langnames.txt');
@@ -58,7 +58,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
     /**
      * Parse 'translations'-setting into $this->translations
      */
-    public function loadConf() {
+    public function loadTranslationNamespaces() {
         // load wanted translation into array
         $this->translations = strtolower(str_replace(',', ' ', $this->getConf('translations')));
         $this->translations = array_unique(array_filter(explode(' ', $this->translations)));

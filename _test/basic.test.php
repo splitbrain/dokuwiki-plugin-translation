@@ -93,8 +93,9 @@ class basic_plugin_translation_test extends DokuWikiTest {
         $conf['plugin']['translation']['translations'] = $translationsOption;
         $conf['plugin']['translation']['redirectstart'] = 1;
 
+        /** @var helper_plugin_translation $helper */
         $helper = plugin_load('helper', 'translation');
-        $helper->loadConf();
+        $helper->loadTranslationNamespaces();
 
         $request = new TestRequest();
         $request->setServer('HTTP_ACCEPT_LANGUAGE', $httpAcceptHeader);
