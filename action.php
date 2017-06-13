@@ -61,6 +61,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         if($scriptName !== 'js.php' && $scriptName !== 'ajax.php') {
             $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
+            $controller->register_hook('DETAIL_STARTED', 'BEFORE', $this, 'translation_hook');
             $controller->register_hook('MEDIAMANAGER_STARTED', 'BEFORE', $this, 'translation_hook');
         }
 
