@@ -27,10 +27,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         require_once(DOKU_INC . 'inc/pageutils.php');
         require_once(DOKU_INC . 'inc/utf8.php');
 
-        // load wanted translation into array
-        $this->translations = strtolower(str_replace(',', ' ', $this->getConf('translations')));
-        $this->translations = array_unique(array_filter(explode(' ', $this->translations)));
-        sort($this->translations);
+        $this->loadTranslationNamespaces();
 
         // load language names
         $this->LN = confToHash(dirname(__FILE__) . '/lang/langnames.txt');
@@ -56,6 +53,16 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         $this->translationNs = cleanID($this->getConf('translationns'));
         if($this->translationNs) $this->translationNs .= ':';
+    }
+
+    /**
+     * Parse 'translations'-setting into $this->translations
+     */
+    public function loadTranslationNamespaces() {
+        // load wanted translation into array
+        $this->translations = strtolower(str_replace(',', ' ', $this->getConf('translations')));
+        $this->translations = array_unique(array_filter(explode(' ', $this->translations)));
+        sort($this->translations);
     }
 
     /**
@@ -89,7 +96,12 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * languages
      */
     function getBrowserLang() {
-        $rx = '/(^|,|:|;|-)(' . join('|', $this->translations) . ')($|,|:|;|-)/i';
+        global $conf;
+        $langs = $this->translations;
+        if (!in_array($conf['lang'], $langs)) {
+            $langs[] = $conf['lang'];
+        }
+        $rx = '/(^|,|:|;|-)(' . join('|', $langs) . ')($|,|:|;|-)/i';
         if(preg_match($rx, $_SERVER['HTTP_ACCEPT_LANGUAGE'], $match)) {
             return strtolower($match[2]);
         }
@@ -105,7 +117,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * @return array
      */
     function buildTransID($lng, $idpart) {
-        if($lng) {
+        if($lng && in_array($lng, $this->translations)) {
             $link = ':' . $this->translationNs . $lng . ':' . $idpart;
             $name = $lng;
         } else {
