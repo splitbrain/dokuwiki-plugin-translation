@@ -3,7 +3,7 @@
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  *
- * @author Felix <j.felix@mueller-donath.de>
+ * @author F. Mueller-Donath <j.felix@mueller-donath.de>
  */
 $lang['translations']          = 'Liste der Sprachen (ISO codes), mittels Leerzeichen separiert. Die Default-Sprache nicht angeben.';
 $lang['translationns']         = 'Wenn die Übersetzung nur unterhalb eines Namensraumes gelten soll, diesen hier angeben.';
@@ -15,3 +15,5 @@ $lang['about']                 = 'Gebe hier eine Seite an, welche den Mechanismu
 $lang['localabout']            = 'Sprachspezifische Versionen der oben angegebenen Seite (anstelle einer globalen) nutzen.';
 $lang['checkage']              = 'Warnungen von möglicherweise veralteten Übersetzungen anzeigen.';
 $lang['display']               = 'Gib hier an welches/r Symbol/Text im Sprachumschalter angezeigt werden soll. (Die Nutzung von länderspezifischen Flaggen wird aus Gründen der Benutzbarkeit nicht empfohlen.)';
+$lang['copytrans']             = 'Original Sprachversion in den Editor kopieren wenn eine neue Übersetzung begonnen wird?';
+$lang['show_path']             = 'Seitenpfad in der Übersicht der fehlenden Übersetzungen anzeigen?';
