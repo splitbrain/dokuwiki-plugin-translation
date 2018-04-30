@@ -2,7 +2,8 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author Domingo Redal <docxml@gmail.com>
  * @author Cristina Amor <princesa.7@gmail.com>
  * @author Camilo Sampedro <sampedro1903@gmail.com>
  * @author carlos <carloscyb@gmail.com>
@@ -18,3 +19,4 @@ $lang['localabout']            = 'Utiliza versiones localizadas de la página \'
 $lang['checkage']              = 'Alertar sobre posibles traducciones obsoletas.';
 $lang['display']               = 'Selecciona lo que quieras que sea mostrado en el selector de idioma. Ten en cuenta que el uso de parámetros de país para la selección de idioma no está recomendada por los expertos en usabilidad.';
 $lang['copytrans']             = '¿Mostrar el texto en el idioma original en el editor cuando se comienza una nueva traducción?';
+$lang['show_path']             = '¿Muestra la ruta en la página de traducción ausente?';
