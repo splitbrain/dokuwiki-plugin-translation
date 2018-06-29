@@ -3,14 +3,30 @@
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  *
+ * @author licuadoras industriales <angelwashburn@t-online.de>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
-$lang['translations']          = 'Übersetzungen dieser Seite';
-$lang['outdated']              = 'Diese Übersetzung ist älter als das <a href="%s" class="wikilink1">Original</a> und ist eventuell veraltet.';
-$lang['diff']                  = '<a href="%s" class="wikilink1">Änderungen</a> zeigen.';
-$lang['transloaded']           = 'Der Inhalt dieser Seite auf %s wurde in den Editor geladen um die Übersetzung zu erleichtern.<br />Sie können Ihre Arbeit auch mit einer der folgenden vorhandenen Übersetzungen beginnen: %s.';
-$lang['menu'] = "veraltete und fehlende Übersetzungen";
-$lang['missing']               = 'Fehlt!';
-$lang['old']                   = 'veraltet';
-$lang['current']               = 'aktuell';
-$lang['path']                  = 'Pfad';
+$lang['translations']          = 'This is very interesting, You\'re a very skilled blogger. I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+Also, I\'ve shared your web site in my social networks!';
+$lang['outdated']              = 'http://www.equiposgastronomicos.cl/';
+$lang['diff']                  = 'http://www.equiposgastronomicos.cl/';
+$lang['transloaded']           = 'This is very interesting, You\'re a very skilled blogger.
+
+I\'ve joined your rss feed and look forward to seeking more of your 
+wonderful post. Also, I\'ve shared your web site in my 
+social networks!';
+$lang['menu']                  = 'This is very interesting, You\'re a very skilled blogger.
+
+I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+Also, I\'ve shared your web site in my social networks!';
+$lang['missing']               = 'This is very interesting, You\'re a very skilled blogger.
+I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+Also, I\'ve shared your web site in my social networks!';
+$lang['old']                   = 'This is very interesting, You\'re a very skilled blogger. I\'ve 
+joined your rss feed and look forward to seeking more of 
+your wonderful post. Also, I\'ve shared your web site in my social networks!';
+$lang['current']               = 'This is very interesting, You\'re a very skilled 
+blogger. I\'ve joined your rss feed and look forward to seeking more of 
+your wonderful post. Also, I\'ve shared your web site in my social networks!';
+$lang['path']                  = 'This is very interesting, You\'re a very skilled blogger. I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+Also, I\'ve shared your web site in my social networks!';

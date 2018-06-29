@@ -2,18 +2,36 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author licuadoras industriales <angelwashburn@t-online.de>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
-$lang['translations']          = 'Liste der Sprachen (ISO codes), mittels Leerzeichen separiert. Die Default-Sprache nicht angeben.';
-$lang['translationns']         = 'Wenn die Übersetzung nur unterhalb eines Namensraumes gelten soll, diesen hier angeben.';
-$lang['skiptrans']             = 'Wenn der Seitennamen dem regulären Ausdruck entspricht, dann den Sprachumschalter nicht anzeigen.';
-$lang['dropdown']              = 'Eine Auswahlliste benutzen, um die Übersetzungen anzuzeigen (zu bevorzugen bei mehr als fünf Sprachen).';
-$lang['translateui']           = 'Soll die Sprache der Benutzerschnittstelle auch in die jeweilige Fremdspache umgeschaltet werden?';
-$lang['redirectstart']         = 'Anhand des Browsers des Benutzers erkennen, welche Sprache angezeigt werden soll. (Startseite leitet in den passenden Namensraum um).';
-$lang['about']                 = 'Geben Sie hier eine Seite an, welche den Mechanismus der Übersetzung erklärt. Sie wird vom Sprachumschalter verlinkt.';
-$lang['localabout']            = 'Sprachspezifische Versionen der oben angegebenen Seite (anstelle einer globalen) nutzen.';
-$lang['checkage']              = 'Warnungen von möglicherweise veralteten Übersetzungen anzeigen.';
-$lang['display']               = 'Geben Sie an welches/r Symbol/Text im Sprachumschalter angezeigt werden soll. (Die Nutzung von länderspezifischen Flaggen wird aus Gründen der Benutzbarkeit nicht empfohlen.)';
-$lang['copytrans']             = 'Original Sprachversion in den Editor kopieren wenn eine neue Übersetzung begonnen wird?';
-$lang['show_path']             = 'Seitenpfad in der Übersicht der fehlenden Übersetzungen anzeigen?';
+$lang['translations']          = 'This is very interesting, You\'re a very skilled blogger.
+I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+
+Also, I\'ve shared your web site in my social networks!';
+$lang['translationns']         = 'Angel';
+$lang['skiptrans']             = 'This is very interesting, You\'re a very skilled blogger.
+
+I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+
+Also, I\'ve shared your web site in my social networks!';
+$lang['dropdown']              = 'This is very interesting, You\'re a very skilled blogger.
+
+I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+Also, I\'ve shared your web site in my social networks!';
+$lang['translateui']           = 'Angel';
+$lang['redirectstart']         = 'Washburn';
+$lang['about']                 = 'Nice when you need to meet you, my make is Carmine Billman  although it is probably not often the name attached to my your pregnancy certificate. The favorite diversion for the actual and your girl\'s kids is usually jogging but nevertheless she won\'t be able make it all her career. His wife yet him chose to take up residence in Denver co. He is going to be a mail service staff member. Check launched her page here: http://www.equiposgastronomicos.cl/';
+$lang['localabout']            = 'Nice when you need to meet you, my make is Carmine Billman  although it is probably not often the name attached to my your pregnancy certificate. The favorite diversion for the actual and your girl\'s kids is usually jogging but nevertheless she won\'t be able make it all her career. His wife yet him chose to take up residence in Denver co. He is going to be a mail service staff member. Check launched her page here: http://www.equiposgastronomicos.cl/';
+$lang['checkage']              = 'Nice when you need to meet you, my make is Carmine Billman  although it is probably not often the name attached to my your pregnancy certificate. The favorite diversion for the actual and your girl\'s kids is usually jogging but nevertheless she won\'t be able make it all her career. His wife yet him chose to take up residence in Denver co. He is going to be a mail service staff member. Check launched her page here: http://www.equiposgastronomicos.cl/';
+$lang['display']               = 'Germany';
+$lang['copytrans']             = 'This is very interesting, You\'re a very skilled blogger.
+I\'ve joined your rss feed and look forward to seeking more of your wonderful post.
+
+Also, I\'ve shared your web site in my social networks!';
+$lang['show_path']             = 'This is very interesting, You\'re a very skilled blogger.
+
+I\'ve joined your rss feed and look forward to seeking more 
+of your wonderful post. Also, I\'ve shared 
+your web site in my social networks!';
