@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ *
  * English language file
  *
  * @author Andreas Gohr <andi@splitbrain.org>
