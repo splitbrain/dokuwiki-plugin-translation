@@ -27,7 +27,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
      * Constructor. Load helper plugin
      */
     function __construct() {
-        $this->helper =& plugin_load('helper', 'translation');
+        $this->helper = plugin_load('helper', 'translation');
     }
 
     /**
