@@ -39,7 +39,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         $this->opts = array_fill_keys($this->opts, true);
 
         // get default translation
-        if(!$conf['lang_before_translation']) {
+        if(!empty($conf['lang_before_translation'])) {
             $dfl = $conf['lang'];
         } else {
             $dfl = $conf['lang_before_translation'];
