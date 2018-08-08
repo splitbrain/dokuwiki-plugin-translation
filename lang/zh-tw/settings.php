@@ -1,6 +1,12 @@
 <?php
+
 /**
+ * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ *
  * Traditional Chinese language file
+ *
+ * @author incognito
+ * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = '空白分隔的翻譯語言列表 (ISO 碼)。不填預設語言將使用根命名空間。';
@@ -14,3 +20,5 @@ $lang['localabout']    = '解釋頁使用翻譯版本 (而非一個通用頁)。
 $lang['checkage']      = '警告可能過時的翻譯。';
 $lang['display']       = '選擇你希望在語言選單中顯示的項目。注意國旗 (flag) 選項是不被易用性專家建議的。';
 
+$lang['copytrans']     = '開始新翻譯時，將原始語言文本複製到編輯器中？';
+$lang['show_path']     = '在缺少的翻譯頁面上顯示路徑？';
