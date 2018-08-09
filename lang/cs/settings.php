@@ -6,7 +6,6 @@
  * Czech language file
  *
  * @author Jaroslav Lichtblau <jlichtblau@seznam.cz>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Seznam přeložených jazyků (ISO kódů) oddělený mezerami. Nezahrnujte defaultní jazyk!';
