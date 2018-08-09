@@ -6,7 +6,6 @@
  * Catalan language file
  *
  * @author Jordi Robert Sancho <jrobertsancho@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'Traduccions d\'aquesta pàgina';
