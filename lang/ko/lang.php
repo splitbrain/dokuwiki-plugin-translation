@@ -6,7 +6,6 @@
  * Korean language file
  *
  * @author Myeongjin <aranet100@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = '이 문서의 번역';
