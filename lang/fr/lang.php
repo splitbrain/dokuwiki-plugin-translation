@@ -9,7 +9,6 @@
  * @author NicolasFriedli <nicolas@theologique.ch>
  * @author Gilles-Philippe Morin <gilles.philippe.morin@gmail.com>
  * @author Schplurtz le Déboulonné <schplurtz@laposte.net>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'Traductions de cette page';
