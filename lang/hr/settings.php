@@ -6,7 +6,6 @@
  * Croatian language file
  *
  * @author Davor Turkalj <turki.bsc@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Razmacima odvojena lista podržanih jezika (ISO oznake).';
