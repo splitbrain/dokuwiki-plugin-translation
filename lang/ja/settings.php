@@ -6,7 +6,6 @@
  * Japanese language file
  *
  * @author Hideaki SAWADA <chuno@live.jp>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = '翻訳言語（ISOコード）のスペース区切り一覧';
