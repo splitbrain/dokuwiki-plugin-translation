@@ -9,7 +9,6 @@
  * @author Camilo Sampedro <sampedro1903@gmail.com>
  * @author carlos <carloscyb@gmail.com>
  * @author Domingo Redal <docxml@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Lista de lenguajes para traducción (Códigos ISO), separados por espacios. No incluir el lenguaje por defecto.';
