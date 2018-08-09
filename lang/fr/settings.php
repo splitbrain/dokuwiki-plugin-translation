@@ -9,7 +9,6 @@
  * @author Vincent Feltz <psycho@feltzv.fr>
  * @author NicolasFriedli <nicolas@theologique.ch>
  * @author Schplurtz le Déboulonné <schplurtz@laposte.net>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Liste des langues disponibles séparées par des espaces (codes ISO).';
