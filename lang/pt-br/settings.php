@@ -8,7 +8,6 @@
  * @author Paulino Michelazzo <paulino@michelazzo.com.br>
  * @author Felipe Castro <fefcas@gmail.com>
  * @author Edney Rossi <edneyrossi@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Lista de idiomas separados por espaço (códigos ISO).';
