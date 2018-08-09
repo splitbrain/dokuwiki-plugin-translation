@@ -6,7 +6,6 @@
  * Japanese language file
  *
  * @author Hideaki SAWADA <chuno@live.jp>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'このページの翻訳';
