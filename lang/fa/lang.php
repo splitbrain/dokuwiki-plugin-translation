@@ -6,7 +6,6 @@
  * Iranian language file
  *
  * @author Sam01 <m.sajad079@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'ترجمه‌های این صفحه';
