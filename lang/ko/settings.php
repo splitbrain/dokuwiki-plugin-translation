@@ -6,7 +6,6 @@
  * Korean language file
  *
  * @author Myeongjin <aranet100@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = '번역 언어의 공백으로 구분한 목록 (ISO 코드).';
