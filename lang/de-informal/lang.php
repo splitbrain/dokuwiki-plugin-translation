@@ -6,7 +6,6 @@
  * German informal language file
  *
  * @author F. Mueller-Donath <j.felix@mueller-donath.de>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'Übersetzungen dieser Seite';
