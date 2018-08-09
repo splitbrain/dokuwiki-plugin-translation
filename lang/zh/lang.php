@@ -8,7 +8,6 @@
  * @author hfl <huangfeilong@gmail.com>
  * @author oott123 <ip.192.168.1.1@qq.com>
  * @author kuma <kuma000@qq.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = '本页面的其他翻译';
