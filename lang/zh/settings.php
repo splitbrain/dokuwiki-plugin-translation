@@ -8,7 +8,6 @@
  * @author ZDYX <zhangduyixiong@gmail.com>
  * @author oott123 <ip.192.168.1.1@qq.com>
  * @author kuma <kuma000@qq.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = '使用空格分隔的翻译语言列表（ISO 码）。请勿填入默认语言。';
