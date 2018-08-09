@@ -8,7 +8,6 @@
  * @author Camilo Sampedro <sampedro1903@gmail.com>
  * @author carlos <carloscyb@gmail.com>
  * @author Domingo Redal <docxml@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'Traducciones de esta página';
