@@ -7,7 +7,6 @@
  *
  * @author Felipe Castro <fefcas@gmail.com>
  * @author Edney Rossi <edneyrossi@gmail.com>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'Traduções desta página';
