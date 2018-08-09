@@ -8,7 +8,6 @@
  * @author Олексій <alexey.furashev@gmail.com>
  * @author Vitaly <vitaly.balashov@smuzzy.com.ua>
  * @author Oleksiy Zagorskyi <zalex_ua@i.ua>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Список підтримуваних мов перекладу (двохсимвольні коди ISO). Розділіть значення комами або пробілами.';
