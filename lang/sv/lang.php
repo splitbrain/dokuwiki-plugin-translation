@@ -6,7 +6,6 @@
  * Swedish language file
  *
  * @author Tor Härnqvist <tor@harnqvist.se>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations'] = 'Översättningar av denna sida';
