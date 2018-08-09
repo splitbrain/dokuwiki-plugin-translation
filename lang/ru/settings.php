@@ -8,7 +8,6 @@
  * @author Oleksiy Zagorskyi <zalex_ua@i.ua>
  * @author Aleksandr Selivanov <alexgearbox@gmail.com>
  * @author Anotheroneuser <w20151222@ya.ru>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Список поддерживаемых языков перевода (двухсимвольные коды ISO). Разделите значения пробелами.';
