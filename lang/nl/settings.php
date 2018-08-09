@@ -7,7 +7,6 @@
  *
  * @author Gerrit Uitslag <klapinklapin@gmail.com>
  * @author Marcel Bachus <marcel.bachus@ziggo.nl>
- * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Spatiegescheiden lijst van vertalingen (ISO codes).';
