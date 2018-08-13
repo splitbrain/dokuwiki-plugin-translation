@@ -223,7 +223,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
             list($translatedStartpage,) = $this->helper->buildTransID($lc, $conf['start']);
             if (cleanID($translatedStartpage) !== cleanID($ID)) {
-                send_redirect(wl($translatedStartpage, '', true));
+                send_redirect(wl(cleanID($translatedStartpage), '', true));
             }
         }
 
