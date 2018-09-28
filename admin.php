@@ -36,7 +36,7 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin {
 
         $pages = $this->getAllPages();
         foreach ($pages as $page) {
-            if (!$helper->getLangPart($page["id"]) === $default_language ||
+            if ($helper->getLangPart($page["id"]) !== $default_language ||
                 !$helper->istranslatable($page["id"], false) ||
                 !page_exists($page["id"])
             ) {
