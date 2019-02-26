@@ -2,10 +2,10 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author Jacob Palm <mail@jacobpalm.dk>
  * @author Markus Petersen <markus@mdev.dk>
  * @author Soren Birk <soer9648@eucl.dk>
- * @author Jacob Palm <mail@jacobpalm.dk>
  */
 $lang['translations']          = 'Mellemrums-separeret liste a oversættelsessprog (ISO koder). Lad være med at inkludere standardsproget.';
 $lang['translationns']         = 'Hvis du kun vil have oversættelser under et bestemt navnerum, indsæt det her.';
@@ -18,3 +18,4 @@ $lang['localabout']            = 'Anvend lokaliserede versions af "Om" siden (i 
 $lang['checkage']              = 'Advar om mulige forældede oversættelser.';
 $lang['display']               = 'Angiv hvad du ønsker der skal vises menuen til valg af sprog. Bemærk venligst, at det frarådes at benytte landeflag til sprogvalg.';
 $lang['copytrans']             = 'Kopier tekst fra originalt sporg ind i editorern når en ny oversættelse påbegyndes?';
+$lang['show_path']             = 'Vis sti på siden med manglende oversættelser?';
