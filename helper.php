@@ -357,9 +357,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
         // prepare output
         $out = '';
         if($this->getConf('dropdown')) {
-            if($conf['useslash']) $link = str_replace(':', '/', $link);
-
-            $out .= '<option class="' . $class . '" title="' . hsc($localname) . '" value="' . $link . '"' . $sel . $style . '>';
+            $out .= '<option class="' . $class . '" title="' . hsc($localname) . '" value="' . wl($link) . '"' . $sel . $style . '>';
             $out .= $display;
             $out .= '</option>';
         } else {
