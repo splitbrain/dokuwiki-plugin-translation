@@ -67,6 +67,33 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
 
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
         $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'page_template_replacement');
+        $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'inject_hreflangs');
+    }
+
+    /**
+     * Tell search engines about all localized version of the current page
+     * @see https://en.wikipedia.org/wiki/Hreflang
+     *
+     * @param Doku_Event $event
+     * @param $args
+     */
+    public function inject_hreflangs(Doku_Event $event, $args)
+    {
+        global $ID;
+
+        list($lc, $idpart) = $this->helper->getTransParts($ID);
+        foreach ($this->helper->translations as $iso) {
+            $trans_id = $this->helper->buildTransID($iso, $idpart);
+
+            $translated_id = cleanID($trans_id[0]);
+            if (page_exists($translated_id)) {
+                $event->data['link'][] = array(
+                    'rel' => 'alternate',
+                    'hreflang' => $iso,
+                    'href' => wl($translated_id, '', true),
+                );
+            }
+        }
     }
 
     /**
