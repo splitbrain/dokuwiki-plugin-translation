@@ -3,6 +3,7 @@
  * English language file
  *
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
 
 $lang['translations']  = 'Space separated list of translation languages (ISO codes).';
@@ -17,4 +18,5 @@ $lang['checkage']      = 'Warn about possibly outdated translations.';
 $lang['display']       = 'Select what you\'d like to have shown in the language selector. Note that using country flags for language selection is not recommended by usability experts.';
 
 $lang['copytrans']     = 'Copy original language text into the editor when starting a new translation?';
+$lang['warntrans']     = 'Record an incomplete translation warning when copying a translation?';
 $lang['show_path']     = 'Show path on the missing translation page?';
