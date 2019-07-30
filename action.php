@@ -93,9 +93,11 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
                 $event->data['tpl'] = io_readFile(wikiFN($origfile));
 
                 // prefix with warning
-                $warn = io_readFile($this->localFN('totranslate'));
-                if($warn) $warn .= "\n\n";
-                $event->data['tpl'] = $warn . $event->data['tpl'];
+                if($this->getConf('warntrans')) {
+                    $warn = io_readFile($this->localFN('totranslate'));
+                    if($warn) $warn .= "\n\n";
+                    $event->data['tpl'] = $warn . $event->data['tpl'];
+                };
 
                 // show user a choice of translations if any
                 if(count($translations) > 1) {
@@ -298,5 +300,3 @@ class action_plugin_translation extends DokuWiki_Action_Plugin {
     }
 
 }
-
-//Setup VIM: ex: et ts=4 :
