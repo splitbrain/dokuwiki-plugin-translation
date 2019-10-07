@@ -2,7 +2,8 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author ANDRE LUIS DA SILVA GOMES <andre@appdev.com.br>
  * @author André Neves <drakferion@gmail.com>
  * @author Alfredo Silva <alfredo.silva@sky.com>
  */
@@ -17,3 +18,4 @@ $lang['localabout']            = 'Utilizar versões localizadas da página sobre
 $lang['checkage']              = 'Avisar sobre as possíveis traduções desatualizadas.';
 $lang['display']               = 'Selecione o que gostaria de ver mostrado no seletor de linguagem. Note que usar bandeiras de países para seleção de linguagem não é recomendado por peritos de usabilidade.';
 $lang['copytrans']             = 'Copiar o texto do idioma original no editor quando iniciar uma nova tradução?';
+$lang['show_path']             = 'Mostrar caminho na página de tradução ausente?';
