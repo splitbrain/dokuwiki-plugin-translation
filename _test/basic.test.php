@@ -59,7 +59,7 @@ class basic_plugin_translation_test extends DokuWikiTest {
                 'start',
                 'de es',
                 'de,en-US;q=0.8,en;q=0.5,fr;q=0.3',
-                ':de:start',
+                'de:start',
                 'redirect to translated page',
             ),
             array(
