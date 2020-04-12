@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Andreas Gohr <andi@splitbrain.org>
  */
 $lang['translations']          = 'Liste der Sprachen (ISO codes), mittels Leerzeichen separiert. Die Default-Sprache nicht angeben.';
