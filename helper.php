@@ -230,9 +230,9 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
         //show title and about
         if(isset($this->opts['title'])) {
-            $out .= '<span>' . $this->getLang('translations');
+            $out .= '<label for="translate">' . $this->getLang('translations');
             if($this->getConf('about')) $out .= $this->showAbout();
-            $out .= ':</span> ';
+            $out .= ':</label> ';
             if(isset($this->opts['twolines'])) $out .= '<br />';
         }
 
@@ -258,7 +258,7 @@ class helper_plugin_translation extends DokuWiki_Plugin {
 
             $out .= '<form action="' . $action . '" id="translation__dropdown">';
             if($flag) $out .= '<img src="' . $flag . '" alt="' . hsc($lang) . '" height="11" class="' . $class . '" /> ';
-            $out .= '<select name="id" class="' . $class . '">';
+            $out .= '<select name="id" id="translate" class="' . $class . '">';
         } else {
             $out .= '<ul>';
         }
