@@ -215,13 +215,15 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      * Creates an UI for linking to the available and configured translations
      *
      * Can be called from the template or via the ~~TRANS~~ syntax component.
+     *
+     * @param string $checkage (note that checkAge() should be called anyway at some point)
      */
-    public function showTranslations() {
+    public function showTranslations($checkage = true) {
         global $conf;
         global $INFO;
 
         if(!$this->istranslatable($INFO['id'])) return '';
-        $this->checkage();
+        if($checkage) $this->checkage();
 
         list($lc, $idpart) = $this->getTransParts($INFO['id']);
         $lang = $this->realLC($lc);
