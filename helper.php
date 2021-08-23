@@ -136,9 +136,9 @@ class helper_plugin_translation extends DokuWiki_Plugin {
      */
     function realLC($lc) {
         global $conf;
-        if($lc) {
+        if ($lc) {
             return $lc;
-        } elseif(!$conf['lang_before_translation']) {
+        } elseif (empty($conf['lang_before_translation'])) {
             return $conf['lang'];
         } else {
             return $conf['lang_before_translation'];
