@@ -10,7 +10,7 @@ $meta['translationns'] = array('string','_pattern' => '/^(|[\w:\-]+)$/');
 $meta['skiptrans']     = array('string');
 $meta['dropdown']      = array('onoff');
 $meta['display']       = array('multicheckbox',
-                               '_choices' => array('langcode','name','flag','title','twolines'));
+                               '_choices' => array('langcode','name','flag','title'));
 $meta['translateui']   = array('onoff');
 $meta['redirectstart'] = array('onoff');
 $meta['checkage']      = array('onoff');

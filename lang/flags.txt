@@ -1,0 +1,188 @@
+# Language to flag mapping
+
+aa
+ab
+ae
+af
+ak
+am
+an
+ar
+as
+av
+ay
+az
+ba
+be https://flagicons.lipis.dev/flags/4x3/by.svg
+bg https://flagicons.lipis.dev/flags/4x3/bg.svg
+bh
+bi
+bm
+bn
+bo
+br
+bs
+ca
+ce
+ch
+co
+cr
+cs https://flagicons.lipis.dev/flags/4x3/cz.svg
+cu
+cv
+cy
+da https://flagicons.lipis.dev/flags/4x3/dk.svg
+de https://flagicons.lipis.dev/flags/4x3/de.svg
+dv
+dz
+ee
+el https://flagicons.lipis.dev/flags/4x3/gr.svg
+en https://flagicons.lipis.dev/flags/4x3/gb.svg
+eo https://upload.wikimedia.org/wikipedia/commons/f/f5/Flag_of_Esperanto.svg
+es https://flagicons.lipis.dev/flags/4x3/es.svg
+et https://flagicons.lipis.dev/flags/4x3/ee.svg
+eu
+fa
+ff
+fi https://flagicons.lipis.dev/flags/4x3/fi.svg
+fj
+fo
+fr https://flagicons.lipis.dev/flags/4x3/fr.svg
+fy
+ga
+gd https://flagicons.lipis.dev/flags/4x3/ie.svg
+gl
+gn
+gu
+gv
+ha
+he https://flagicons.lipis.dev/flags/4x3/il.svg
+hi
+ho
+hr https://flagicons.lipis.dev/flags/4x3/hr.svg
+ht
+hu https://flagicons.lipis.dev/flags/4x3/hu.svg
+hy
+hz
+ia https://upload.wikimedia.org/wikipedia/commons/7/7e/Flag_of_Interlingua.svg
+id https://flagicons.lipis.dev/flags/4x3/id.svg
+ie
+ig
+ii
+ik
+io
+is https://flagicons.lipis.dev/flags/4x3/is.svg
+it https://flagicons.lipis.dev/flags/4x3/it.svg
+iu
+ja https://flagicons.lipis.dev/flags/4x3/ja.svg
+jv
+ka
+kg
+ki
+kj
+kk
+kl
+km
+kn
+ko https://flagicons.lipis.dev/flags/4x3/kr.svg
+kr
+ks
+ku
+kv
+kw
+ky
+la
+lb
+lg
+li
+ln
+lo
+lt
+lv
+mg
+mh
+mi
+mk
+ml
+mn
+mr
+ms
+mt https://flagicons.lipis.dev/flags/4x3/mt.svg
+my
+na
+nb
+nd
+ne
+ng
+nl https://flagicons.lipis.dev/flags/4x3/nl.svg
+nn
+no https://flagicons.lipis.dev/flags/4x3/no.svg
+nr
+nv
+ny
+oc
+oj
+om
+or
+os
+pa
+pi
+pl https://flagicons.lipis.dev/flags/4x3/pl.svg
+ps
+pt https://flagicons.lipis.dev/flags/4x3/pt.svg
+pt-br https://flagicons.lipis.dev/flags/4x3/br.svg
+qu
+rm
+rn
+ro https://flagicons.lipis.dev/flags/4x3/ro.svg
+ru https://flagicons.lipis.dev/flags/4x3/ru.svg
+rw
+sa
+sc
+sd
+se
+sg
+si
+sk https://flagicons.lipis.dev/flags/4x3/sk.svg
+sl https://flagicons.lipis.dev/flags/4x3/si.svg
+sm
+sn
+so
+sq
+sr
+ss
+st
+su
+sv https://flagicons.lipis.dev/flags/4x3/se.svg
+sw
+ta
+te
+tg
+th
+ti
+tk
+tl
+tn
+to
+tr https://flagicons.lipis.dev/flags/4x3/tk.svg
+ts
+tt
+tw
+ty
+ug
+uk https://flagicons.lipis.dev/flags/4x3/ua.svg
+ur
+uz https://flagicons.lipis.dev/flags/4x3/uz.svg
+ve
+vi https://flagicons.lipis.dev/flags/4x3/vn.svg
+vo
+wa
+wo
+xh
+yi
+yo
+za
+zh https://flagicons.lipis.dev/flags/4x3/cn.svg
+zh-tw https://flagicons.lipis.dev/flags/4x3/tw.svg
+zu
+
