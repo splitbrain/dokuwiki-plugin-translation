@@ -264,7 +264,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
      */
     public function getLocalName($lang)
     {
-        if ($this->LN[$lang]) {
+        if (isset($this->LN[$lang])) {
             return $this->LN[$lang];
         }
         return $lang;
