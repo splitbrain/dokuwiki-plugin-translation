@@ -174,19 +174,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
 
         $lang = $_GET['lang'];
         // reuse the constructor to reinitialize the cache key
-        if (method_exists($event->data, '__construct')) {
-            // New PHP 5 style constructor
-            $event->data->__construct(
-                $event->data->key . $lang,
-                $event->data->ext
-            );
-        } else {
-            // Old PHP 4 style constructor - deprecated
-            $event->data->cache(
-                $event->data->key . $lang,
-                $event->data->ext
-            );
-        }
+        $event->data->__construct(
+            $event->data->key . $lang,
+            $event->data->ext
+        );
     }
 
     /**
@@ -269,40 +260,20 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
      */
     public function translation_search(Doku_Event $event, $args)
     {
-
-        if ($event->data['has_titles']) {
-            // sort into translation slots
-            $res = array();
-            foreach ($event->result as $r => $t) {
-                $tr = $this->helper->getLangPart($r);
-                if (!is_array($res["x$tr"])) $res["x$tr"] = array();
-                $res["x$tr"][] = array($r, $t);
-            }
-            // sort by translations
-            ksort($res);
-            // combine
-            $event->result = array();
-            foreach ($res as $r) {
-                foreach ($r as $l) {
-                    $event->result[$l[0]] = $l[1];
-                }
-            }
-        } else {
-            # legacy support for old DokuWiki hooks
-
-            // sort into translation slots
-            $res = array();
-            foreach ($event->result as $r) {
-                $tr = $this->helper->getLangPart($r);
-                if (!is_array($res["x$tr"])) $res["x$tr"] = array();
-                $res["x$tr"][] = $r;
-            }
-            // sort by translations
-            ksort($res);
-            // combine
-            $event->result = array();
-            foreach ($res as $r) {
-                $event->result = array_merge($event->result, $r);
+        // sort into translation slots
+        $res = array();
+        foreach ($event->result as $r => $t) {
+            $tr = $this->helper->getLangPart($r);
+            if (!is_array($res["x$tr"])) $res["x$tr"] = array();
+            $res["x$tr"][] = array($r, $t);
+        }
+        // sort by translations
+        ksort($res);
+        // combine
+        $event->result = array();
+        foreach ($res as $r) {
+            foreach ($r as $l) {
+                $event->result[$l[0]] = $l[1];
             }
         }
     }
