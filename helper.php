@@ -337,21 +337,6 @@ class helper_plugin_translation extends DokuWiki_Plugin
         $origfn = wikiFN($orig);
         if ($INFO['lastmod'] >= @filemtime($origfn)) return;
 
-        // get revision from before translation
-        $orev = 0;
-
-        $changelog = new \dokuwiki\ChangeLog\PageChangeLog($orig);
-        $revs = $changelog->getRevisions(0, 100);
-        foreach ($revs as $rev) {
-            if ($rev < $INFO['lastmod']) {
-                $orev = $rev;
-                break;
-            }
-        }
-
-        // see if the found revision still exists
-        if ($orev && !page_exists($orig, $orev)) $orev = 0;
-
         // build the message and display it
         $orig = cleanID($orig);
         $msg = sprintf($this->getLang('outdated'), wl($orig));
