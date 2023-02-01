@@ -6,10 +6,6 @@
  * @author     Andreas Gohr <andi@splitbrain.org>
  * @author     Guy Brand <gb@isis.u-strasbg.fr>
  */
-
-/**
- * Class action_plugin_translation
- */
 class action_plugin_translation extends DokuWiki_Action_Plugin
 {
 
@@ -19,7 +15,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
      */
     protected $helper = null;
 
-    protected $locale;
 
     /**
      * Constructor. Load helper plugin
@@ -36,47 +31,116 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
      */
     public function register(Doku_Event_Handler $controller)
     {
-        $scriptName = basename($_SERVER['PHP_SELF']);
-
-        // should the lang be applied to UI?
         if ($this->getConf('translateui')) {
-            switch ($scriptName) {
-                case 'js.php':
-                    $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translation_js');
-                    $controller->register_hook('JS_CACHE_USE', 'BEFORE', $this, 'translation_jscache');
-                    break;
+            $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translateUI');
+            $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'translateJS');
+            $controller->register_hook('JS_CACHE_USE', 'BEFORE', $this, 'translateJSCache');
+        }
 
-                case 'ajax.php':
-                    $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translate_media_manager');
-                    break;
+        if ($this->getConf('redirectstart')) {
+            $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'redirectStartPage');
+        }
 
-                case 'mediamanager.php':
-                    $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'setJsCacheKey');
-                    break;
+        $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'handlePageTemplates');
+        $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'sortSearchResults');
+    }
 
-                default:
-                    $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'setJsCacheKey');
+    /**
+     * Hook Callback. Set the language for the UI
+     *
+     * @param Doku_Event $event INIT_LANG_LOAD
+     */
+    public function translateUI(Doku_Event $event)
+    {
+        global $conf;
+        global $ACT;
+        global $INPUT;
+
+        // $ID is not set yet, so we have to get it ourselves
+        $id = getID();
+
+        // For ID based access, get the language from the ID, try request param or session otherwise
+        if (
+            isset($ACT) &&
+            in_array(act_clean($ACT), ['show', 'recent', 'diff', 'edit', 'preview', 'source', 'subscribe'])
+        ) {
+            $locale = $this->helper->getLangPart($id ?? '');
+            $_SESSION[DOKU_COOKIE]['translationlc'] = $locale; // IDs always reset the language
+        } elseif ($INPUT->has('lang')) {
+            $locale = $INPUT->str('lang');
+        } else {
+            $locale = $_SESSION[DOKU_COOKIE]['translationlc'] ?? '';
+        }
+
+        // if the language is not the default language, set the language
+        if ($locale && $locale !== $conf['lang']) {
+            $conf['lang_before_translation'] = $conf['lang']; //store for later access in syntax plugin
+            $event->data = $locale;
+            $conf['lang'] = $locale;
+        }
+    }
+
+    /**
+     * Hook Callback. Pass language code to JavaScript dispatcher
+     *
+     * @param Doku_Event $event TPL_METAHEADER_OUTPUT
+     */
+    public function translateJS(Doku_Event $event)
+    {
+        global $conf;
+
+        $count = count($event->data['script']);
+        for ($i = 0; $i < $count; $i++) {
+            if (strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
+                $event->data['script'][$i]['src'] .= '&lang=' . hsc($conf['lang']);
             }
         }
+    }
 
-        if ($scriptName !== 'js.php' && $scriptName !== 'ajax.php') {
-            $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'translation_hook');
-            $controller->register_hook('DETAIL_STARTED', 'BEFORE', $this, 'translation_hook');
-            $controller->register_hook('MEDIAMANAGER_STARTED', 'BEFORE', $this, 'translation_hook');
+    /**
+     * Hook Callback. Cache JavaScript per language
+     *
+     * @param Doku_Event $event JS_CACHE_USE
+     */
+    public function translateJSCache(Doku_Event $event)
+    {
+        global $conf;
+
+        // reuse the constructor to reinitialize the cache key
+        $event->data->__construct(
+            $event->data->key . $conf['lang'],
+            $event->data->ext
+        );
+    }
+
+    /**
+     * Hook Callback. Redirect to translated start page
+     *
+     * @param Doku_Event $event DOKUWIKI_STARTED
+     */
+    public function redirectStartPage(Doku_Event $event)
+    {
+        global $ID;
+        global $ACT;
+        global $conf;
+
+        if ($ID == $conf['start'] && $ACT == 'show') {
+            $lc = $this->helper->getBrowserLang();
+
+            list($translatedStartpage,) = $this->helper->buildTransID($lc, $conf['start']);
+            if (cleanID($translatedStartpage) !== cleanID($ID)) {
+                send_redirect(wl(cleanID($translatedStartpage), '', true));
+            }
         }
-
-        $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'translation_search');
-        $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'page_template_replacement');
     }
 
     /**
      * Hook Callback. Make current language available as page template placeholder and handle
      * original language copying
      *
-     * @param Doku_Event $event
-     * @param $args
+     * @param Doku_Event $event COMMON_PAGETPL_LOAD
      */
-    public function page_template_replacement(Doku_Event $event, $args)
+    public function handlePageTemplates(Doku_Event $event)
     {
         global $ID;
 
@@ -87,7 +151,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
             if ($translations) {
                 // find original language (might've been provided via parameter or use first translation)
                 $orig = (string)$_REQUEST['fromlang'];
-                if (!$orig) $orig = array_shift(array_keys($translations));
+                if (!$orig) $orig = array_key_first($translations);
 
                 // load file
                 $origfile = $translations[$orig];
@@ -126,156 +190,28 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
     }
 
     /**
-     * Hook Callback. Load correct translation when loading JavaScript
-     *
-     * @param Doku_Event $event
-     * @param $args
-     */
-    public function translation_js(Doku_Event $event, $args)
-    {
-        global $conf;
-        if (!isset($_GET['lang'])) return;
-        if (!in_array($_GET['lang'], $this->helper->translations)) return;
-        $lang = $_GET['lang'];
-        $event->data = $lang;
-        $conf['lang'] = $lang;
-    }
-
-    /**
-     * Hook Callback. Pass language code to JavaScript dispatcher
-     *
-     * @param Doku_Event $event
-     * @param $args
-     * @return bool
-     */
-    public function setJsCacheKey(Doku_Event $event, $args)
-    {
-        if (!isset($this->locale)) return false;
-        $count = count($event->data['script']);
-        for ($i = 0; $i < $count; $i++) {
-            if (strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
-                $event->data['script'][$i]['src'] .= '&lang=' . hsc($this->locale);
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Hook Callback. Make sure the JavaScript is translation dependent
-     *
-     * @param Doku_Event $event
-     * @param $args
-     */
-    public function translation_jscache(Doku_Event $event, $args)
-    {
-        if (!isset($_GET['lang'])) return;
-        if (!in_array($_GET['lang'], $this->helper->translations)) return;
-
-        $lang = $_GET['lang'];
-        // reuse the constructor to reinitialize the cache key
-        $event->data->__construct(
-            $event->data->key . $lang,
-            $event->data->ext
-        );
-    }
-
-    /**
-     * Hook Callback. Translate the AJAX loaded media manager
-     *
-     * @param Doku_Event $event
-     * @param $args
-     */
-    public function translate_media_manager(Doku_Event $event, $args)
-    {
-        global $conf;
-        if (isset($_REQUEST['ID'])) {
-            $id = getID();
-            $lc = $this->helper->getLangPart($id);
-        } elseif (isset($_SESSION[DOKU_COOKIE]['translationlc'])) {
-            $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
-        } else {
-            return;
-        }
-        if (!$lc) return;
-
-        $conf['lang'] = $lc;
-        $event->data = $lc;
-    }
-
-    /**
-     * Hook Callback. Change the UI language in foreign language namespaces
-     *
-     * @param Doku_Event $event
-     * @param $args
-     * @return bool
-     */
-    public function translation_hook(Doku_Event $event, $args)
-    {
-        global $ID;
-        /** @noinspection PhpUnusedLocalVariableInspection we include the language file later on */
-        global $lang;
-        global $conf;
-        global $ACT;
-        // redirect away from start page?
-        if ($this->getConf('redirectstart') && $ID == $conf['start'] && $ACT == 'show') {
-            $lc = $this->helper->getBrowserLang();
-
-            list($translatedStartpage,) = $this->helper->buildTransID($lc, $conf['start']);
-            if (cleanID($translatedStartpage) !== cleanID($ID)) {
-                send_redirect(wl(cleanID($translatedStartpage), '', true));
-            }
-        }
-
-        // check if we are in a foreign language namespace
-        $lc = $this->helper->getLangPart($ID);
-
-        // store language in session (for page related views only)
-        if (in_array($ACT, array('show', 'recent', 'diff', 'edit', 'preview', 'source', 'subscribe'))) {
-            $_SESSION[DOKU_COOKIE]['translationlc'] = $lc;
-        }
-        if (!$lc) $lc = $_SESSION[DOKU_COOKIE]['translationlc'];
-        if (!$lc) return false;
-        $this->locale = $lc;
-
-        if (!$this->getConf('translateui')) {
-            return true;
-        }
-
-        if (file_exists(DOKU_INC . 'inc/lang/' . $lc . '/lang.php')) {
-            require(DOKU_INC . 'inc/lang/' . $lc . '/lang.php');
-        }
-        $conf['lang_before_translation'] = $conf['lang']; //store for later access in syntax plugin
-        $conf['lang'] = $lc;
-
-        return true;
-    }
-
-    /**
      * Hook Callback.  Resort page match results so that results are ordered by translation, having the
      * default language first
      *
-     * @param Doku_Event $event
-     * @param $args
+     * @param Doku_Event $event SEARCH_QUERY_PAGELOOKUP
      */
-    public function translation_search(Doku_Event $event, $args)
+    public function sortSearchResults(Doku_Event $event)
     {
         // sort into translation slots
-        $res = array();
+        $res = [];
         foreach ($event->result as $r => $t) {
             $tr = $this->helper->getLangPart($r);
-            if (!is_array($res["x$tr"])) $res["x$tr"] = array();
+            if (!is_array($res["x$tr"])) $res["x$tr"] = [];
             $res["x$tr"][] = array($r, $t);
         }
         // sort by translations
         ksort($res);
         // combine
-        $event->result = array();
+        $event->result = [];
         foreach ($res as $r) {
             foreach ($r as $l) {
                 $event->result[$l[0]] = $l[1];
             }
         }
     }
-
 }
