@@ -2,6 +2,7 @@
 
 namespace dokuwiki\plugin\translation\test;
 
+use dokuwiki\Extension\EventHandler;
 use DokuWikiTest;
 use TestRequest;
 
@@ -110,6 +111,10 @@ class BasicTest extends DokuWikiTest
         global $conf;
         $conf['plugin']['translation']['translations'] = $translationsOption;
         $conf['plugin']['translation']['redirectstart'] = 1;
+
+        // reset event handler (this should be done by the TestRequest, but it doesn't)
+        global $EVENT_HANDLER;
+        $EVENT_HANDLER = new EventHandler();
 
         /** @var \helper_plugin_translation $helper */
         $helper = plugin_load('helper', 'translation');
