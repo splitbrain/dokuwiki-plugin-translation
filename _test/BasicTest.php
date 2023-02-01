@@ -1,50 +1,63 @@
 <?php
 
+namespace dokuwiki\plugin\translation\test;
+
+use DokuWikiTest;
+use TestRequest;
+
 /**
  * General tests for the translation plugin
  *
  * @group plugin_translation
  * @group plugins
  */
-class basic_plugin_translation_test extends DokuWikiTest {
+class BasicTest extends DokuWikiTest
+{
 
-    protected $pluginsEnabled = array('translation');
+    protected $pluginsEnabled = ['translation'];
 
-    public static function buildTransID_testdata() {
-        return array(
-            array(
+    /**
+     * Test provider
+     * @return array[]
+     * @see testBuildTransID
+     */
+    public static function provideBuildTransID()
+    {
+        return [
+            [
                 'en',
                 'ns:page',
                 'de es',
-                array(':ns:page', 'en'),
-            ),
-            array(
+                [':ns:page', 'en'],
+            ],
+            [
                 '',
                 'ns:page',
                 'de es',
-                array(':ns:page', 'en'),
-            ),
-            array(
+                [':ns:page', 'en'],
+            ],
+            [
                 'de',
                 'ns:page',
                 'de es',
-                array(':de:ns:page', 'de'),
-            ),
-        );
+                [':de:ns:page', 'de'],
+            ],
+        ];
     }
 
     /**
-     * @dataProvider buildTransID_testdata
+     * @dataProvider provideBuildTransID
      *
      * @param $inputLang
      * @param $inputID
      * @param $translationsOption
      * @param $expected
      */
-    public function test_buildTransID($inputLang, $inputID, $translationsOption, $expected) {
+    public function testBuildTransID($inputLang, $inputID, $translationsOption, $expected)
+    {
         global $conf;
         $conf['plugin']['translation']['translations'] = $translationsOption;
-        /** @var helper_plugin_translation $helper */
+        /** @var \helper_plugin_translation $helper */
         $helper = plugin_load('helper', 'translation', true);
 
         $actual_result = $helper->buildTransID($inputLang, $inputID);
@@ -52,48 +65,53 @@ class basic_plugin_translation_test extends DokuWikiTest {
         $this->assertEquals($expected, $actual_result);
     }
 
-
-    public static function redirectStart_testdata() {
-        return array(
-            array(
+    /**
+     * Test provider
+     * @return array[]
+     * @see testRedirectStart
+     */
+    public static function provideRedirectStart()
+    {
+        return [
+            [
                 'start',
                 'de es',
                 'de,en-US;q=0.8,en;q=0.5,fr;q=0.3',
                 'de:start',
                 'redirect to translated page',
-            ),
-            array(
+            ],
+            [
                 'start',
                 'de es',
                 'en-US,de;q=0.8,en;q=0.5,fr;q=0.3',
-                array(),
+                [],
                 'do not redirect if basic namespace is correct lang',
-            ),
-            array(
+            ],
+            [
                 'de:start',
                 'en de es',
                 'en-US,en;q=0.8,fr;q=0.5',
-                array(),
+                [],
                 'do not redirect anything other than exactly $conf[\'start\']',
-            ),
-        );
+            ],
+        ];
     }
 
-
     /**
-     * @dataProvider redirectStart_testdata
+     * @dataProvider provideRedirectStart
      *
      * @param $input
      * @param $translationsOption
      * @param $httpAcceptHeader
      * @param $expected
      */
-    public function test_redirectStart($input, $translationsOption, $httpAcceptHeader, $expected, $msg) {
+    public function testRedirectStart($input, $translationsOption, $httpAcceptHeader, $expected, $msg)
+    {
         global $conf;
         $conf['plugin']['translation']['translations'] = $translationsOption;
         $conf['plugin']['translation']['redirectstart'] = 1;
 
-        /** @var helper_plugin_translation $helper */
+        /** @var \helper_plugin_translation $helper */
         $helper = plugin_load('helper', 'translation');
         $helper->loadTranslationNamespaces();
 
