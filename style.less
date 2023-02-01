@@ -3,95 +3,85 @@
   position: relative;
   text-align: right;
 
-  div {
+  ul {
     display: inline;
 
-    ul {
-      display: inline;
+    margin: 0;
+    padding: 0;
 
-      margin: 0;
+    li {
+      list-style-type: none;
+      display: inline-block;
+
+      margin: 0.25em;
       padding: 0;
 
-      li {
-        list-style-type: none;
-        display: inline-block;
+      a:link,
+      a:hover,
+      a:active,
+      a:visited,
+      span {
+        display: block;
+        padding: 0.25em;
+        background-color: #008;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        white-space: nowrap;
+        text-align: left;
 
-        margin: 0.25em;
-        padding: 0;
-
-        a:link,
-        a:hover,
-        a:active,
-        a:visited,
-        span {
-          display: block;
-          padding: 0.25em;
-          background-color: #008;
-          color: #fff;
-          text-decoration: none;
-          border: none;
-          white-space: nowrap;
-          text-align: left;
-
-          &.wikilink2 {
-            background-color: #888;
-
-            svg {
-              opacity: 0.5;
-            }
-          }
+        &.wikilink2 {
+          background-color: #888;
 
           svg {
-            height: 1em;
-            margin-right: 0.5em;
-            vertical-align: middle;
-
+            opacity: 0.5;
           }
+        }
+
+        svg {
+          height: 1em;
+          margin-right: 0.5em;
+          vertical-align: middle;
+
         }
       }
     }
   }
 }
 
+
 // overrides for dropdown style language selector
 .dokuwiki div.plugin_translation.is-dropdown {
   padding-bottom: 2em;
 
-  div {
-    display: block;
+  ul {
     position: absolute;
     right: 0;
+    display: flex; // flex allows reordering of elements
+    flex-direction: column;
 
-    ul {
-      display: flex; // flex allows reordering of elements
-      flex-direction: column;
+    // current language is always first
+    li.span {
+      order: -1;
+      cursor: default;
+    }
 
-      // current language is always first
-      li.span {
-        order: 1;
-        cursor: default;
-      }
+    li {
+      margin: 0;
 
-      li {
-        display: block;
-        order: 2;
-        margin: 0;
-
-        a {
-          display: none;
-        }
-      }
-
-      &:focus-within,
-      &:hover {
-        li {
-          a {
-            display: block;
-          }
-        }
+      a {
+        display: none;
       }
     }
 
+    &:focus-within,
+    &:hover {
+      li {
+        a {
+          display: block;
+        }
+      }
+    }
   }
 }
 

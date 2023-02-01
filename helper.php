@@ -240,14 +240,14 @@ class helper_plugin_translation extends DokuWiki_Plugin
             $out .= '</span>';
         }
 
-        $out .= '<div><ul>';
+        $out .= '<ul>';
         foreach ($this->translations as $t) {
             [$type, $text, $attr] = $this->prepareLanguageSelectorItem($t, $idpart, $INFO['id']);
             $out .= '<li class="'.$type.'">';
             $out .= "<$type " . buildAttributes($attr) . ">$text</$type>";
             $out .= '</li>';
         }
-        $out .= '</ul></div>';
+        $out .= '</ul>';
 
 
 
