@@ -43,6 +43,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
             $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'redirectStartPage');
         }
 
+        $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'addHrefLangAttributes');
         $controller->register_hook('COMMON_PAGETPL_LOAD', 'AFTER', $this, 'handlePageTemplates');
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'AFTER', $this, 'sortSearchResults');
     }
@@ -123,10 +124,9 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
     public function addLanguageAttributes(Doku_Event $event)
     {
         global $ID;
-        global $ACT;
         global $conf;
 
-        if (!isset($ACT) || act_clean($ACT) != 'show') return;
+        if (!$this->helper->istranslatable($ID)) return;
         $locale = $this->helper->getLangPart($ID ?? '');
 
         if ($locale && $locale !== $conf['lang']) {
@@ -161,6 +161,38 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
                 send_redirect(wl(cleanID($translatedStartpage), '', true));
             }
         }
+    }
+
+    /**
+     * Hook Callback. Add hreflang attributes to the page header
+     *
+     * @param Doku_Event $event TPL_METAHEADER_OUTPUT
+     */
+    public function addHrefLangAttributes(Doku_Event $event)
+    {
+        global $ID;
+        global $conf;
+
+        if (!$this->helper->isTranslatable($ID)) return;
+
+        $translations = $this->helper->getAvailableTranslations($ID);
+        if ($translations) {
+            foreach ($translations as $lc => $translation) {
+                $event->data['link'][] = [
+                    'rel' => 'alternate',
+                    'hreflang' => $lc,
+                    'href' => wl(cleanID($translation), '', true),
+                ];
+            }
+        }
+
+        $default = $conf['lang_before_translation'] ?? $conf['lang'];
+        $defaultlink = $this->helper->buildTransID($default, ($this->helper->getTransParts($ID))[1])[0];
+        $event->data['link'][] = [
+            'rel' => 'alternate',
+            'hreflang' => 'x-default',
+            'href' => wl(cleanID($defaultlink), '', true),
+        ];
     }
 
     /**

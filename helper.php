@@ -152,14 +152,14 @@ class helper_plugin_translation extends DokuWiki_Plugin
      * should be shown
      *
      * @param string $id
-     * @param bool $checkact
+     * @param bool $checkact only return true if $ACT is 'show'
      * @return bool
      */
     public function istranslatable($id, $checkact = true)
     {
         global $ACT;
 
-        if ($checkact && $ACT != 'show') return false;
+        if ($checkact && (!isset($ACT) || act_clean($ACT) != 'show')) return false;
         if ($this->translationNs && strpos($id, $this->translationNs) !== 0) return false;
         $skiptrans = trim($this->getConf('skiptrans'));
         if ($skiptrans && preg_match('/' . $skiptrans . '/ui', ':' . $id)) return false;
@@ -222,11 +222,12 @@ class helper_plugin_translation extends DokuWiki_Plugin
      *
      * @param string $checkage (note that checkAge() should be called anyway at some point)
      */
-    public function showTranslations($checkage = true) {
+    public function showTranslations($checkage = true)
+    {
         global $INFO;
 
-        if(!$this->istranslatable($INFO['id'])) return '';
-        if($checkage) $this->checkage();
+        if (!$this->istranslatable($INFO['id'])) return '';
+        if ($checkage) $this->checkage();
 
         list(/* $lc */, $idpart) = $this->getTransParts($INFO['id']);
 
@@ -244,13 +245,11 @@ class helper_plugin_translation extends DokuWiki_Plugin
         $out .= '<ul>';
         foreach ($this->translations as $t) {
             [$type, $text, $attr] = $this->prepareLanguageSelectorItem($t, $idpart, $INFO['id']);
-            $out .= '<li class="'.$type.'">';
+            $out .= '<li class="' . $type . '">';
             $out .= "<$type " . buildAttributes($attr) . ">$text</$type>";
             $out .= '</li>';
         }
         $out .= '</ul>';
-
-
 
         $out .= '</div>';
 
