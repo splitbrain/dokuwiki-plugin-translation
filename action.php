@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Translation Plugin: Simple multilanguage plugin
  *
@@ -14,7 +15,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
      * @var helper_plugin_translation
      */
     protected $helper = null;
-
 
     /**
      * Constructor. Load helper plugin
@@ -35,6 +35,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
             $controller->register_hook('INIT_LANG_LOAD', 'BEFORE', $this, 'translateUI');
             $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'translateJS');
             $controller->register_hook('JS_CACHE_USE', 'BEFORE', $this, 'translateJSCache');
+        } else {
+            $controller->register_hook('TPL_CONTENT_DISPLAY', 'BEFORE', $this, 'addLanguageAttributes');
         }
 
         if ($this->getConf('redirectstart')) {
@@ -111,6 +113,33 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
             $event->data->key . $conf['lang'],
             $event->data->ext
         );
+    }
+
+    /**
+     * Hook Callback. Add lang and dir attributes when UI isn't translated
+     *
+     * @param Doku_Event $event TPL_CONTENT_DISPLAY
+     */
+    public function addLanguageAttributes(Doku_Event $event)
+    {
+        global $ID;
+        global $ACT;
+        global $conf;
+
+        if (!isset($ACT) || act_clean($ACT) != 'show') return;
+        $locale = $this->helper->getLangPart($ID ?? '');
+
+        if ($locale && $locale !== $conf['lang']) {
+            if (file_exists(DOKU_INC . 'inc/lang/' . $locale . '/lang.php')) {
+                $lang = [];
+                include(DOKU_INC . 'inc/lang/' . $locale . '/lang.php');
+                $direction = $lang['direction'] ?? 'ltr';
+
+                $event->data = '<div lang="' . hsc($locale) . '" dir="' . hsc($direction) . '">' .
+                    $event->data .
+                    '</div>';
+            }
+        }
     }
 
     /**
