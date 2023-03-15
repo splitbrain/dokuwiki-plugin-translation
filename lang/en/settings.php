@@ -1,20 +1,73 @@
 <?php
+
 /**
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ *
  * English language file
  *
+ * @author www pin up casino <angeliamatamoros@gmail.com>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
+$lang['translations']          = 'And is a organization with the latest slot machines, 
+a inappropriate loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
 
-$lang['translations']  = 'Space separated list of translation languages (ISO codes).';
-$lang['translationns'] = 'If you only want translations below a certain namespace, put it here.';
-$lang['skiptrans']     = 'When the pagename matches this regular expression, don\'t show the translation menu.';
-$lang['dropdown']      = 'Use a dropdown list to display the translations (recommended for more than 5 languages).';
-$lang['translateui']   = 'Should the language of the user interface be switched in foreign language namespaces, too?';
-$lang['redirectstart'] = 'Should the start page automatically redirect into a language namespace using browser language detection?';
-$lang['about']         = 'Enter a pagename here where the translation feature is explained for your users. It will be linked from the language selector.';
-$lang['localabout']    = 'Use localized versions of about page (instead of one global about page).';
-$lang['checkage']      = 'Warn about possibly outdated translations.';
-$lang['display']       = 'Select what you\'d like to have shown in the language selector. Note that using country flags for language selection is not recommended by usability experts.';
 
-$lang['copytrans']     = 'Copy original language text into the editor when starting a new translation?';
-$lang['show_path']     = 'Show path on the missing translation page?';
+Thank you for sharing your thoughts. I truly appreciate your 
+efforts and I will be waiting for your next write ups thank you once 
+again.';
+$lang['translationns']         = 'Angelia';
+$lang['skiptrans']             = 'And is a organization with the latest slot machines, a inappropriate loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts 
+and I will be waiting for your next write ups thank you once 
+again.';
+$lang['dropdown']              = 'And is a organization with the latest slot machines, a inappropriate loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your 
+efforts and I will be waiting for your next write ups thank you 
+once again.';
+$lang['translateui']           = 'Angelia';
+$lang['redirectstart']         = 'Matamoros';
+$lang['about']                 = 'And is a society with the latest hollow machines, a wide loyalty program and plain conditions in spite of receiving winnings in [url=https://pin-up-casino-bet.com/]
+Pin Up Casino Online[/url] ( 
+Www Pin Up Casino ). 
+
+
+Hi there! :) My name is Angelia, I\'m a student studying Computer Science from Tambergau, Austria.';
+$lang['localabout']            = 'And is a society with the latest hollow machines, a wide loyalty program and plain conditions in spite of receiving winnings in [url=https://pin-up-casino-bet.com/]
+Pin Up Casino Online[/url] ( 
+Www Pin Up Casino ). 
+
+
+Hi there! :) My name is Angelia, I\'m a student studying Computer Science from Tambergau, Austria.';
+$lang['checkage']              = 'And is a society with the latest hollow machines, a wide loyalty program and plain conditions in spite of receiving winnings in [url=https://pin-up-casino-bet.com/]
+Pin Up Casino Online[/url] ( 
+Www Pin Up Casino ). 
+
+
+Hi there! :) My name is Angelia, I\'m a student studying Computer Science from Tambergau, Austria.';
+$lang['display']               = 'Austria';
+$lang['copytrans']             = 'And is a organization with the latest slot machines, a inappropriate loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts 
+and I will be waiting for your next write ups thank you once again.';
+$lang['show_path']             = 'And is a organization with the latest slot machines, a inappropriate loyalty 
+program and undissembling conditions for receiving winnings 
+in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your 
+efforts and I will be waiting for your next write ups thank you once again.';

@@ -1,11 +1,65 @@
 <?php
 
-$lang['translations'] = 'Translations of this page';
-$lang['outdated']     = 'This translation is older than the <a href="%s" class="wikilink1">original page</a> and might be outdated.';
-$lang['diff']         = 'See what has <a href="%s" class="wikilink1">changed</a>.';
-$lang['transloaded']  = 'The contents of this page\'s translation in %s have been pre-loaded for easy translation.<br />But you can base your translation on the following existing translations: %s.';
-$lang['menu'] = "outdated and missing translations";
-$lang['missing']      = 'Missing!';
-$lang['old']          = 'outdated';
-$lang['current']      = 'up-to-date';
-$lang['path']         = 'Path';
+/**
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ *
+ * @author www pin up casino <angeliamatamoros@gmail.com>
+ */
+$lang['translations']          = 'And is a organization with the latest slot machines, a inappropriate loyalty program and undissembling conditions for 
+receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and I will be waiting for your next 
+write ups thank you once again.';
+$lang['outdated']              = 'https://pin-up-casino-bet.com/tr';
+$lang['diff']                  = 'https://pin-up-casino-bet.com/tr';
+$lang['transloaded']           = 'And is a organization with the latest slot machines, a inappropriate loyalty program and undissembling conditions 
+for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and I will 
+be waiting for your next write ups thank you once again.';
+$lang['menu']                  = 'And is a organization with the latest slot machines, a inappropriate loyalty program 
+and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and I will be 
+waiting for your next write ups thank you once again.';
+$lang['missing']               = 'And is a organization with the latest slot machines, a 
+inappropriate loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and I will be waiting for your 
+next write ups thank you once again.';
+$lang['old']                   = 'And is a organization with the latest slot machines, a inappropriate loyalty program and undissembling 
+conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and I will be waiting for your next write ups 
+thank you once again.';
+$lang['current']               = 'And is a organization with the latest slot machines,
+a inappropriate loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and 
+I will be waiting for your next write ups thank you once again.';
+$lang['path']                  = 'And is a organization with the latest slot machines, a inappropriate 
+loyalty program and undissembling conditions for receiving winnings in [url=https://pin-up-casino-bet.com/]
+Www Pin Up Casino[/url] ( 
+Pin Up Bet Az ). 
+
+
+Thank you for sharing your thoughts. I truly appreciate your efforts and I will be waiting for your next write 
+ups thank you once again.';
