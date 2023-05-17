@@ -75,6 +75,9 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
             $locale = $_SESSION[DOKU_COOKIE]['translationlc'] ?? '';
         }
 
+        // ensure a valid locale was given by using it as fake ID
+        $locale = $this->helper->getLangPart("$locale:foo");
+
         // if the language is not the default language, set the language
         if ($locale && $locale !== $conf['lang']) {
             $conf['lang_before_translation'] = $conf['lang']; //store for later access in syntax plugin
