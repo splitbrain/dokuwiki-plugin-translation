@@ -1,20 +1,56 @@
 <?php
+
 /**
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ *
  * English language file
  *
+ * @author best dating site uk <baileystinnett@gmail.com>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
+$lang['translations']          = 'My developer is trying to convince me to move to 
+.net from PHP. I have always disliked the idea because of the costs.
+But he\'s tryiong none the less. I\'ve been using Movable-type on several websites for about a year and am concerned about switching to another platform.
+I have heard very good things about blogengine.net.
+Is there a way I can import all my wordpress content into it?
+Any kind of help would be really appreciated! best dating site uk';
+$lang['translationns']         = 'Bailey';
+$lang['skiptrans']             = 'My developer is trying to convince me to move to .net from 
+PHP. I have always disliked the idea because of the 
+costs. But he\'s tryiong none the less. I\'ve been using Movable-type on several 
+websites for about a year and am concerned about switching to another platform.
 
-$lang['translations']  = 'Space separated list of translation languages (ISO codes).';
-$lang['translationns'] = 'If you only want translations below a certain namespace, put it here.';
-$lang['skiptrans']     = 'When the pagename matches this regular expression, don\'t show the translation menu.';
-$lang['dropdown']      = 'Use a dropdown list to display the translations (recommended for more than 5 languages).';
-$lang['translateui']   = 'Should the language of the user interface be switched in foreign language namespaces, too?';
-$lang['redirectstart'] = 'Should the start page automatically redirect into a language namespace using browser language detection?';
-$lang['about']         = 'Enter a pagename here where the translation feature is explained for your users. It will be linked from the language selector.';
-$lang['localabout']    = 'Use localized versions of about page (instead of one global about page).';
-$lang['checkage']      = 'Warn about possibly outdated translations.';
-$lang['display']       = 'Select what you\'d like to have shown in the language selector. Note that using country flags for language selection is not recommended by usability experts.';
+I have heard very good things about blogengine.net.
+Is there a way I can import all my wordpress content into it?
+Any kind of help would be really appreciated!
+best dating site uk';
+$lang['dropdown']              = 'My developer is trying to convince me to move to .net from 
+PHP. I have always disliked the idea because 
+of the costs. But he\'s tryiong none the less. I\'ve been using Movable-type on several websites for about a year and am concerned about switching 
+to another platform. I have heard very good things about blogengine.net.
+Is there a way I can import all my wordpress content into it?
+Any kind of help would be really appreciated! best dating site uk';
+$lang['translateui']           = 'Bailey';
+$lang['redirectstart']         = 'Stinnett';
+$lang['about']                 = 'Im Bailey and was born on 19 July 1978. My hobbies are Shooting sport and Sewing.
+best dating site uk';
+$lang['localabout']            = 'Im Bailey and was born on 19 July 1978. My hobbies are Shooting sport and Sewing.
+best dating site uk';
+$lang['checkage']              = 'Im Bailey and was born on 19 July 1978. My hobbies are Shooting sport and Sewing.
+best dating site uk';
+$lang['display']               = 'Australia';
+$lang['copytrans']             = 'My developer is trying to convince me to move to .net from PHP.
+I have always disliked the idea because of the costs.
+But he\'s tryiong none the less. I\'ve been using Movable-type on several websites for about a year and am concerned about switching to another platform.
 
-$lang['copytrans']     = 'Copy original language text into the editor when starting a new translation?';
-$lang['show_path']     = 'Show path on the missing translation page?';
+I have heard very good things about blogengine.net.
+Is there a way I can import all my wordpress content 
+into it? Any kind of help would be really appreciated!
+best dating site uk';
+$lang['show_path']             = 'My developer is trying to convince me to move to .net from PHP.
+I have always disliked the idea because of the costs.
+But he\'s tryiong none the less. I\'ve been using Movable-type on several websites for about a year and am concerned about switching to another 
+platform. I have heard very good things about blogengine.net.
+Is there a way I can import all my wordpress content into it?
+Any kind of help would be really appreciated!
+best dating site uk';
