@@ -97,7 +97,8 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
 
         $count = count($event->data['script']);
         for ($i = 0; $i < $count; $i++) {
-            if (strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
+            if (array_key_exists('src', $event->data['script'][$i]) &&
+                strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
                 $event->data['script'][$i]['src'] .= '&lang=' . hsc($conf['lang']);
             }
         }
