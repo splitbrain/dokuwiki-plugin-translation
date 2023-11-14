@@ -2,7 +2,8 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author Fekete Ádám Zsolt <fadam@egbcsoport.hu>
  * @author Marina Vladi <deldadam@gmail.com>
  */
 $lang['translations']          = 'Szóközzel elválasztott lista a nyelvi fordításokról (ISO-kódokkal).';
@@ -16,3 +17,4 @@ $lang['localabout']            = 'A névjegy oldal fordított változátanak has
 $lang['checkage']              = 'Figyelmeztetés az esetlegesen elavult fordításokra.';
 $lang['display']               = 'Válasszuk ki, mi jelenjen meg a nyelvi kiválasztó képernyőelemében. Jegyezzük meg: az országzászlókat nem javasolják a használhatósági szakértők.';
 $lang['copytrans']             = 'Átmásoljuk az eredeti nyelvi szöveget a szövegszerkesztőbe új fordítás indításakor?';
+$lang['show_path']             = 'Mutassa az elérési utat a hiányzó fordítás oldalán?';
