@@ -176,7 +176,7 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
         global $ID;
         global $conf;
 
-        if (!$this->helper->isTranslatable($ID)) return;
+        if (!$this->helper->istranslatable($ID)) return;
 
         $translations = $this->helper->getAvailableTranslations($ID);
         if ($translations) {
@@ -265,8 +265,10 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
         $res = [];
         foreach ($event->result as $r => $t) {
             $tr = $this->helper->getLangPart($r);
-            if (!is_array($res["x$tr"])) $res["x$tr"] = [];
-            $res["x$tr"][] = array($r, $t);
+            if (!isset($res["x$tr"]) || !is_array($res["x$tr"])) {
+                $res["x$tr"] = [];
+            }
+            $res["x$tr"][] = [$r, $t];
         }
         // sort by translations
         ksort($res);
