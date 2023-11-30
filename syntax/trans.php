@@ -44,5 +44,4 @@ class syntax_plugin_translation_trans extends DokuWiki_Syntax_Plugin
         $renderer->doc .= $hlp->showTranslations();
         return true;
     }
-
 }

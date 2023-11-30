@@ -9,7 +9,6 @@
  */
 class action_plugin_translation extends DokuWiki_Action_Plugin
 {
-
     /**
      * For the helper plugin
      * @var helper_plugin_translation
@@ -244,7 +243,6 @@ class action_plugin_translation extends DokuWiki_Action_Plugin
                         )
                     );
                 }
-
             }
         }
 

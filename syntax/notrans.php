@@ -8,7 +8,6 @@
  */
 class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin
 {
-
     /** @var helper_plugin_translation */
     protected $hlp = null;
 
@@ -63,8 +62,7 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin
      */
     public function _showTranslations()
     {
-        dbg_deprecated(helper_plugin_translation::class.'::showTranslations()');
+        dbg_deprecated(helper_plugin_translation::class . '::showTranslations()');
         return $this->hlp->showTranslations();
     }
-
 }

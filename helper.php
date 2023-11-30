@@ -373,6 +373,5 @@ class helper_plugin_translation extends DokuWiki_Plugin
         }
         $id = cleanID($id);
         return wl($id, array('do' => 'diff', 'rev' => $orev));
-
     }
 }
