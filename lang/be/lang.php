@@ -5,15 +5,42 @@
  *
  * Belarusian language file
  *
+ * @author https://1win-uzbekistan.net/ <zandrachristy@cox.net>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
+$lang['translations']          = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam 
+Maqsad yangiliklar chayqalish ta joriy yangiliklar bizning spluttering 
+hududi. orqali harf viraz I pragnu ochiq qopqoq noyob pod_y, 
+scho qo\'lga olish bizning mintaqa, ta ma\'lumot ular haqida global ulkanlik.
+Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va 
+boshqa to\'langan Internet resurslari.';
+$lang['outdated']              = 'https://1win-uzbekistan.net/';
+$lang['diff']                  = 'https://1win-uzbekistan.net/';
+$lang['transloaded']           = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam Maqsad yangiliklar chayqalish ta joriy yangiliklar bizning spluttering hududi.
 
-$lang['translations'] = 'Пераклад гэтай старонкі';
-$lang['outdated']     = 'Гэты пераклад старэй, чым <a href="%s" class="wikilink1">арыгінальная старонка</a> і можа быць не актуальным.';
-$lang['diff']         = 'Глядзіце <a href="%s" class="wikilink1">было зменена</a>.';
-$lang['transloaded']  = 'Сэнс перакладу гэтай старонкі %s быў папярэдне загружаны для зручнасці перакладу. <br /> Таксама можаце выкарыстоўваць наступныя пераклады: %s.';
-$lang['menu']         = 'састарэлыя і адсутныя пераклады';
-$lang['missing']      = 'Адсутнічае!';
-$lang['old']          = 'застарэлы';
-$lang['current']      = 'бягучы';
-$lang['path']         = 'Шлях';
+orqali harf viraz I pragnu ochiq qopqoq noyob pod_y, scho qo\'lga olish bizning 
+mintaqa, ta ma\'lumot ular haqida global ulkanlik.
+Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va boshqa to\'langan Internet resurslari.';
+$lang['menu']                  = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam Maqsad yangiliklar chayqalish 
+ta joriy yangiliklar bizning spluttering hududi.
+orqali harf viraz I pragnu ochiq qopqoq noyob pod_y, scho qo\'lga olish bizning mintaqa, ta ma\'lumot ular haqida global ulkanlik.
+Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va boshqa to\'langan Internet resurslari.';
+$lang['missing']               = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam Maqsad yangiliklar chayqalish 
+ta joriy yangiliklar bizning spluttering hududi. orqali harf viraz 
+I pragnu ochiq qopqoq noyob pod_y, scho qo\'lga olish bizning mintaqa, ta 
+ma\'lumot ular haqida global ulkanlik. Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va boshqa to\'langan Internet 
+resurslari.';
+$lang['old']                   = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam 
+Maqsad yangiliklar chayqalish ta joriy yangiliklar bizning 
+spluttering hududi. orqali harf viraz I pragnu ochiq qopqoq noyob pod_y,
+scho qo\'lga olish bizning mintaqa, ta ma\'lumot ular haqida 
+global ulkanlik. Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va boshqa to\'langan Internet resurslari.';
+$lang['current']               = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam Maqsad yangiliklar chayqalish ta joriy yangiliklar bizning spluttering hududi.
+orqali harf viraz I pragnu ochiq qopqoq noyob pod_y, scho qo\'lga olish bizning mintaqa, 
+ta ma\'lumot ular haqida global ulkanlik. Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va boshqa 
+to\'langan Internet resurslari.';
+$lang['path']                  = 'Salom! Men yozuvchi maqolalar mintaqaviy gazetalar, va mening missiyam Maqsad yangiliklar 
+chayqalish ta joriy yangiliklar bizning spluttering hududi.
+
+orqali harf viraz I pragnu ochiq qopqoq noyob pod_y, scho qo\'lga olish bizning mintaqa, ta ma\'lumot ular 
+haqida global ulkanlik. Men yozyapman qarash joriy qidiruvlar https://1win-uzbekistan.net/ va boshqa to\'langan Internet resurslari.';
