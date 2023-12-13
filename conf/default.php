@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Default options for the translation plugin
  *

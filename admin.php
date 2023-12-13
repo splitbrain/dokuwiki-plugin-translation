@@ -46,7 +46,8 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin
 
         $pages = $this->getAllPages();
         foreach ($pages as $page) {
-            if ($helper->getLangPart($page["id"]) !== $default_language ||
+            if (
+                $helper->getLangPart($page["id"]) !== $default_language ||
                 !$helper->istranslatable($page["id"], false) ||
                 !page_exists($page["id"])
             ) {
@@ -87,18 +88,20 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin
                         $title = $this->getLang('current');
                     }
                 }
-                $row .= "<td class='$class'>" . $xhtml_renderer->internallink($translID, $title, null,
-                        true) . $difflink . "</td>";
+                $row .= "<td class='$class'>" . $xhtml_renderer->internallink(
+                    $translID,
+                    $title,
+                    null,
+                    true
+                ) . $difflink . "</td>";
             }
             $row .= "</tr>";
 
             if ($showRow) {
                 echo $row;
             }
-
         }
         echo "</table>";
-
     }
 
     /**
