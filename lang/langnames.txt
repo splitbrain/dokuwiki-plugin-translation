@@ -34,6 +34,7 @@ cv	Чӑваш Чӗлхи
 cy	Cymraeg
 da	Dansk
 de	Deutsch
+de-informal	Deutsch
 dv	ދިވެހި
 dz	རྫོང་ཁ
 ee	Eʋegbe
@@ -63,6 +64,7 @@ ho	Hiri Motu
 hr	Hrvatski
 ht	Kreyòl Ayisyen
 hu	Magyar
+hu-formal	Magyar
 hy	Հայերեն
 hz	Otjiherero
 ia	Interlingua
