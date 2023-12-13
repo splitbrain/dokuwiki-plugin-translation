@@ -1,12 +1,15 @@
 <?php
 
+use dokuwiki\Extension\Plugin;
+use dokuwiki\ChangeLog\PageChangeLog;
+
 /**
  * Translation Plugin: Simple multilanguage plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
  */
-class helper_plugin_translation extends DokuWiki_Plugin
+class helper_plugin_translation extends Plugin
 {
     public $translations = [];
     public $translationNs = '';
@@ -26,7 +29,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
         $this->loadTranslationNamespaces();
 
         // load language names
-        $this->LN = confToHash(dirname(__FILE__) . '/lang/langnames.txt');
+        $this->LN = confToHash(__DIR__ . '/lang/langnames.txt');
 
         // display options
         $this->opts = $this->getConf('display');
@@ -70,7 +73,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
      */
     public function getLangPart($id)
     {
-        list($lng) = $this->getTransParts($id);
+        [$lng] = $this->getTransParts($id);
         return $lng;
     }
 
@@ -83,11 +86,11 @@ class helper_plugin_translation extends DokuWiki_Plugin
      */
     public function getTransParts($id)
     {
-        $rx = '/^' . $this->translationNs . '(' . join('|', $this->translations) . '):(.*)/';
+        $rx = '/^' . $this->translationNs . '(' . implode('|', $this->translations) . '):(.*)/';
         if (preg_match($rx, $id, $match)) {
-            return array($match[1], $match[2]);
+            return [$match[1], $match[2]];
         }
-        return array('', $id);
+        return ['', $id];
     }
 
     /**
@@ -101,7 +104,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
         if (!in_array($conf['lang'], $langs)) {
             $langs[] = $conf['lang'];
         }
-        $rx = '/(^|,|:|;|-)(' . join('|', $langs) . ')($|,|:|;|-)/i';
+        $rx = '/(^|,|:|;|-)(' . implode('|', $langs) . ')($|,|:|;|-)/i';
         if (preg_match($rx, $_SERVER['HTTP_ACCEPT_LANGUAGE'], $match)) {
             return strtolower($match[2]);
         }
@@ -125,7 +128,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
             $link = ':' . $this->translationNs . $idpart;
             $name = $this->realLC('');
         }
-        return array($link, $name);
+        return [$link, $name];
     }
 
     /**
@@ -180,8 +183,8 @@ class helper_plugin_translation extends DokuWiki_Plugin
 
         $about = $this->getConf('about');
         if ($this->getConf('localabout')) {
-            list(/* $lc */, $idpart) = $this->getTransParts($about);
-            list($about, /* $name */) = $this->buildTransID($curlc, $idpart);
+            [, $idpart] = $this->getTransParts($about);
+            [$about, ] = $this->buildTransID($curlc, $idpart);
             $about = cleanID($about);
         }
 
@@ -200,13 +203,13 @@ class helper_plugin_translation extends DokuWiki_Plugin
      */
     public function getAvailableTranslations($id)
     {
-        $result = array();
+        $result = [];
 
-        list($lc, $idpart) = $this->getTransParts($id);
+        [$lc, $idpart] = $this->getTransParts($id);
 
         foreach ($this->translations as $t) {
             if ($t == $lc) continue; //skip self
-            list($link, $name) = $this->buildTransID($t, $idpart);
+            [$link, $name] = $this->buildTransID($t, $idpart);
             if (page_exists($link)) {
                 $result[$name] = $link;
             }
@@ -229,7 +232,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
         if (!$this->istranslatable($INFO['id'])) return '';
         if ($checkage) $this->checkage();
 
-        list(/* $lc */, $idpart) = $this->getTransParts($INFO['id']);
+        [, $idpart] = $this->getTransParts($INFO['id']);
 
         $out = '<div class="plugin_translation ' . ($this->getConf('dropdown') ? 'is-dropdown' : '') . '">';
 
@@ -264,10 +267,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
      */
     public function getLocalName($lang)
     {
-        if (isset($this->LN[$lang])) {
-            return $this->LN[$lang];
-        }
-        return $lang;
+        return $this->LN[$lang] ?? $lang;
     }
 
     /**
@@ -280,7 +280,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
      */
     protected function prepareLanguageSelectorItem($lc, $idpart, $current)
     {
-        list($target, $lang) = $this->buildTransID($lc, $idpart);
+        [$target, $lang] = $this->buildTransID($lc, $idpart);
         $target = cleanID($target);
         $exists = page_exists($target, '', false);
 
@@ -329,11 +329,11 @@ class helper_plugin_translation extends DokuWiki_Plugin
         $lng = $this->getLangPart($ID);
         if ($lng == $this->defaultlang) return;
 
-        $rx = '/^' . $this->translationNs . '((' . join('|', $this->translations) . '):)?/';
+        $rx = '/^' . $this->translationNs . '((' . implode('|', $this->translations) . '):)?/';
         $idpart = preg_replace($rx, '', $ID);
 
         // compare modification times
-        list($orig, /* $name */) = $this->buildTransID($this->defaultlang, $idpart);
+        [$orig, ] = $this->buildTransID($this->defaultlang, $idpart);
         $origfn = wikiFN($orig);
         if ($INFO['lastmod'] >= @filemtime($origfn)) return;
 
@@ -360,7 +360,7 @@ class helper_plugin_translation extends DokuWiki_Plugin
     {
         // get revision from before translation
         $orev = false;
-        $changelog = new \dokuwiki\ChangeLog\PageChangeLog($id);
+        $changelog = new PageChangeLog($id);
         $revs = $changelog->getRevisions(0, 100);
         foreach ($revs as $rev) {
             if ($rev < $lastmod) {
@@ -372,6 +372,6 @@ class helper_plugin_translation extends DokuWiki_Plugin
             return false;
         }
         $id = cleanID($id);
-        return wl($id, array('do' => 'diff', 'rev' => $orev));
+        return wl($id, ['do' => 'diff', 'rev' => $orev]);
     }
 }

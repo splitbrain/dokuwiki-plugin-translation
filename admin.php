@@ -1,12 +1,14 @@
 <?php
 
+use dokuwiki\Extension\AdminPlugin;
+
 /**
  * DokuWiki Plugin translation (Admin Component)
  *
  * @license GPL 2 http://www.gnu.org/licenses/gpl-2.0.html
  * @author  Andreas Gohr <andi@splitbrain.org>
  */
-class admin_plugin_translation extends DokuWiki_Admin_Plugin
+class admin_plugin_translation extends AdminPlugin
 {
     /** @inheritdoc */
     public function forAdminOnly()
@@ -15,12 +17,12 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin
     }
 
     /** @inheritdoc */
-    function handle()
+    public function handle()
     {
     }
 
     /** @inheritdoc */
-    function html()
+    public function html()
     {
 
         /** @var helper_plugin_translation $helper */
@@ -60,14 +62,14 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin
                 $row .= "<td>" . $xhtml_renderer->internallink($page['id'], $page['id'], null, true) . "</td>";
             }
 
-            list(/* $lc */, $idpart) = $helper->getTransParts($page["id"]);
+            [, $idpart] = $helper->getTransParts($page["id"]);
 
             foreach ($helper->translations as $t) {
                 if ($t === $default_language) {
                     continue;
                 }
 
-                list($translID, /* $name */) = $helper->buildTransID($t, $idpart);
+                [$translID, ] = $helper->buildTransID($t, $idpart);
 
                 $difflink = '';
                 if (!page_exists($translID)) {
@@ -113,8 +115,8 @@ class admin_plugin_translation extends DokuWiki_Admin_Plugin
     {
         $namespace = $this->getConf("translationns");
         $dir = dirname(wikiFN("$namespace:foo"));
-        $pages = array();
-        search($pages, $dir, 'search_allpages', array());
+        $pages = [];
+        search($pages, $dir, 'search_allpages', []);
         return $pages;
     }
 }

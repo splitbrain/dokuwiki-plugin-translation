@@ -1,15 +1,17 @@
 <?php
 
+use dokuwiki\Extension\SyntaxPlugin;
+
 /**
  * Translation Plugin: Simple multilanguage plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
  */
-class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin
+class syntax_plugin_translation_notrans extends SyntaxPlugin
 {
     /** @var helper_plugin_translation */
-    protected $hlp = null;
+    protected $hlp;
 
     /**
      * Constructor. Load helper plugin
@@ -40,7 +42,7 @@ class syntax_plugin_translation_notrans extends DokuWiki_Syntax_Plugin
     /** @inheritdoc */
     public function handle($match, $state, $pos, Doku_Handler $handler)
     {
-        return array('notrans');
+        return ['notrans'];
     }
 
     /** @inheritdoc */

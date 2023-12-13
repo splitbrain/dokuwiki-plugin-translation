@@ -1,12 +1,14 @@
 <?php
 
+use dokuwiki\Extension\SyntaxPlugin;
+
 /**
  * Translation Plugin: Simple multilanguage plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
  */
-class syntax_plugin_translation_trans extends DokuWiki_Syntax_Plugin
+class syntax_plugin_translation_trans extends SyntaxPlugin
 {
     /** @inheritdoc */
     public function getType()
@@ -15,25 +17,25 @@ class syntax_plugin_translation_trans extends DokuWiki_Syntax_Plugin
     }
 
     /** @inheritdoc */
-    function getSort()
+    public function getSort()
     {
         return 155;
     }
 
     /** @inheritdoc */
-    function connectTo($mode)
+    public function connectTo($mode)
     {
         $this->Lexer->addSpecialPattern('~~TRANS~~', $mode, 'plugin_translation_trans');
     }
 
     /** @inheritdoc */
-    function handle($match, $state, $pos, Doku_Handler $handler)
+    public function handle($match, $state, $pos, Doku_Handler $handler)
     {
         return [];
     }
 
     /** @inheritdoc */
-    function render($format, Doku_Renderer $renderer, $data)
+    public function render($format, Doku_Renderer $renderer, $data)
     {
         if ($format != 'xhtml') return false;
         // disable caching
