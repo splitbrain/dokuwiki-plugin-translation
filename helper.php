@@ -163,7 +163,7 @@ class helper_plugin_translation extends Plugin
         global $ACT;
 
         if ($checkact && (!isset($ACT) || act_clean($ACT) != 'show')) return false;
-        if ($this->translationNs && strpos($id, $this->translationNs) !== 0) return false;
+        if ($this->translationNs && strpos($id, (string) $this->translationNs) !== 0) return false;
         $skiptrans = trim($this->getConf('skiptrans'));
         if ($skiptrans && preg_match('/' . $skiptrans . '/ui', ':' . $id)) return false;
         $meta = p_get_metadata($id);

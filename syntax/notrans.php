@@ -55,16 +55,4 @@ class syntax_plugin_translation_notrans extends SyntaxPlugin
         }
         return false;
     }
-
-    /**
-     * for backward compatibility only
-     *
-     * @deprecated
-     * @return string
-     */
-    public function _showTranslations()
-    {
-        dbg_deprecated(helper_plugin_translation::class . '::showTranslations()');
-        return $this->hlp->showTranslations();
-    }
 }

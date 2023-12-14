@@ -100,8 +100,10 @@ class action_plugin_translation extends ActionPlugin
 
         $count = count($event->data['script']);
         for ($i = 0; $i < $count; $i++) {
-            if (array_key_exists('src', $event->data['script'][$i]) &&
-                strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false) {
+            if (
+                array_key_exists('src', $event->data['script'][$i]) &&
+                strpos($event->data['script'][$i]['src'], '/lib/exe/js.php') !== false
+            ) {
                 $event->data['script'][$i]['src'] .= '&lang=' . hsc($conf['lang']);
             }
         }
@@ -234,7 +236,9 @@ class action_plugin_translation extends ActionPlugin
                 if (count($translations) > 1) {
                     $links = [];
                     foreach (array_keys($translations) as $t) {
-                        $links[] = '<a href="' . wl($ID, ['do' => 'edit', 'fromlang' => $t]) . '">' . $this->helper->getLocalName($t) . '</a>';
+                        $links[] = '<a href="' . wl($ID, ['do' => 'edit', 'fromlang' => $t]) . '">' .
+                            $this->helper->getLocalName($t) .
+                            '</a>';
                     }
 
                     msg(
