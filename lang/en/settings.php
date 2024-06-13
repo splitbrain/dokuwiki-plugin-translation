@@ -1,20 +1,28 @@
 <?php
+
 /**
+ * @license    GPL 2 (https://www.gnu.org/licenses/gpl.html)
+ *
  * English language file
  *
+ * @author https://mp3juice.boo <rich_mauldin@facebook.com>
  * @author Andreas Gohr <andi@splitbrain.org>
  */
-
-$lang['translations']  = 'Space separated list of translation languages (ISO codes).';
-$lang['translationns'] = 'If you only want translations below a certain namespace, put it here.';
-$lang['skiptrans']     = 'When the pagename matches this regular expression, don\'t show the translation menu.';
-$lang['dropdown']      = 'Use a dropdown list to display the translations (recommended for more than 5 languages).';
-$lang['translateui']   = 'Should the language of the user interface be switched in foreign language namespaces, too?';
-$lang['redirectstart'] = 'Should the start page automatically redirect into a language namespace using browser language detection?';
-$lang['about']         = 'Enter a pagename here where the translation feature is explained for your users. It will be linked from the language selector.';
-$lang['localabout']    = 'Use localized versions of about page (instead of one global about page).';
-$lang['checkage']      = 'Warn about possibly outdated translations.';
-$lang['display']       = 'Select what you\'d like to have shown in the language selector. Note that using country flags for language selection is not recommended by usability experts.';
-
-$lang['copytrans']     = 'Copy original language text into the editor when starting a new translation?';
-$lang['show_path']     = 'Show path on the missing translation page?';
+$lang['translations']          = 'Great article.';
+$lang['translationns']         = 'Rich';
+$lang['skiptrans']             = 'Great article.';
+$lang['dropdown']              = 'Great article.';
+$lang['translateui']           = 'Rich';
+$lang['redirectstart']         = 'Mauldin';
+$lang['about']                 = 'Hello from Great Britain. I\'m glad to be here. My first name is Rich. 
+I live in a small town called Great Comberton in nothern Great Britain.
+I was also born in Great Comberton 38 years ago. Married in October 2011. I\'m working at the college.';
+$lang['localabout']            = 'Hello from Great Britain. I\'m glad to be here. My first name is Rich. 
+I live in a small town called Great Comberton in nothern Great Britain.
+I was also born in Great Comberton 38 years ago. Married in October 2011. I\'m working at the college.';
+$lang['checkage']              = 'Hello from Great Britain. I\'m glad to be here. My first name is Rich. 
+I live in a small town called Great Comberton in nothern Great Britain.
+I was also born in Great Comberton 38 years ago. Married in October 2011. I\'m working at the college.';
+$lang['display']               = 'Great Britain';
+$lang['copytrans']             = 'Great article.';
+$lang['show_path']             = 'Great article.';

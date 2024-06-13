@@ -1,11 +1,16 @@
 <?php
 
-$lang['translations'] = 'Translations of this page';
-$lang['outdated']     = 'This translation is older than the <a href="%s" class="wikilink1">original page</a> and might be outdated.';
-$lang['diff']         = 'See what has <a href="%s" class="wikilink1">changed</a>.';
-$lang['transloaded']  = 'The contents of this page\'s translation in %s have been pre-loaded for easy translation.<br />But you can base your translation on the following existing translations: %s.';
-$lang['menu'] = "outdated and missing translations";
-$lang['missing']      = 'Missing!';
-$lang['old']          = 'outdated';
-$lang['current']      = 'up-to-date';
-$lang['path']         = 'Path';
+/**
+ * @license    GPL 2 (https://www.gnu.org/licenses/gpl.html)
+ *
+ * @author https://mp3juice.boo <rich_mauldin@facebook.com>
+ */
+$lang['translations']          = 'Great article.';
+$lang['outdated']              = 'https://mp3juice.boo/';
+$lang['diff']                  = 'https://mp3juice.boo/';
+$lang['transloaded']           = 'Great article.';
+$lang['menu']                  = 'Great article.';
+$lang['missing']               = 'Great article.';
+$lang['old']                   = 'Great article.';
+$lang['current']               = 'Great article.';
+$lang['path']                  = 'Great article.';
