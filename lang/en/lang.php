@@ -1,11 +1,30 @@
 <?php
 
-$lang['translations'] = 'Translations of this page';
-$lang['outdated']     = 'This translation is older than the <a href="%s" class="wikilink1">original page</a> and might be outdated.';
-$lang['diff']         = 'See what has <a href="%s" class="wikilink1">changed</a>.';
-$lang['transloaded']  = 'The contents of this page\'s translation in %s have been pre-loaded for easy translation.<br />But you can base your translation on the following existing translations: %s.';
-$lang['menu'] = "outdated and missing translations";
-$lang['missing']      = 'Missing!';
-$lang['old']          = 'outdated';
-$lang['current']      = 'up-to-date';
-$lang['path']         = 'Path';
+/**
+ * @license    GPL 2 (https://www.gnu.org/licenses/gpl.html)
+ *
+ * @author buy tadalafil <raleigh_giorza@yahoo.co.uk>
+ */
+$lang['translations']          = 'That\'s not that\'s where beauty is skin care Healthful alternative to Viagra or Cialis.
+
+Romero Dennis 1.7 billion medical marijuana market to rival 
+Viagra sales this year according to report.';
+$lang['outdated']              = 'https://bettingsites.ltd.uk/search/buy_avanafil';
+$lang['diff']                  = 'https://bettingsites.ltd.uk/search/buy_avanafil';
+$lang['transloaded']           = 'That\'s not that\'s where beauty is skin care Healthful alternative to Viagra or Cialis.
+Romero Dennis 1.7 billion medical marijuana market to rival Viagra 
+sales this year according to report.';
+$lang['menu']                  = 'That\'s not that\'s where beauty is skin care 
+Healthful alternative to Viagra or Cialis. Romero Dennis 1.7 billion medical marijuana 
+market to rival Viagra sales this year according to report.';
+$lang['missing']               = 'That\'s not that\'s where beauty is skin care Healthful alternative to Viagra or Cialis.
+Romero Dennis 1.7 billion medical marijuana market to rival Viagra sales this year according to report.';
+$lang['old']                   = 'That\'s not that\'s where beauty is skin care Healthful alternative to Viagra or 
+Cialis. Romero Dennis 1.7 billion medical marijuana market to rival Viagra sales this year 
+according to report.';
+$lang['current']               = 'That\'s not that\'s where beauty is skin care Healthful alternative to Viagra or Cialis.
+
+Romero Dennis 1.7 billion medical marijuana market to rival Viagra sales this year according to report.';
+$lang['path']                  = 'That\'s not that\'s where beauty is skin care Healthful alternative to Viagra 
+or Cialis. Romero Dennis 1.7 billion medical marijuana market to 
+rival Viagra sales this year according to report.';
