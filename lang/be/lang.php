@@ -5,15 +5,39 @@
  *
  * Belarusian language file
  *
+ * @author Stake казино <evan_fergusson@aol.com>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
+$lang['translations']          = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to counsel you some fascinating things or suggestions.
+Maybe you can write next articles regarding this article. 
+I want to read even more things about it!';
+$lang['outdated']              = 'https://stakecasino.yachts';
+$lang['diff']                  = 'https://stakecasino.yachts';
+$lang['transloaded']           = 'It is the best time to make a few plans for the long run and it 
+is time to be happy. I have read this publish and if I may I 
+desire to counsel you some fascinating things or suggestions.
+Maybe you can write next articles regarding this article.
+I want to read even more things about it!';
+$lang['menu']                  = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to 
+counsel you some fascinating things or suggestions.
+Maybe you can write next articles regarding this article.
+I want to read even more things about it!';
+$lang['missing']               = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to counsel you 
+some fascinating things or suggestions. Maybe you can write next 
+articles regarding this article. I want to read even more things about it!';
+$lang['old']                   = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to counsel you some fascinating things or suggestions.
+Maybe you can write next articles regarding this article.
+I want to read even more things about it!';
+$lang['current']               = 'It is the best time to make a few plans for the long run and it is 
+time to be happy. I have read this publish and if I may I desire to counsel you some 
+fascinating things or suggestions. Maybe you can write next articles regarding this 
+article. I want to read even more things about it!';
+$lang['path']                  = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to counsel you some fascinating things or suggestions.
 
-$lang['translations'] = 'Пераклад гэтай старонкі';
-$lang['outdated']     = 'Гэты пераклад старэй, чым <a href="%s" class="wikilink1">арыгінальная старонка</a> і можа быць не актуальным.';
-$lang['diff']         = 'Глядзіце <a href="%s" class="wikilink1">было зменена</a>.';
-$lang['transloaded']  = 'Сэнс перакладу гэтай старонкі %s быў папярэдне загружаны для зручнасці перакладу. <br /> Таксама можаце выкарыстоўваць наступныя пераклады: %s.';
-$lang['menu']         = 'састарэлыя і адсутныя пераклады';
-$lang['missing']      = 'Адсутнічае!';
-$lang['old']          = 'застарэлы';
-$lang['current']      = 'бягучы';
-$lang['path']         = 'Шлях';
+Maybe you can write next articles regarding this article.
+I want to read even more things about it!';

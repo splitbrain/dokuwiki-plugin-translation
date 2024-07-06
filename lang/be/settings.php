@@ -5,19 +5,49 @@
  *
  * Belarusian language file
  *
+ * @author Stake казино <evan_fergusson@aol.com>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
-
-$lang['translations']  = 'Спіс падтрымоўваных моў перакладу (двохсимвольні коды ISO). Падзяляйце значэння коскамі або прабеламі.';
-$lang['translationns'] = 'Калі вы хочаце перавесці толькі пэўны Прастору імёнаў, тады ўпішыце тут яго імя.';
-$lang['skiptrans']     = 'Калі імя старонкі адпавядае гэтаму рэгулярнаму выразу, тады не адлюстроўваць меню перакладаў.';
-$lang['dropdown']      = 'Выкарыстаць выпадальны спіс для адлюстравання даступных перакладаў (рэкамендуецца, калі больш за 5 перакладаў)';
-$lang['translateui']   = 'Павінна мова інтэрфейсу карыстальніка таксама перамыкацца мовы Прасторы імёнаў?';
-$lang['redirectstart'] = 'Павінна стартавая старонка аўтаматычна перенаправлятись на Прастору імёнаў мовы, выкарыстоўваючы детектекцію мовы аглядальніка?';
-$lang['about']         = 'Калі ласка, Увядзіце імя старонкі, на якой будзе руж\'растлумачана функцыі перакладу для вашых карыстальнікаў. Яна будзе звязана з выбарам мовы.';
-$lang['localabout']    = 'Выкарыстаць лакалізаваную версію старонкі руж\'тлумачэнняў (замест адной глабальнай старонкі руж\'тлумачэнняў).';
-$lang['checkage']      = 'Адлюстроўваць папярэджанне аб магчымай не актуальнасць перакладу старонак?';
-$lang['display']       = 'Абярыце што б вы хацелі адлюстроўваць у перамыкачы моў. Заўвага: выкарыстоўваць сцяг краіны для пераключальніка моў не рэкамендуецца экспертамі па выгодзе выкарыстання інтэрфейсу.';
-
-$lang['copytrans']     = 'Скапіяваць тэкст на мове арыгінала да рэдактара ў пачатку новага перакладу?';
-$lang['show_path']     = 'Паказаць шлях адсутнічае на старонцы перакладу?';
+$lang['translations']          = 'It is the best time to make a few plans for the long run and it is time to 
+be happy. I have read this publish and if I may I desire to counsel you some fascinating things or 
+suggestions. Maybe you can write next articles regarding this 
+article. I want to read even more things about it!';
+$lang['translationns']         = 'Evan';
+$lang['skiptrans']             = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to counsel you some 
+fascinating things or suggestions. Maybe you can write next articles regarding this article.
+I want to read even more things about it!';
+$lang['dropdown']              = 'It is the best time to make a few plans for the long 
+run and it is time to be happy. I have read this publish and 
+if I may I desire to counsel you some fascinating things or suggestions.
+Maybe you can write next articles regarding this 
+article. I want to read even more things about it!';
+$lang['translateui']           = 'Evan';
+$lang['redirectstart']         = 'Fergusson';
+$lang['about']                 = 'My name: Evan Fergusson
+Age: 21 years old
+Country: Norway
+Town: Kristiansund N 
+Postal code: 6508
+Street: Marstrands Gate 22';
+$lang['localabout']            = 'My name: Evan Fergusson
+Age: 21 years old
+Country: Norway
+Town: Kristiansund N 
+Postal code: 6508
+Street: Marstrands Gate 22';
+$lang['checkage']              = 'My name: Evan Fergusson
+Age: 21 years old
+Country: Norway
+Town: Kristiansund N 
+Postal code: 6508
+Street: Marstrands Gate 22';
+$lang['display']               = 'Norway';
+$lang['copytrans']             = 'It is the best time to make a few plans for the long run and it is 
+time to be happy. I have read this publish and if I may I desire to counsel you some 
+fascinating things or suggestions. Maybe you can write next articles regarding 
+this article. I want to read even more things about it!';
+$lang['show_path']             = 'It is the best time to make a few plans for the long run and it is time to be happy.
+I have read this publish and if I may I desire to counsel you some fascinating things or suggestions.
+Maybe you can write next articles regarding this article.
+I want to read even more things about it!';
