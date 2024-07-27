@@ -2,18 +2,33 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
- * @author Aivars Miška <allefm@gmail.com>
+ *
+ * @author savastan0 <sheri.royer@yahoo.com>
  * @author Aivars Miška <allefm@gmail.com>
  */
-$lang['translations']          = 'Ar atstarpēm atdalīts tulkojumu valodu saraksts  (ISO kodi). Izņemot noklusēto valodu.';
-$lang['translationns']         = 'Ja tulkojumus vajag tikai noteiktā nodaļā, ieraksti to šeit.';
-$lang['skiptrans']             = 'Ja lapas nosaukums atbilst regulārajai izteiksmei, tulkošanas izvēlni nerādīt.';
-$lang['dropdown']              = 'Lietot izkrītošo izvēlni tulkojumu parādīšanai (ieteikt, ja ir vairāk par 5 valodām). ';
-$lang['translateui']           = 'Vai svešvalodu nodaļās jāpārslēdz arī lietotāja sakarnes valoda?';
-$lang['redirectstart']         = 'Vai sākuma lapai automātiski jāpārslēdzas atkarībā no pārlūkprogrammas noteiktās valodas?';
-$lang['about']                 = 'Ieraksti šeit lapu, kurā lietotājiem izskaidrotas tulkošas iespējas. Tā tiks piesaistīta valodu izvēlei.';
-$lang['localabout']            = 'Lietot "par" lapas lokalizēto versiju, nevis globālo "par" lapu.';
-$lang['checkage']              = 'Brīdināt pa varbūt novecojušiem tulkojumiem. ';
-$lang['display']               = 'Norādiet, ko lietot valodas izvēlei. Ņemiet vērā, ka valodām izmantot valstu karogus neiesaka.';
-$lang['copytrans']             = 'Sākot tulkojumu, iekopēt redaktorā oriģināltekstu?';
+$lang['translations']          = 'Greetings! Verry useful advice in this particular article!
+It\'s the little changes whihh will make the biggest changes.
+Thanks a lot for sharing!';
+$lang['translationns']         = 'Sheri';
+$lang['skiptrans']             = 'Greetings! Very useful advice in this particular article!
+
+It\'s the little changes hich will make the biggest changes.
+Thanks a lot for sharing!';
+$lang['dropdown']              = 'Greetings! Very useful advice in this particular article!
+It\'s the little changes which will make the biggest changes.
+Thanks a lot for sharing!';
+$lang['translateui']           = 'Sheri';
+$lang['redirectstart']         = 'Royer';
+$lang['about']                 = 'Hello, I\'m Sheri, a 24 year old from Kulma, Austria.
+My hobbies include (but are not limited to) Slot Car Racing, Amateur geology and watching Two and a Half Men.';
+$lang['localabout']            = 'Hello, I\'m Sheri, a 24 year old from Kulma, Austria.
+My hobbies include (but are not limited to) Slot Car Racing, Amateur geology and watching Two and a Half Men.';
+$lang['checkage']              = 'Hello, I\'m Sheri, a 24 year old from Kulma, Austria.
+My hobbies include (but are not limited to) Slot Car Racing, Amateur geology and watching Two and a Half Men.';
+$lang['display']               = 'Austria';
+$lang['copytrans']             = 'Greetings! Very useful advice iin this particular article! 
+It\'s tthe little changes which will make the biggest changes.
+Thanks a lot for sharing!';
+$lang['show_path']             = 'Greetings! Very useful advice in this particular article!
+It\'s the little changes which will make the biggest changes.
+Thanks a lot for sharing!';
