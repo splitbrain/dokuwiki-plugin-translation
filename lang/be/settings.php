@@ -5,19 +5,28 @@
  *
  * Belarusian language file
  *
+ * @author онлайн-казино Unlim <anibalbon@web.de>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
-
-$lang['translations']  = 'Спіс падтрымоўваных моў перакладу (двохсимвольні коды ISO). Падзяляйце значэння коскамі або прабеламі.';
-$lang['translationns'] = 'Калі вы хочаце перавесці толькі пэўны Прастору імёнаў, тады ўпішыце тут яго імя.';
-$lang['skiptrans']     = 'Калі імя старонкі адпавядае гэтаму рэгулярнаму выразу, тады не адлюстроўваць меню перакладаў.';
-$lang['dropdown']      = 'Выкарыстаць выпадальны спіс для адлюстравання даступных перакладаў (рэкамендуецца, калі больш за 5 перакладаў)';
-$lang['translateui']   = 'Павінна мова інтэрфейсу карыстальніка таксама перамыкацца мовы Прасторы імёнаў?';
-$lang['redirectstart'] = 'Павінна стартавая старонка аўтаматычна перенаправлятись на Прастору імёнаў мовы, выкарыстоўваючы детектекцію мовы аглядальніка?';
-$lang['about']         = 'Калі ласка, Увядзіце імя старонкі, на якой будзе руж\'растлумачана функцыі перакладу для вашых карыстальнікаў. Яна будзе звязана з выбарам мовы.';
-$lang['localabout']    = 'Выкарыстаць лакалізаваную версію старонкі руж\'тлумачэнняў (замест адной глабальнай старонкі руж\'тлумачэнняў).';
-$lang['checkage']      = 'Адлюстроўваць папярэджанне аб магчымай не актуальнасць перакладу старонак?';
-$lang['display']       = 'Абярыце што б вы хацелі адлюстроўваць у перамыкачы моў. Заўвага: выкарыстоўваць сцяг краіны для пераключальніка моў не рэкамендуецца экспертамі па выгодзе выкарыстання інтэрфейсу.';
-
-$lang['copytrans']     = 'Скапіяваць тэкст на мове арыгінала да рэдактара ў пачатку новага перакладу?';
-$lang['show_path']     = 'Паказаць шлях адсутнічае на старонцы перакладу?';
+$lang['translations']          = 'Highly energetic blog, I liked that bit. Will there be a part 2?';
+$lang['translationns']         = 'Anibal';
+$lang['skiptrans']             = 'Highly energetic blog, I liked that bit. Will there 
+be a part 2?';
+$lang['dropdown']              = 'Highly energetic blog, I liked that bit. Will there be a 
+part 2?';
+$lang['translateui']           = 'Anibal';
+$lang['redirectstart']         = 'Bon';
+$lang['about']                 = 'Hello from Australia. I\'m glad to came here. My first name is Anibal. 
+I live in a city called Babinda in east Australia.
+I was also born in Babinda 38 years ago. Married in July year 2001. I\'m working at the university.';
+$lang['localabout']            = 'Hello from Australia. I\'m glad to came here. My first name is Anibal. 
+I live in a city called Babinda in east Australia.
+I was also born in Babinda 38 years ago. Married in July year 2001. I\'m working at the university.';
+$lang['checkage']              = 'Hello from Australia. I\'m glad to came here. My first name is Anibal. 
+I live in a city called Babinda in east Australia.
+I was also born in Babinda 38 years ago. Married in July year 2001. I\'m working at the university.';
+$lang['display']               = 'Australia';
+$lang['copytrans']             = 'Highly energetic blog, I liked that bit. Will there be a 
+part 2?';
+$lang['show_path']             = 'Highly energetic blog, I liked that bit. Will there 
+be a part 2?';
