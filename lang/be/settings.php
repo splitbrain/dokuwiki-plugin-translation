@@ -5,19 +5,35 @@
  *
  * Belarusian language file
  *
+ * @author Tamie <unahussey@orange.fr>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
+$lang['translations']          = 'Hi! I know this is somewhat off topic but I was wondering if 
+you knew where I could find a captcha plugin for my comment form?
 
-$lang['translations']  = 'Спіс падтрымоўваных моў перакладу (двохсимвольні коды ISO). Падзяляйце значэння коскамі або прабеламі.';
-$lang['translationns'] = 'Калі вы хочаце перавесці толькі пэўны Прастору імёнаў, тады ўпішыце тут яго імя.';
-$lang['skiptrans']     = 'Калі імя старонкі адпавядае гэтаму рэгулярнаму выразу, тады не адлюстроўваць меню перакладаў.';
-$lang['dropdown']      = 'Выкарыстаць выпадальны спіс для адлюстравання даступных перакладаў (рэкамендуецца, калі больш за 5 перакладаў)';
-$lang['translateui']   = 'Павінна мова інтэрфейсу карыстальніка таксама перамыкацца мовы Прасторы імёнаў?';
-$lang['redirectstart'] = 'Павінна стартавая старонка аўтаматычна перенаправлятись на Прастору імёнаў мовы, выкарыстоўваючы детектекцію мовы аглядальніка?';
-$lang['about']         = 'Калі ласка, Увядзіце імя старонкі, на якой будзе руж\'растлумачана функцыі перакладу для вашых карыстальнікаў. Яна будзе звязана з выбарам мовы.';
-$lang['localabout']    = 'Выкарыстаць лакалізаваную версію старонкі руж\'тлумачэнняў (замест адной глабальнай старонкі руж\'тлумачэнняў).';
-$lang['checkage']      = 'Адлюстроўваць папярэджанне аб магчымай не актуальнасць перакладу старонак?';
-$lang['display']       = 'Абярыце што б вы хацелі адлюстроўваць у перамыкачы моў. Заўвага: выкарыстоўваць сцяг краіны для пераключальніка моў не рэкамендуецца экспертамі па выгодзе выкарыстання інтэрфейсу.';
+I\'m using the same blog platform as yours 
+and I\'m having problems finding one? Thanks a lot!';
+$lang['translationns']         = 'Una';
+$lang['skiptrans']             = 'Hi! I know this is somewhat off topic but I was wondering if you 
+knew where I could find a captcha plugin for my comment 
+form? I\'m using the same blog platform as yours and I\'m having problems finding 
+one? Thanks a lot!';
+$lang['dropdown']              = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems finding one?
 
-$lang['copytrans']     = 'Скапіяваць тэкст на мове арыгінала да рэдактара ў пачатку новага перакладу?';
-$lang['show_path']     = 'Паказаць шлях адсутнічае на старонцы перакладу?';
+Thanks a lot!';
+$lang['translateui']           = 'Una';
+$lang['redirectstart']         = 'Hussey';
+$lang['about']                 = 'Hi! 
+My name is Una and I\'m a 28 years old boy from Araguari.';
+$lang['localabout']            = 'Hi! 
+My name is Una and I\'m a 28 years old boy from Araguari.';
+$lang['checkage']              = 'Hi! 
+My name is Una and I\'m a 28 years old boy from Araguari.';
+$lang['display']               = 'Brazil';
+$lang['copytrans']             = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m 
+having problems finding one? Thanks a lot!';
+$lang['show_path']             = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems 
+finding one? Thanks a lot!';

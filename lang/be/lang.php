@@ -5,15 +5,34 @@
  *
  * Belarusian language file
  *
+ * @author Tamie <unahussey@orange.fr>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
+$lang['translations']          = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I could find a captcha plugin for my comment 
+form? I\'m using the same blog platform as yours and I\'m having problems finding one?
+Thanks a lot!';
+$lang['outdated']              = 'https://zooma.top';
+$lang['diff']                  = 'https://zooma.top';
+$lang['transloaded']           = 'Hi! I know this is somewhat off topic but I was 
+wondering if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems finding one?
+Thanks a lot!';
+$lang['menu']                  = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems finding one?
 
-$lang['translations'] = 'Пераклад гэтай старонкі';
-$lang['outdated']     = 'Гэты пераклад старэй, чым <a href="%s" class="wikilink1">арыгінальная старонка</a> і можа быць не актуальным.';
-$lang['diff']         = 'Глядзіце <a href="%s" class="wikilink1">было зменена</a>.';
-$lang['transloaded']  = 'Сэнс перакладу гэтай старонкі %s быў папярэдне загружаны для зручнасці перакладу. <br /> Таксама можаце выкарыстоўваць наступныя пераклады: %s.';
-$lang['menu']         = 'састарэлыя і адсутныя пераклады';
-$lang['missing']      = 'Адсутнічае!';
-$lang['old']          = 'застарэлы';
-$lang['current']      = 'бягучы';
-$lang['path']         = 'Шлях';
+Thanks a lot!';
+$lang['missing']               = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems finding one?
+Thanks a lot!';
+$lang['old']                   = 'Hi! I know this is somewhat off topic but I was wondering if you knew where I 
+could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems finding one?
+Thanks a lot!';
+$lang['current']               = 'Hi! I know this is somewhat off topic but I was wondering if you knew 
+where I could find a captcha plugin for my comment 
+form? I\'m using the same blog platform as yours and I\'m having problems finding one?
+Thanks a lot!';
+$lang['path']                  = 'Hi! I know this is somewhat off topic but I was wondering 
+if you knew where I could find a captcha plugin for my comment form?
+I\'m using the same blog platform as yours and I\'m having problems finding one?
+Thanks a lot!';
