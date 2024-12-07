@@ -2,10 +2,17 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author webcam girls site:alohatube.com <minervabloomfield@hotmail.co.uk>
  * @author Aivars Miška <allefm@gmail.com>
  */
-$lang['translations']          = 'Citās valodās';
-$lang['outdated']              = 'Šis tulkojums ir vecāks par <a href="%s" class="wikilink1">oriģinālo lapu</a> un varbūt ir novecojis.';
-$lang['diff']                  = 'Redzēt, ka ir <a href="%s" class="wikilink1">mainījies</a>.';
-$lang['transloaded']           = 'Vieglākai tulkošanai ir ielādēts lapas saturs  no %s .<br />Bet varat balstīties arī uz šādiem tulkojumiem: %s.';
+$lang['translations']          = 'The sixth giveaway is for a signed copy of Indexing.';
+$lang['outdated']              = 'https://top-porn-sites.com';
+$lang['diff']                  = 'https://top-porn-sites.com';
+$lang['transloaded']           = 'The sixth giveaway is for a signed copy of Indexing.';
+$lang['menu']                  = 'The sixth giveaway is for a signed copy of Indexing.';
+$lang['missing']               = 'The sixth giveaway is for a signed copy of 
+Indexing.';
+$lang['old']                   = 'The sixth giveaway is for a signed copy of Indexing.';
+$lang['current']               = 'The sixth giveaway is for a signed copy of Indexing.';
+$lang['path']                  = 'The sixth giveaway is for a signed copy of Indexing.';
