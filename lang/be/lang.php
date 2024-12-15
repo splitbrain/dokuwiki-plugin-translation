@@ -5,15 +5,30 @@
  *
  * Belarusian language file
  *
+ * @author Money X Casino <allisonmontague@wanadoo.fr>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
-
-$lang['translations'] = 'Пераклад гэтай старонкі';
-$lang['outdated']     = 'Гэты пераклад старэй, чым <a href="%s" class="wikilink1">арыгінальная старонка</a> і можа быць не актуальным.';
-$lang['diff']         = 'Глядзіце <a href="%s" class="wikilink1">было зменена</a>.';
-$lang['transloaded']  = 'Сэнс перакладу гэтай старонкі %s быў папярэдне загружаны для зручнасці перакладу. <br /> Таксама можаце выкарыстоўваць наступныя пераклады: %s.';
-$lang['menu']         = 'састарэлыя і адсутныя пераклады';
-$lang['missing']      = 'Адсутнічае!';
-$lang['old']          = 'застарэлы';
-$lang['current']      = 'бягучы';
-$lang['path']         = 'Шлях';
+$lang['translations']          = 'Hello! I could have sworn I\'ve visited this web 
+site before but after browsing through a few of the articles I 
+realized it\'s new to me. Anyhow, I\'m definitely delighted I came across it and I\'ll be bookmarking it and checking back often!';
+$lang['outdated']              = 'https://munidigital.iie.cl/wiki/index.php?title=Usuario:KelleFitzsimmons';
+$lang['diff']                  = 'https://munidigital.iie.cl/wiki/index.php?title=Usuario:KelleFitzsimmons';
+$lang['transloaded']           = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a few of the articles I realized it\'s new to me.
+Anyhow, I\'m definitely delighted I came across it and I\'ll be bookmarking it and checking back often!';
+$lang['menu']                  = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a 
+few of the articles I realized it\'s new to me. Anyhow, I\'m 
+definitely delighted I came across it and I\'ll be bookmarking it and checking back often!';
+$lang['missing']               = 'Hello! I could have sworn I\'ve visited this web site before but after browsing 
+through a few of the articles I realized it\'s new to me.
+Anyhow, I\'m definitely delighted I came across it 
+and I\'ll be bookmarking it and checking back often!';
+$lang['old']                   = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through 
+a few of the articles I realized it\'s new to me.
+Anyhow, I\'m definitely delighted I came across it and I\'ll 
+be bookmarking it and checking back often!';
+$lang['current']               = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a few of the articles 
+I realized it\'s new to me. Anyhow, I\'m definitely 
+delighted I came across it and I\'ll be bookmarking it and checking back often!';
+$lang['path']                  = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a 
+few of the articles I realized it\'s new to me. Anyhow, I\'m definitely delighted I 
+came across it and I\'ll be bookmarking it and checking back often!';

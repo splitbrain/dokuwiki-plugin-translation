@@ -5,19 +5,29 @@
  *
  * Belarusian language file
  *
+ * @author Money X Casino <allisonmontague@wanadoo.fr>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
-
-$lang['translations']  = 'Спіс падтрымоўваных моў перакладу (двохсимвольні коды ISO). Падзяляйце значэння коскамі або прабеламі.';
-$lang['translationns'] = 'Калі вы хочаце перавесці толькі пэўны Прастору імёнаў, тады ўпішыце тут яго імя.';
-$lang['skiptrans']     = 'Калі імя старонкі адпавядае гэтаму рэгулярнаму выразу, тады не адлюстроўваць меню перакладаў.';
-$lang['dropdown']      = 'Выкарыстаць выпадальны спіс для адлюстравання даступных перакладаў (рэкамендуецца, калі больш за 5 перакладаў)';
-$lang['translateui']   = 'Павінна мова інтэрфейсу карыстальніка таксама перамыкацца мовы Прасторы імёнаў?';
-$lang['redirectstart'] = 'Павінна стартавая старонка аўтаматычна перенаправлятись на Прастору імёнаў мовы, выкарыстоўваючы детектекцію мовы аглядальніка?';
-$lang['about']         = 'Калі ласка, Увядзіце імя старонкі, на якой будзе руж\'растлумачана функцыі перакладу для вашых карыстальнікаў. Яна будзе звязана з выбарам мовы.';
-$lang['localabout']    = 'Выкарыстаць лакалізаваную версію старонкі руж\'тлумачэнняў (замест адной глабальнай старонкі руж\'тлумачэнняў).';
-$lang['checkage']      = 'Адлюстроўваць папярэджанне аб магчымай не актуальнасць перакладу старонак?';
-$lang['display']       = 'Абярыце што б вы хацелі адлюстроўваць у перамыкачы моў. Заўвага: выкарыстоўваць сцяг краіны для пераключальніка моў не рэкамендуецца экспертамі па выгодзе выкарыстання інтэрфейсу.';
-
-$lang['copytrans']     = 'Скапіяваць тэкст на мове арыгінала да рэдактара ў пачатку новага перакладу?';
-$lang['show_path']     = 'Паказаць шлях адсутнічае на старонцы перакладу?';
+$lang['translations']          = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a few of the 
+articles I realized it\'s new to me. Anyhow, I\'m definitely delighted I came across it and I\'ll be bookmarking it and checking back often!';
+$lang['translationns']         = 'Allison';
+$lang['skiptrans']             = 'Hello! I could have sworn I\'ve visited this web site before 
+but after browsing through a few of the articles I realized it\'s 
+new to me. Anyhow, I\'m definitely delighted I came 
+across it and I\'ll be bookmarking it and checking back often!';
+$lang['dropdown']              = 'Hello! I could have sworn I\'ve visited this web site 
+before but after browsing through a few of the articles I realized it\'s new to me.
+Anyhow, I\'m definitely delighted I came across it and I\'ll be bookmarking 
+it and checking back often!';
+$lang['translateui']           = 'Allison';
+$lang['redirectstart']         = 'Montague';
+$lang['about']                 = 'My name is Allison and I am studying Hotel Administration and Art at Riebeis / Austria.';
+$lang['localabout']            = 'My name is Allison and I am studying Hotel Administration and Art at Riebeis / Austria.';
+$lang['checkage']              = 'My name is Allison and I am studying Hotel Administration and Art at Riebeis / Austria.';
+$lang['display']               = 'Austria';
+$lang['copytrans']             = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a few of the articles I realized it\'s new to me.
+Anyhow, I\'m definitely delighted I came across it and I\'ll be bookmarking it and checking back often!';
+$lang['show_path']             = 'Hello! I could have sworn I\'ve visited this web site before but after browsing through a few of 
+the articles I realized it\'s new to me. Anyhow, I\'m definitely delighted I came across it 
+and I\'ll be bookmarking it and checking back 
+often!';
