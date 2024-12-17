@@ -5,19 +5,32 @@
  *
  * Belarusian language file
  *
+ * @author www.masterqna.com <allisonchism@live.com>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
-
-$lang['translations']  = 'Спіс падтрымоўваных моў перакладу (двохсимвольні коды ISO). Падзяляйце значэння коскамі або прабеламі.';
-$lang['translationns'] = 'Калі вы хочаце перавесці толькі пэўны Прастору імёнаў, тады ўпішыце тут яго імя.';
-$lang['skiptrans']     = 'Калі імя старонкі адпавядае гэтаму рэгулярнаму выразу, тады не адлюстроўваць меню перакладаў.';
-$lang['dropdown']      = 'Выкарыстаць выпадальны спіс для адлюстравання даступных перакладаў (рэкамендуецца, калі больш за 5 перакладаў)';
-$lang['translateui']   = 'Павінна мова інтэрфейсу карыстальніка таксама перамыкацца мовы Прасторы імёнаў?';
-$lang['redirectstart'] = 'Павінна стартавая старонка аўтаматычна перенаправлятись на Прастору імёнаў мовы, выкарыстоўваючы детектекцію мовы аглядальніка?';
-$lang['about']         = 'Калі ласка, Увядзіце імя старонкі, на якой будзе руж\'растлумачана функцыі перакладу для вашых карыстальнікаў. Яна будзе звязана з выбарам мовы.';
-$lang['localabout']    = 'Выкарыстаць лакалізаваную версію старонкі руж\'тлумачэнняў (замест адной глабальнай старонкі руж\'тлумачэнняў).';
-$lang['checkage']      = 'Адлюстроўваць папярэджанне аб магчымай не актуальнасць перакладу старонак?';
-$lang['display']       = 'Абярыце што б вы хацелі адлюстроўваць у перамыкачы моў. Заўвага: выкарыстоўваць сцяг краіны для пераключальніка моў не рэкамендуецца экспертамі па выгодзе выкарыстання інтэрфейсу.';
-
-$lang['copytrans']     = 'Скапіяваць тэкст на мове арыгінала да рэдактара ў пачатку новага перакладу?';
-$lang['show_path']     = 'Паказаць шлях адсутнічае на старонцы перакладу?';
+$lang['translations']          = 'Great info. Lucky me I came across your site by 
+accident (stumbleupon). I\'ve book-marked it for later!';
+$lang['translationns']         = 'Allison';
+$lang['skiptrans']             = 'Great info. Lucky me I came across your site by accident 
+(stumbleupon). I\'ve book-marked it for later!';
+$lang['dropdown']              = 'Great info. Lucky me I came across your site by accident (stumbleupon).
+I\'ve book-marked it for later!';
+$lang['translateui']           = 'Allison';
+$lang['redirectstart']         = 'Chism';
+$lang['about']                 = 'Hello! My name is Allison. 
+It is a little about myself: I live in Sweden, my city of Korskrogen. 
+It\'s called often Eastern or cultural capital of NA. I\'ve married 4 years ago.
+I have 2 children - a son (Sonja) and the daughter (Raymond). We all like Metal detecting.';
+$lang['localabout']            = 'Hello! My name is Allison. 
+It is a little about myself: I live in Sweden, my city of Korskrogen. 
+It\'s called often Eastern or cultural capital of NA. I\'ve married 4 years ago.
+I have 2 children - a son (Sonja) and the daughter (Raymond). We all like Metal detecting.';
+$lang['checkage']              = 'Hello! My name is Allison. 
+It is a little about myself: I live in Sweden, my city of Korskrogen. 
+It\'s called often Eastern or cultural capital of NA. I\'ve married 4 years ago.
+I have 2 children - a son (Sonja) and the daughter (Raymond). We all like Metal detecting.';
+$lang['display']               = 'Sweden';
+$lang['copytrans']             = 'Great info. Lucky me I came across your site by accident (stumbleupon).
+I\'ve book-marked it for later!';
+$lang['show_path']             = 'Great info. Lucky me I came across your site by accident (stumbleupon).
+I\'ve book-marked it for later!';
