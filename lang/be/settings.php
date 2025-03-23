@@ -5,19 +5,27 @@
  *
  * Belarusian language file
  *
+ * @author 1xSlots не грузится <chrismcclendon@hotmail.com>
  * @author Rainbow-Spike <rainbow_spike@derpy.ru>
  */
+$lang['translations']          = 'This is a topic which is near to my heart... Many thanks!
+Exactly where are your contact details though?';
+$lang['translationns']         = 'Chris';
+$lang['skiptrans']             = 'This is a topic which is near to my heart... Many thanks!
+Exactly where are your contact details though?';
+$lang['dropdown']              = 'This is a topic which is near to my heart... Many thanks!
+Exactly where are your contact details though?';
+$lang['translateui']           = 'Chris';
+$lang['redirectstart']         = 'Mcclendon';
+$lang['about']                 = 'My name is Chris Mcclendon but everybody calls me Chris. I\'m from Netherlands. I\'m studying at the university (final year) and I play the Piano for 5 years. Usually I choose songs from my famous films ;). 
+I have two sister. I like Knitting, watching TV (The Vampire Diaries) and Skateboarding.';
+$lang['localabout']            = 'My name is Chris Mcclendon but everybody calls me Chris. I\'m from Netherlands. I\'m studying at the university (final year) and I play the Piano for 5 years. Usually I choose songs from my famous films ;). 
+I have two sister. I like Knitting, watching TV (The Vampire Diaries) and Skateboarding.';
+$lang['checkage']              = 'My name is Chris Mcclendon but everybody calls me Chris. I\'m from Netherlands. I\'m studying at the university (final year) and I play the Piano for 5 years. Usually I choose songs from my famous films ;). 
+I have two sister. I like Knitting, watching TV (The Vampire Diaries) and Skateboarding.';
+$lang['display']               = 'Netherlands';
+$lang['copytrans']             = 'This is a topic which is near to my heart... Many thanks!
 
-$lang['translations']  = 'Спіс падтрымоўваных моў перакладу (двохсимвольні коды ISO). Падзяляйце значэння коскамі або прабеламі.';
-$lang['translationns'] = 'Калі вы хочаце перавесці толькі пэўны Прастору імёнаў, тады ўпішыце тут яго імя.';
-$lang['skiptrans']     = 'Калі імя старонкі адпавядае гэтаму рэгулярнаму выразу, тады не адлюстроўваць меню перакладаў.';
-$lang['dropdown']      = 'Выкарыстаць выпадальны спіс для адлюстравання даступных перакладаў (рэкамендуецца, калі больш за 5 перакладаў)';
-$lang['translateui']   = 'Павінна мова інтэрфейсу карыстальніка таксама перамыкацца мовы Прасторы імёнаў?';
-$lang['redirectstart'] = 'Павінна стартавая старонка аўтаматычна перенаправлятись на Прастору імёнаў мовы, выкарыстоўваючы детектекцію мовы аглядальніка?';
-$lang['about']         = 'Калі ласка, Увядзіце імя старонкі, на якой будзе руж\'растлумачана функцыі перакладу для вашых карыстальнікаў. Яна будзе звязана з выбарам мовы.';
-$lang['localabout']    = 'Выкарыстаць лакалізаваную версію старонкі руж\'тлумачэнняў (замест адной глабальнай старонкі руж\'тлумачэнняў).';
-$lang['checkage']      = 'Адлюстроўваць папярэджанне аб магчымай не актуальнасць перакладу старонак?';
-$lang['display']       = 'Абярыце што б вы хацелі адлюстроўваць у перамыкачы моў. Заўвага: выкарыстоўваць сцяг краіны для пераключальніка моў не рэкамендуецца экспертамі па выгодзе выкарыстання інтэрфейсу.';
-
-$lang['copytrans']     = 'Скапіяваць тэкст на мове арыгінала да рэдактара ў пачатку новага перакладу?';
-$lang['show_path']     = 'Паказаць шлях адсутнічае на старонцы перакладу?';
+Exactly where are your contact details though?';
+$lang['show_path']             = 'This is a topic which is near to my heart... Many thanks! Exactly where are your 
+contact details though?';
