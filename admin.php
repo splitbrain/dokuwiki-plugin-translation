@@ -46,15 +46,8 @@ class admin_plugin_translation extends AdminPlugin
         }
         echo "</tr>";
 
-        $pages = $this->getAllPages();
+        $pages = $helper->getAllTranslatablePages();
         foreach ($pages as $page) {
-            if (
-                $helper->getLangPart($page["id"]) !== $default_language ||
-                !$helper->istranslatable($page["id"], false) ||
-                !page_exists($page["id"])
-            ) {
-                continue;
-            }
             // We have an existing and translatable page in the default language
             $showRow = false;
             $row = "<tr><td>" . $xhtml_renderer->internallink($page['id'], null, null, true) . "</td>";
@@ -106,17 +99,4 @@ class admin_plugin_translation extends AdminPlugin
         echo "</table>";
     }
 
-    /**
-     * Get all pages in the translation namespace
-     *
-     * @return array
-     */
-    protected function getAllPages()
-    {
-        $namespace = $this->getConf("translationns");
-        $dir = dirname(wikiFN("$namespace:foo"));
-        $pages = [];
-        search($pages, $dir, 'search_allpages', []);
-        return $pages;
-    }
 }

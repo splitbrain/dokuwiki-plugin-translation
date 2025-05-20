@@ -374,4 +374,48 @@ class helper_plugin_translation extends Plugin
         $id = cleanID($id);
         return wl($id, ['do' => 'diff', 'rev' => $orev]);
     }
+
+
+    /**
+     * Get all translatable Pages (in the default language)
+     *
+     * @param string $namespace
+     * @return array
+     */
+    public function getAllTranslatablePages($namespace = '')
+    {
+        $tns = $this->getConf("translationns");
+        $tdir = dirname(wikiFN("$tns:foo"));
+
+        if($namespace) {
+            $nns = cleanID($namespace);
+            $ndir = dirname(wikiFN("$nns:foo"));
+        } else {
+            $ndir = $tdir;
+        }
+
+        if(!str_starts_with($ndir, $tdir)) {
+            throw new \RuntimeException(
+                "Given namespace $nns is not a subnamespace of the translation namespace $tns"
+            );
+        }
+
+        $basedir = dirname(wikiFN('foo'));
+        $reldir = substr($ndir, strlen($basedir) + 1);
+
+
+        $pages = [];
+        search($pages, $basedir, 'search_allpages', [], $reldir);
+
+        return array_filter($pages, function ($page) use ($namespace) {
+            if (
+                $this->getLangPart($page["id"]) !== $this->defaultlang ||
+                !$this->istranslatable($page["id"], false) ||
+                !page_exists($page["id"])
+            ) {
+                return false;
+            }
+            return true;
+        });
+    }
 }
