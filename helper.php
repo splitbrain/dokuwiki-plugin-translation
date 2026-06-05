@@ -100,7 +100,11 @@ class helper_plugin_translation extends Plugin
     public function getBrowserLang()
     {
         global $conf;
-        $langs = $this->translations;
+        // Check if HTTP_ACCEPT_LANGUAGE header exists
+        if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) || empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            return false;
+        }
+            $langs = $this->translations;
         if (!in_array($conf['lang'], $langs)) {
             $langs[] = $conf['lang'];
         }
@@ -110,6 +114,7 @@ class helper_plugin_translation extends Plugin
         }
         return false;
     }
+
 
     /**
      * Returns the ID and name to the wanted translation, empty
