@@ -213,15 +213,20 @@ class action_plugin_translation extends ActionPlugin
     public function handlePageTemplates(Event $event)
     {
         global $ID;
+        global $INPUT;
 
         // load orginal content as template?
         if ($this->getConf('copytrans') && $this->helper->istranslatable($ID, false)) {
             // look for existing translations
             $translations = $this->helper->getAvailableTranslations($ID);
+
             if ($translations) {
                 // find original language (might've been provided via parameter or use first translation)
-                $orig = (string)$_REQUEST['fromlang'];
-                if (!$orig) $orig = array_key_first($translations);
+                $orig = $INPUT->str('fromlang', '');
+
+                if (!$orig || !array_key_exists($orig, $translations)) {
+                    $orig = array_key_first($translations);
+                }
 
                 // load file
                 $origfile = $translations[$orig];
