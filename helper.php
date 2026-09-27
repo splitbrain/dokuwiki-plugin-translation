@@ -105,7 +105,10 @@ class helper_plugin_translation extends Plugin
             $langs[] = $conf['lang'];
         }
         $rx = '/(^|,|:|;|-)(' . implode('|', $langs) . ')($|,|:|;|-)/i';
-        if (preg_match($rx, $_SERVER['HTTP_ACCEPT_LANGUAGE'], $match)) {
+        // Some clients (bots, fetchers, a few browsers) send no
+        // Accept-Language header at all; avoid the "undefined array key"
+        // warning that follows from reading it directly.
+        if (preg_match($rx, $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '', $match)) {
             return strtolower($match[2]);
         }
         return false;

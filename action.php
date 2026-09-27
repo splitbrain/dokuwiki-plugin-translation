@@ -164,6 +164,17 @@ class action_plugin_translation extends ActionPlugin
 
         if ($ID == $conf['start'] && $ACT == 'show') {
             $lc = $this->helper->getBrowserLang();
+            // getBrowserLang() returns false when Accept-Language is missing
+            // or matches none of the configured languages. Falling through
+            // with $lc === false makes buildTransID() return the
+            // untranslated $conf['start'] id, identical to $ID, so no
+            // redirect fires - on a setup with no content at that
+            // unprefixed id (all content living under language namespaces),
+            // the visitor gets a 404 instead of a language redirect. Fall
+            // back to the wiki's default language instead.
+            if (!$lc) {
+                $lc = $conf['lang'];
+            }
 
             [$translatedStartpage, ] = $this->helper->buildTransID($lc, $conf['start']);
             if (cleanID($translatedStartpage) !== cleanID($ID)) {
